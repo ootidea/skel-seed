@@ -1,43 +1,44 @@
 <script lang="ts">
   export let text: string | undefined = undefined
+  export let style: string | undefined = undefined
 
   let klass = ''
   export { klass as class }
 </script>
 
-<span class="root {klass}">
+<span class="skeleto-tooltip_root {klass}" {style}>
   <div class="wrapper">
     <slot />
   </div>
-  <span class="popup-wrapper">
+  <span class="skeleto-tooltip_popup-wrapper">
     <slot name="popup">
       {#if text !== undefined}
-        <div class="default-popup">{text}</div>
+        <div class="skeleto-tooltip_default-popup">{text}</div>
       {/if}
     </slot>
   </span>
 </span>
 
-<style lang="scss">
-  .root {
+<style global lang="scss">
+  .skeleto-tooltip_root {
     display: inline-block;
     position: relative;
   }
 
-  .popup-wrapper {
+  .skeleto-tooltip_popup-wrapper {
     position: absolute;
-    // 下の中央に表示
+    // Show at the center of the bottom
     left: 50%;
     transform: translate(-50%, 0);
 
     visibility: hidden;
 
-    .root:hover & {
+    .skeleto-tooltip_root:hover & {
       visibility: visible;
     }
   }
 
-  .default-popup {
+  .skeleto-tooltip_default-popup {
     font-size: 0.9em;
     color: oklch(100% 0 0);
     background-color: oklch(50% 0 0);
