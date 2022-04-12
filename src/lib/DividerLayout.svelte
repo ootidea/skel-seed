@@ -10,6 +10,7 @@
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">
+        <!-- TODO: replace Divider component -->
         <hr />
       </slot>
     {/if}
