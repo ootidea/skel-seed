@@ -14,6 +14,8 @@
         <hr />
       </slot>
     {/if}
-    <slot name="item" {item} {index} />
+    <slot {item} {index} />
+  {:else}
+    <slot name="empty" />
   {/each}
 </div>
