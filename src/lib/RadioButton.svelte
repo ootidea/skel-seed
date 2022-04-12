@@ -11,7 +11,11 @@
 
 <label class="skeleto-radio-button_root {klass}" class:skeleto-disabled={disabled}>
   <input type="radio" class="skeleto-radio-button_radio" bind:group {value} {disabled} />
-  <slot />
+  <slot>
+    {#if value !== undefined}
+      {value}
+    {/if}
+  </slot>
 </label>
 
 <CommonCss />
