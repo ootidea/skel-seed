@@ -39,14 +39,15 @@
   }
 
   .skeleto-tooltip_default-popup {
-    font-size: 0.9em;
-    color: oklch(100% 0 0);
-    background-color: oklch(50% 0 0);
     border-radius: 0.4rem;
 
     padding-inline: 0.4em;
     padding-block: 0.1em;
 
+    background-color: oklch(50% 0 0);
+    color: oklch(100% 0 0);
+
+    font-size: 0.9em;
     white-space: pre-wrap;
   }
 </style>
