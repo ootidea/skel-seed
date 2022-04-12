@@ -38,7 +38,7 @@
 
   .skeleto-radio-button_radio {
     margin: 0;
-    accent-color: var(--accent-color);
+    accent-color: var(--skeleto-accent-color);
 
     cursor: pointer;
 
