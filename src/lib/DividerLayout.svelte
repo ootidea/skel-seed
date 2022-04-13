@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Divider from './Divider.svelte'
+
   type Item = $$Generic<unknown>
   export let items: readonly Item[]
 
@@ -10,11 +12,12 @@
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">
-        <!-- TODO: replace Divider component -->
-        <hr />
+        <Divider />
       </slot>
     {/if}
-    <slot {item} {index} />
+    <slot {item} {index}>
+      {item}
+    </slot>
   {:else}
     <slot name="empty" />
   {/each}
