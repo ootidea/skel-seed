@@ -4,11 +4,13 @@
   export let text = ''
   export let placeholder = ''
   export let disabled = false
+  let klass = ''
+  export { klass as class }
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skeleto-text-area_root" class:skeleto-disabled={disabled}>
+<div class="skeleto-text-area_root {klass}" class:skeleto-disabled={disabled}>
   <div class="skeleto-text-area_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
