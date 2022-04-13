@@ -1,6 +1,6 @@
 <script lang="ts">
   export let url = ''
-  export let size = '1.1em'
+  export let size = 'var(--skel-icon-default-size)'
   export let color = 'var(--skel-icon-default-color)'
 
   let klass = ''
@@ -9,23 +9,24 @@
 
 <div
   class="skel-icon_root {klass}"
-  style:--url="url('{url}')"
-  style:--size={size}
-  style:--color={color}
+  style:--skel-icon-url="url('{url}')"
+  style:--skel-icon-size={size}
+  style:--skel-icon-color={color}
 />
 
 <style global lang="scss">
   :root {
     --skel-icon-default-color: oklch(40% 0 0);
+    --skel-icon-default-size: 1.1em;
   }
 
   .skel-icon_root {
     display: inline-block;
-    width: var(--size);
-    height: var(--size);
+    width: var(--skel-icon-size);
+    height: var(--skel-icon-size);
 
-    background-color: var(--color);
-    mask: var(--url) no-repeat center;
+    background-color: var(--skel-icon-color);
+    mask: var(--skel-icon-url) no-repeat center;
     mask-size: contain;
   }
 </style>
