@@ -6,7 +6,7 @@
   export { klass as class }
 </script>
 
-<span class="skeleto-tooltip_root {klass}" {style}>
+<div class="skeleto-tooltip_root {klass}" {style}>
   <div class="wrapper">
     <slot />
   </div>
@@ -17,11 +17,10 @@
       {/if}
     </slot>
   </span>
-</span>
+</div>
 
 <style global lang="scss">
   .skeleto-tooltip_root {
-    display: inline-block;
     position: relative;
   }
 
@@ -39,10 +38,8 @@
   }
 
   .skeleto-tooltip_default-popup {
-    border-radius: 0.4rem;
-
-    padding-inline: 0.4em;
-    padding-block: 0.1em;
+    border-radius: 0.4em;
+    padding: 0.1em 0.4em;
 
     background-color: oklch(50% 0 0);
     color: oklch(100% 0 0);
