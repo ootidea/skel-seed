@@ -32,7 +32,7 @@
     &.skeleto-disabled {
       cursor: default;
 
-      color: oklch(70% 0 0);
+      color: var(--skeleto-disabled-text-color);
     }
   }
 

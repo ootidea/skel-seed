@@ -3,15 +3,16 @@
 
   export let text = ''
   export let placeholder = ''
+  export let disabled = false
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skeleto-text-area_root">
+<div class="skeleto-text-area_root" class:skeleto-disabled={disabled}>
   <div class="skeleto-text-area_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class="skeleto-text-area_text-area" bind:value={text} {placeholder} />
+  <textarea class="skeleto-text-area_text-area" bind:value={text} {placeholder} {disabled} />
 </div>
 
 <CommonCss />
@@ -57,6 +58,10 @@
     resize: none;
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
+
+    .skeleto-disabled & {
+      color: var(--skeleto-disabled-text-color);
+    }
   }
 
   .skeleto-text-area_text-area:focus {
