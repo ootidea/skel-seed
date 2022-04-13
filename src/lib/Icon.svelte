@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let url = ''
+  export let src = ''
   export let size = 'var(--skel-icon-default-size)'
   export let color = 'var(--skel-icon-default-color)'
 
@@ -9,7 +9,7 @@
 
 <div
   class="skel-icon_root {klass}"
-  style:--skel-icon-url="url('{url}')"
+  style:--skel-icon-url="url('{src}')"
   style:--skel-icon-size={size}
   style:--skel-icon-color={color}
 />
