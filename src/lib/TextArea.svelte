@@ -2,13 +2,16 @@
   import CommonCss from './CommonCss.svelte'
 
   export let text = ''
+  export let placeholder = ''
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <div class="skeleto-text-area_root">
-  <div class="skeleto-text-area_dummy" aria-hidden="true">{text + ZERO_WIDTH_SPACE}</div>
-  <textarea class="skeleto-text-area_text-area" bind:value={text} />
+  <div class="skeleto-text-area_dummy" aria-hidden="true">
+    {text ? text : placeholder}{ZERO_WIDTH_SPACE}
+  </div>
+  <textarea class="skeleto-text-area_text-area" bind:value={text} {placeholder} />
 </div>
 
 <CommonCss />
