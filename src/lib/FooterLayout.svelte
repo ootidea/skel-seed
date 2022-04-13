@@ -4,7 +4,7 @@
   export { klass as class }
 </script>
 
-<div class="skel-footer-layout_root {orientation} {klass}">
+<div class="skel-footer-layout_root skel-{orientation} {klass}">
   <slot />
 </div>
 
@@ -12,12 +12,12 @@
   .skel-footer-layout_root {
     display: grid;
 
-    &.horizontal {
+    &.skel-horizontal {
       width: 100%;
       grid-template-columns: minmax(0, 1fr) auto;
     }
 
-    &.vertical {
+    &.skel-vertical {
       height: 100%;
       grid-template-rows: minmax(0, 1fr) auto;
     }
