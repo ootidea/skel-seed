@@ -4,12 +4,12 @@
   export { klass as class }
 </script>
 
-<div class="skeleto-header-layout_root {orientation} {klass}">
+<div class="skel-header-layout_root {orientation} {klass}">
   <slot />
 </div>
 
 <style global lang="scss">
-  .skeleto-header-layout_root {
+  .skel-header-layout_root {
     display: grid;
 
     &.horizontal {

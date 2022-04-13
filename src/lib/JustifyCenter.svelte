@@ -3,12 +3,12 @@
   export { klass as class }
 </script>
 
-<div class="skeleto-justify-center_root {klass}">
+<div class="skel-justify-center_root {klass}">
   <slot />
 </div>
 
 <style global lang="scss">
-  .skeleto-justify-center_root {
+  .skel-justify-center_root {
     display: flex;
     justify-content: center;
   }

@@ -3,12 +3,12 @@
   export { klass as class }
 </script>
 
-<div class="skeleto-justify-end_root {klass}">
+<div class="skel-justify-end_root {klass}">
   <slot />
 </div>
 
 <style global lang="scss">
-  .skeleto-justify-end_root {
+  .skel-justify-end_root {
     display: flex;
     justify-content: end;
   }

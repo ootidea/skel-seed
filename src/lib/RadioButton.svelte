@@ -9,8 +9,8 @@
   export { klass as class }
 </script>
 
-<label class="skeleto-radio-button_root {klass}" class:skeleto-disabled={disabled}>
-  <input type="radio" class="skeleto-radio-button_radio" bind:group {value} {disabled} />
+<label class="skel-radio-button_root {klass}" class:skel-disabled={disabled}>
+  <input type="radio" class="skel-radio-button_radio" bind:group {value} {disabled} />
   <slot>
     {#if value !== undefined}
       {value}
@@ -21,7 +21,7 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skeleto-radio-button_root {
+  .skel-radio-button_root {
     display: inline-grid;
     grid-auto-flow: column;
     align-items: center;
@@ -29,20 +29,20 @@
 
     cursor: pointer;
 
-    &.skeleto-disabled {
+    &.skel-disabled {
       cursor: default;
 
-      color: var(--skeleto-disabled-text-color);
+      color: var(--skel-disabled-text-color);
     }
   }
 
-  .skeleto-radio-button_radio {
+  .skel-radio-button_radio {
     margin: 0;
-    accent-color: var(--skeleto-accent-color);
+    accent-color: var(--skel-accent-color);
 
     cursor: pointer;
 
-    .skeleto-disabled & {
+    .skel-disabled & {
       cursor: default;
     }
   }

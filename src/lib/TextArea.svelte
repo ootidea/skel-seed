@@ -10,24 +10,24 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skeleto-text-area_root {klass}" class:skeleto-disabled={disabled}>
-  <div class="skeleto-text-area_dummy" aria-hidden="true">
+<div class="skel-text-area_root {klass}" class:skel-disabled={disabled}>
+  <div class="skel-text-area_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class="skeleto-text-area_text-area" bind:value={text} {placeholder} {disabled} />
+  <textarea class="skel-text-area_text-area" bind:value={text} {placeholder} {disabled} />
 </div>
 
 <CommonCss />
 
 <style global lang="scss">
-  .skeleto-text-area_root {
+  .skel-text-area_root {
     position: relative;
     width: max-content;
     min-width: 10em;
   }
 
-  .skeleto-text-area_dummy,
-  .skeleto-text-area_text-area {
+  .skel-text-area_dummy,
+  .skel-text-area_text-area {
     box-sizing: border-box;
 
     padding: 0.4em 0.6em;
@@ -40,11 +40,11 @@
     overflow-wrap: break-word;
   }
 
-  .skeleto-text-area_dummy {
+  .skel-text-area_dummy {
     visibility: hidden;
   }
 
-  .skeleto-text-area_text-area {
+  .skel-text-area_text-area {
     position: absolute;
     top: 0;
     left: 0;
@@ -61,12 +61,12 @@
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
 
-    .skeleto-disabled & {
-      color: var(--skeleto-disabled-text-color);
+    .skel-disabled & {
+      color: var(--skel-disabled-text-color);
     }
   }
 
-  .skeleto-text-area_text-area:focus {
-    outline: 1px solid var(--skeleto-accent-color);
+  .skel-text-area_text-area:focus {
+    outline: 1px solid var(--skel-accent-color);
   }
 </style>

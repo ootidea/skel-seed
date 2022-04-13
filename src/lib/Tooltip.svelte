@@ -6,25 +6,25 @@
   export { klass as class }
 </script>
 
-<div class="skeleto-tooltip_root {klass}" {style}>
+<div class="skel-tooltip_root {klass}" {style}>
   <div class="wrapper">
     <slot />
   </div>
-  <span class="skeleto-tooltip_popup-wrapper">
+  <span class="skel-tooltip_popup-wrapper">
     <slot name="popup">
       {#if text !== undefined}
-        <div class="skeleto-tooltip_default-popup">{text}</div>
+        <div class="skel-tooltip_default-popup">{text}</div>
       {/if}
     </slot>
   </span>
 </div>
 
 <style global lang="scss">
-  .skeleto-tooltip_root {
+  .skel-tooltip_root {
     position: relative;
   }
 
-  .skeleto-tooltip_popup-wrapper {
+  .skel-tooltip_popup-wrapper {
     position: absolute;
     // Show at the center of the bottom
     left: 50%;
@@ -32,12 +32,12 @@
 
     visibility: hidden;
 
-    .skeleto-tooltip_root:hover & {
+    .skel-tooltip_root:hover & {
       visibility: visible;
     }
   }
 
-  .skeleto-tooltip_default-popup {
+  .skel-tooltip_default-popup {
     border-radius: 0.4em;
     padding: 0.1em 0.4em;
 
