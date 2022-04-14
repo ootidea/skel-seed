@@ -1,12 +1,11 @@
 <script lang="ts">
   export let text: string | undefined = undefined
-  export let style: string | undefined = undefined
 
   let klass = ''
   export { klass as class }
 </script>
 
-<div class="skel-tooltip_root {klass}" {style}>
+<div class="skel-tooltip_root {klass}">
   <div class="wrapper">
     <slot />
   </div>
