@@ -17,7 +17,7 @@
 <style global lang="scss">
   :root {
     --skel-icon-default-color: oklch(40% 0 0);
-    --skel-icon-default-size: 1.1em;
+    --skel-icon-default-size: 1.2em;
   }
 
   .skel-icon_root {
