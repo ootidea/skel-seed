@@ -8,7 +8,7 @@
   export { klass as class }
 </script>
 
-<div class="skel-divider-layout_root {klass}">
+<div class="skel-list_root {klass}">
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">
