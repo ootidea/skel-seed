@@ -4,7 +4,12 @@
 </script>
 
 <div class="skel-horizontal-prepend_root {klass}">
-  <slot />
+  <div class="skel-horizontal-prepend_prepend">
+    <slot name="prepend" />
+  </div>
+  <div class="skel-horizontal-prepend_main">
+    <slot />
+  </div>
 </div>
 
 <style global lang="scss">

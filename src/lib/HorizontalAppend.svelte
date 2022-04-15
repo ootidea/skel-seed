@@ -4,7 +4,12 @@
 </script>
 
 <div class="skel-horizontal-append_root {klass}">
-  <slot />
+  <div class="skel-horizontal-append_main">
+    <slot />
+  </div>
+  <div class="skel-horizontal-append_append">
+    <slot name="append" />
+  </div>
 </div>
 
 <style global lang="scss">
