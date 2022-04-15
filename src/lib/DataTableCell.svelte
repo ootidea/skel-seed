@@ -2,6 +2,7 @@
   import check from '/src/assets/check.svg'
   import type { DiscriminatedUnion } from './DiscriminatedUnion'
   import Icon from './Icon.svelte'
+  import Link from './Link.svelte'
 
   export let value: unknown = undefined
   let klass = ''
@@ -60,7 +61,7 @@
     </slot>
   {:else if analysisResult.type === 'URL'}
     <slot name="URL" value={analysisResult.value}>
-      <a href={analysisResult.value.href}>{analysisResult.value.href}</a>
+      <Link href={analysisResult.value.href} />
     </slot>
   {:else if analysisResult.type === 'string'}
     <slot name="string" value={analysisResult.value}>
