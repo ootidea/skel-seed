@@ -44,7 +44,7 @@
     {#each columns as column, columnIndex}
       <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" rowIndex={0} {columnIndex}>
-          <Divider orientation="vertical" />
+          <Divider direction="vertical" />
         </slot>
       </div>
 
@@ -59,7 +59,7 @@
 
     <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
       <slot name="vertical-ruled-line" rowIndex={0} columnIndex={columns.length}>
-        <Divider orientation="vertical" />
+        <Divider direction="vertical" />
       </slot>
     </div>
   </div>
@@ -81,7 +81,7 @@
       {#each columns as column, columnIndex}
         <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
           <slot name="vertical-ruled-line" {rowIndex} {columnIndex}>
-            <Divider orientation="vertical" />
+            <Divider direction="vertical" />
           </slot>
         </div>
 
@@ -96,7 +96,7 @@
 
       <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" {rowIndex} columnIndex={columns.length}>
-          <Divider orientation="vertical" />
+          <Divider direction="vertical" />
         </slot>
       </div>
     </div>
