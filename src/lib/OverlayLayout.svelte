@@ -1,16 +1,18 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter } from './utility'
+  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
   $: getClass = createClassGetter('OverlayLayout', classProp)
+  export let style: StyleProp = {}
+  $: getStyle = createStyleGetter(style)
 </script>
 
-<div class={getClass('root')}>
-  <div class={getClass('lower-layer')}>
+<div class={getClass('root')} style={getStyle('root')}>
+  <div class={getClass('lower-layer')} style={getStyle('lower-layer')}>
     <slot />
   </div>
-  <div class={getClass('upper-layer')}>
+  <div class={getClass('upper-layer')} style={getStyle('upper-layer')}>
     <slot name="overlay" />
   </div>
 </div>

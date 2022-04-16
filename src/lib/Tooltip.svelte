@@ -1,21 +1,23 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter } from './utility'
+  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
 
   export let text: string | undefined = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
   $: getClass = createClassGetter('Tooltip', classProp)
+  export let style: StyleProp = {}
+  $: getStyle = createStyleGetter(style)
 </script>
 
-<div class={getClass('root')}>
+<div class={getClass('root')} style={getStyle('root')}>
   <div class="wrapper">
     <slot />
   </div>
-  <span class={getClass('popup-wrapper')}>
+  <span class={getClass('popup-wrapper')} style={getStyle('popup-wrapper')}>
     <slot name="popup">
       {#if text !== undefined}
-        <div class={getClass('default-popup')}>{text}</div>
+        <div class={getClass('default-popup')} style={getStyle('default-popup')}>{text}</div>
       {/if}
     </slot>
   </span>

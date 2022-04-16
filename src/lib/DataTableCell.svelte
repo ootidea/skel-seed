@@ -2,13 +2,21 @@
   import check from '/src/assets/check.svg'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
-  import { type ClassProp, createClassGetter, type DiscriminatedUnion } from './utility'
+  import {
+    type ClassProp,
+    createClassGetter,
+    createStyleGetter,
+    type DiscriminatedUnion,
+    type StyleProp,
+  } from './utility'
 
   export let value: unknown = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
   $: getClass = createClassGetter('DataTableCell', classProp)
+  export let style: StyleProp = {}
+  $: getStyle = createStyleGetter(style)
 
   $: analysisResult = analyze(value)
 
@@ -42,7 +50,7 @@
   }>
 </script>
 
-<div class={getClass('root')} data-type={analysisResult.type}>
+<div class={getClass('root')} style={getStyle('root')} data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

@@ -64,6 +64,20 @@ export function createClassGetter(
   }
 }
 
+export type StyleProp = string | Partial<Record<string, string>>
+
+export function createStyleGetter(styleProp: StyleProp): (partName: string) => string | undefined {
+  return (partName: string) => {
+    if (typeof styleProp === 'string') {
+      if (partName === 'root') return styleProp
+
+      return undefined
+    }
+
+    return styleProp[partName]
+  }
+}
+
 /**
  * Utility for defining tagged union types.
  * Note that can't define recursive types.

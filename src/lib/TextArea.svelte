@@ -1,6 +1,6 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createClassGetter } from './utility'
+  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
 
   export let text = ''
   export let placeholder = ''
@@ -9,15 +9,23 @@
   let classProp: ClassProp = {}
   export { classProp as class }
   $: getClass = createClassGetter('TextArea', classProp)
+  export let style: StyleProp = {}
+  $: getStyle = createStyleGetter(style)
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class={getClass('root')} class:skel-disabled={disabled}>
-  <div class={getClass('dummy')} aria-hidden="true">
+<div class={getClass('root')} style={getStyle('root')} class:skel-disabled={disabled}>
+  <div class={getClass('dummy')} style={getStyle('dummy')} aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class={getClass('text-area')} bind:value={text} {placeholder} {disabled} />
+  <textarea
+    class={getClass('text-area')}
+    style={getStyle('text-area')}
+    bind:value={text}
+    {placeholder}
+    {disabled}
+  />
 </div>
 
 <CommonCss />

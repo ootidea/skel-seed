@@ -1,13 +1,15 @@
 <script lang="ts">
+  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+
   export let src = ''
   export let size = 'var(--skel-icon-default-size)'
   export let color = 'var(--skel-icon-default-color)'
 
-  import { type ClassProp, createClassGetter } from './utility'
-
   let classProp: ClassProp = {}
   export { classProp as class }
   $: getClass = createClassGetter('Icon', classProp)
+  export let style: StyleProp = {}
+  $: getStyle = createStyleGetter(style)
 </script>
 
 <div
@@ -15,6 +17,7 @@
   style:--skel-icon-url="url('{src}')"
   style:--skel-icon-size={size}
   style:--skel-icon-color={color}
+  style={getStyle('root')}
 />
 
 <style global lang="scss">
