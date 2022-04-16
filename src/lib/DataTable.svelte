@@ -8,8 +8,11 @@
   export let columns: readonly Column[] = []
   type Column = string | { id: string; title?: string }
 
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('DataTable', classProp)
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column
@@ -24,16 +27,16 @@
   }
 </script>
 
-<div class="skel-data-table_root {klass}" style:--skel-data-table-column-count={columns.length}>
-  <div class="skel-data-table_horizontal-ruled-line">
+<div class={getClass('root')} style:--skel-data-table-column-count={columns.length}>
+  <div class={getClass('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={0}>
       <Divider />
     </slot>
   </div>
 
-  <div class="skel-data-table_header-row">
+  <div class={getClass('header-row')}>
     {#each columns as column, columnIndex}
-      <div class="skel-data-table_vertical-ruled-line">
+      <div class={getClass('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" rowIndex={0} {columnIndex}>
           <Divider orientation="vertical" />
         </slot>
@@ -41,14 +44,14 @@
 
       {@const columnId = getColumnId(column)}
       {@const columnTitle = getColumnTitle(column)}
-      <div class="skel-data-table_cell" data-column-id={columnId}>
+      <div class={getClass('cell')} data-column-id={columnId}>
         <slot name="header-cell" {columnId} {columnTitle} {columnIndex}>
           {columnTitle}
         </slot>
       </div>
     {/each}
 
-    <div class="skel-data-table_vertical-ruled-line">
+    <div class={getClass('vertical-ruled-line')}>
       <slot name="vertical-ruled-line" rowIndex={0} columnIndex={columns.length}>
         <Divider orientation="vertical" />
       </slot>
@@ -57,19 +60,19 @@
 
   {#each rows as row, index}
     {@const rowIndex = index + 1}
-    <div class="skel-data-table_horizontal-ruled-line">
+    <div class={getClass('horizontal-ruled-line')}>
       <slot name="horizontal-ruled-line" {rowIndex}>
         <Divider />
       </slot>
     </div>
 
     <div
-      class="skel-data-table_body-row"
+      class={getClass('body-row')}
       class:skel-data-table_even-row={index % 2 === 0}
       class:skel-data-table_odd-row={index % 2 === 1}
     >
       {#each columns as column, columnIndex}
-        <div class="skel-data-table_vertical-ruled-line">
+        <div class={getClass('vertical-ruled-line')}>
           <slot name="vertical-ruled-line" {rowIndex} {columnIndex}>
             <Divider orientation="vertical" />
           </slot>
@@ -77,14 +80,14 @@
 
         {@const columnId = getColumnId(column)}
         {@const value = row[columnId]}
-        <div class="skel-data-table_cell" data-column-id={columnId}>
+        <div class={getClass('cell')} data-column-id={columnId}>
           <slot name="cell" {row} {columnId} {value} {rowIndex} {columnIndex}>
             <DataTableCell {value} />
           </slot>
         </div>
       {/each}
 
-      <div class="skel-data-table_vertical-ruled-line">
+      <div class={getClass('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" {rowIndex} columnIndex={columns.length}>
           <Divider orientation="vertical" />
         </slot>
@@ -92,7 +95,7 @@
     </div>
   {/each}
 
-  <div class="skel-data-table_horizontal-ruled-line">
+  <div class={getClass('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={rows.length + 1}>
       <Divider />
     </slot>

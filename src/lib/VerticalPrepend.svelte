@@ -1,13 +1,16 @@
 <script lang="ts">
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('VerticalPrepend', classProp)
 </script>
 
-<div class="skel-vertical-prepend_root {klass}">
-  <div class="skel-vertical-prepend_prepend">
+<div class={getClass('root')}>
+  <div class={getClass('prepend')}>
     <slot name="prepend" />
   </div>
-  <div class="skel-vertical-prepend_main">
+  <div class={getClass('main')}>
     <slot />
   </div>
 </div>

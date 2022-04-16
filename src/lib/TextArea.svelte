@@ -1,20 +1,23 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { classGenerator, type ClassProp } from './utility'
 
   export let text = ''
   export let placeholder = ''
   export let disabled = false
-  let klass = ''
-  export { klass as class }
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('TextArea', classProp)
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skel-text-area_root {klass}" class:skel-disabled={disabled}>
-  <div class="skel-text-area_dummy" aria-hidden="true">
+<div class={getClass('root')} class:skel-disabled={disabled}>
+  <div class={getClass('dummy')} aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class="skel-text-area_text-area" bind:value={text} {placeholder} {disabled} />
+  <textarea class={getClass('text-area')} bind:value={text} {placeholder} {disabled} />
 </div>
 
 <CommonCss />

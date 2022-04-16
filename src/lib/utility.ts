@@ -34,3 +34,32 @@ export function getCssVariableAsNumber(
 
   return number
 }
+
+function toKebabCase(pascalCase: string) {
+  return (
+    pascalCase.charAt(0).toLowerCase() +
+    pascalCase.substring(1).replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
+  )
+}
+
+export type ClassProp = string | Partial<Record<string, string>>
+
+export function classGenerator(
+  componentName: string,
+  classProp: ClassProp
+): (partName: string) => string {
+  const prefix = `skel-${toKebabCase(componentName)}_`
+
+  return (partName: string) => {
+    const baseClassName = prefix + partName
+
+    if (typeof classProp === 'string') {
+      if (partName === 'root') return `${baseClassName} ${classProp}`
+
+      return baseClassName
+    }
+
+    const klass = classProp[partName]
+    return klass !== undefined ? `${baseClassName} ${klass}` : baseClassName
+  }
+}

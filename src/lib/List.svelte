@@ -1,14 +1,16 @@
 <script lang="ts">
   import Divider from './Divider.svelte'
+  import { classGenerator, type ClassProp } from './utility'
 
   type Item = $$Generic<unknown>
   export let items: readonly Item[]
 
-  let klass = ''
-  export { klass as class }
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('List', classProp)
 </script>
 
-<div class="skel-list_root {klass}">
+<div class={getClass('root')}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

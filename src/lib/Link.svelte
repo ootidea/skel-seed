@@ -1,10 +1,13 @@
 <script lang="ts">
   export let href = ''
 
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('Link', classProp)
 </script>
 
-<a class="skel-link_root {klass}" {href}>
+<a class={getClass('root')} {href}>
   <slot>{href}</slot>
 </a>

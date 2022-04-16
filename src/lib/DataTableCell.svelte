@@ -3,10 +3,13 @@
   import type { DiscriminatedUnion } from './DiscriminatedUnion'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
+  import { classGenerator, type ClassProp } from './utility'
 
   export let value: unknown = undefined
-  let klass = ''
-  export { klass as class }
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('DataTableCell', classProp)
 
   $: analysisResult = analyze(value)
 
@@ -40,7 +43,7 @@
   }>
 </script>
 
-<div class="skel-data-table-cell_root {klass}" data-type={analysisResult.type}>
+<div class={getClass('root')} data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

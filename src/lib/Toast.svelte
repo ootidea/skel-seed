@@ -71,8 +71,11 @@
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
 
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('Toast', classProp)
 
   onDestroy(() => {
     // Clear the toast data before transitioning to another page on the SPA
@@ -86,12 +89,12 @@
   }
 </script>
 
-<div class="skel-toast_root {klass}">
+<div class={getClass('root')}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
-    <div class="skel-toast_toast" animate:flip>
+    <div class={getClass('toast')} animate:flip>
       <slot model={toastModel}>
         <div
-          class="skel-toast_default-view"
+          class={getClass('default-view')}
           transition:scale
           on:click={(event) => onClick(toastModel, event)}
         >

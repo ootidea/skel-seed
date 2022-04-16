@@ -1,18 +1,21 @@
 <script lang="ts">
+  import { classGenerator, type ClassProp } from './utility'
+
   export let text: string | undefined = undefined
 
-  let klass = ''
-  export { klass as class }
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('Tooltip', classProp)
 </script>
 
-<div class="skel-tooltip_root {klass}">
+<div class={getClass('root')}>
   <div class="wrapper">
     <slot />
   </div>
-  <span class="skel-tooltip_popup-wrapper">
+  <span class={getClass('popup-wrapper')}>
     <slot name="popup">
       {#if text !== undefined}
-        <div class="skel-tooltip_default-popup">{text}</div>
+        <div class={getClass('default-popup')}>{text}</div>
       {/if}
     </slot>
   </span>

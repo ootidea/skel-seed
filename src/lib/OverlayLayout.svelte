@@ -1,13 +1,16 @@
 <script lang="ts">
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('OverlayLayout', classProp)
 </script>
 
-<div class="skel-overlay-layout_root {klass}">
-  <div class="skel-overlay-layout_lower-layer">
+<div class={getClass('root')}>
+  <div class={getClass('lower-layer')}>
     <slot />
   </div>
-  <div class="skel-overlay-layout_upper-layer">
+  <div class={getClass('upper-layer')}>
     <slot name="overlay" />
   </div>
 </div>

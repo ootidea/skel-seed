@@ -1,9 +1,12 @@
 <script lang="ts">
-  let klass = ''
-  export { klass as class }
+  import { classGenerator, type ClassProp } from './utility'
+
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('JustifyCenter', classProp)
 </script>
 
-<div class="skel-justify-center_root {klass}">
+<div class={getClass('root')}>
   <slot />
 </div>
 

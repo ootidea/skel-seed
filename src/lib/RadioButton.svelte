@@ -1,16 +1,18 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { classGenerator, type ClassProp } from './utility'
 
   export let group = ''
   export let value: string | undefined = undefined
   export let disabled = false
 
-  let klass = ''
-  export { klass as class }
+  let classProp: ClassProp = {}
+  export { classProp as class }
+  $: getClass = classGenerator('radio-button', classProp)
 </script>
 
-<label class="skel-radio-button_root {klass}" class:skel-disabled={disabled}>
-  <input type="radio" class="skel-radio-button_radio" bind:group {value} {disabled} />
+<label class={getClass('root')} class:skel-disabled={disabled}>
+  <input type="radio" class={getClass('radio')} bind:group {value} {disabled} />
   <slot>
     {#if value !== undefined}
       {value}
