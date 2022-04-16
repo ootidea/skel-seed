@@ -2,7 +2,7 @@
   import check from '/src/assets/check.svg'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
-  import { type ClassProp, createClassGetter, DiscriminatedUnion } from './utility'
+  import { type ClassProp, createClassGetter, type DiscriminatedUnion } from './utility'
 
   export let value: unknown = undefined
 
