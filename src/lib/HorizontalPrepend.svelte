@@ -22,12 +22,4 @@
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
   }
-
-  .skel-horizontal-prepend_prepend {
-    height: 100%;
-  }
-
-  .skel-horizontal-prepend_main {
-    height: 100%;
-  }
 </style>

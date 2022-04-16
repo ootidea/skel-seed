@@ -27,6 +27,8 @@
   }
 
   .skel-icon_root {
+    vertical-align: top;
+
     display: inline-block;
     width: var(--skel-icon-size);
     height: var(--skel-icon-size);
