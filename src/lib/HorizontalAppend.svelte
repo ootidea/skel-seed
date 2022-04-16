@@ -16,6 +16,13 @@
   .skel-horizontal-append_root {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    width: 100%;
+  }
+
+  .skel-horizontal-append_main {
+    height: 100%;
+  }
+
+  .skel-horizontal-append_append {
+    height: 100%;
   }
 </style>

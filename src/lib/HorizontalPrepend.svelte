@@ -1,6 +1,8 @@
 <script lang="ts">
   let klass = ''
   export { klass as class }
+
+  export let classes: Record<string, string> = {}
 </script>
 
 <div class="skel-horizontal-prepend_root {klass}">
@@ -16,6 +18,13 @@
   .skel-horizontal-prepend_root {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    width: 100%;
+  }
+
+  .skel-horizontal-prepend_prepend {
+    height: 100%;
+  }
+
+  .skel-horizontal-prepend_main {
+    height: 100%;
   }
 </style>
