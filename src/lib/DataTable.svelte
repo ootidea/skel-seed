@@ -110,6 +110,7 @@
   .skel-data-table_root {
     display: grid;
     grid-template-columns: repeat(calc(2 * var(--skel-data-table-column-count) + 1), auto);
+    width: max-content;
   }
 
   .skel-data-table_header-row {
