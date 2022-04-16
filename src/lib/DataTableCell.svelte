@@ -1,9 +1,8 @@
 <script lang="ts">
   import check from '/src/assets/check.svg'
-  import type { DiscriminatedUnion } from './DiscriminatedUnion'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
-  import { classGenerator, type ClassProp } from './utility'
+  import { classGenerator, type ClassProp, DiscriminatedUnion } from './utility'
 
   export let value: unknown = undefined
 
