@@ -44,7 +44,7 @@ function toKebabCase(pascalCase: string) {
 
 export type ClassProp = string | Partial<Record<string, string>>
 
-export function classGenerator(
+export function createClassGetter(
   componentName: string,
   classProp: ClassProp
 ): (partName: string) => string {

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   export let text: string | undefined = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('Tooltip', classProp)
+  $: getClass = createClassGetter('Tooltip', classProp)
 </script>
 
 <div class={getClass('root')}>

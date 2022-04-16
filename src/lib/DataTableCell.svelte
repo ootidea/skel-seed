@@ -2,13 +2,13 @@
   import check from '/src/assets/check.svg'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
-  import { classGenerator, type ClassProp, DiscriminatedUnion } from './utility'
+  import { type ClassProp, createClassGetter, DiscriminatedUnion } from './utility'
 
   export let value: unknown = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('DataTableCell', classProp)
+  $: getClass = createClassGetter('DataTableCell', classProp)
 
   $: analysisResult = analyze(value)
 

@@ -71,11 +71,11 @@
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
 
-  import { classGenerator, type ClassProp } from './utility'
+  import { createClassGetter, type ClassProp } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('Toast', classProp)
+  $: getClass = createClassGetter('Toast', classProp)
 
   onDestroy(() => {
     // Clear the toast data before transitioning to another page on the SPA

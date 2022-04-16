@@ -1,13 +1,13 @@
 <script lang="ts">
   import Divider from './Divider.svelte'
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   type Item = $$Generic<unknown>
   export let items: readonly Item[]
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('List', classProp)
+  $: getClass = createClassGetter('List', classProp)
 </script>
 
 <div class={getClass('root')}>

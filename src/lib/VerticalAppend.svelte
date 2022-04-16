@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('VerticalAppend', classProp)
+  $: getClass = createClassGetter('VerticalAppend', classProp)
 </script>
 
 <div class={getClass('root')}>

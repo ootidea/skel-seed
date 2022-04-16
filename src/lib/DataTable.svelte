@@ -8,11 +8,11 @@
   export let columns: readonly Column[] = []
   type Column = string | { id: string; title?: string }
 
-  import { classGenerator, type ClassProp } from './utility'
+  import { createClassGetter, type ClassProp } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('DataTable', classProp)
+  $: getClass = createClassGetter('DataTable', classProp)
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column

@@ -3,11 +3,11 @@
   export let size = 'var(--skel-icon-default-size)'
   export let color = 'var(--skel-icon-default-color)'
 
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('Icon', classProp)
+  $: getClass = createClassGetter('Icon', classProp)
 </script>
 
 <div

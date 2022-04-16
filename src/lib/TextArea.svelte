@@ -1,6 +1,6 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   export let text = ''
   export let placeholder = ''
@@ -8,7 +8,7 @@
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('TextArea', classProp)
+  $: getClass = createClassGetter('TextArea', classProp)
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>

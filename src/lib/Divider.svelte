@@ -3,11 +3,11 @@
   export let thickness = 'var(--skel-divider-default-thickness)'
   export let color = 'var(--skel-divider-default-color)'
 
-  import { classGenerator, type ClassProp } from './utility'
+  import { type ClassProp, createClassGetter } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = classGenerator('Divider', classProp)
+  $: getClass = createClassGetter('Divider', classProp)
 </script>
 
 <div
