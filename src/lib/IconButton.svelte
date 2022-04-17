@@ -28,12 +28,12 @@
     transition: var(--skel-backward-transition);
 
     &:hover {
-      background-color: oklch(95% 0 0);
+      background-color: var(--skel-clickable-hover-background-color);
       transition: var(--skel-forward-transition);
     }
 
     &:active {
-      background-color: oklch(90% 0 0);
+      background-color: var(--skel-clickable-active-background-color);
       transition: var(--skel-forward-transition);
     }
   }

@@ -1,5 +1,6 @@
 <script lang="ts">
   import dayjs, { Dayjs } from 'dayjs'
+  import CommonCss from './CommonCss.svelte'
   import IconButton from './IconButton.svelte'
   import { type ClassProp, createInjectors, type StyleProp, until } from './utility'
 
@@ -77,6 +78,8 @@
   </div>
 </div>
 
+<CommonCss />
+
 <style global lang="scss">
   :root {
     --skel-date-picker_cell-size: 2em;
@@ -137,10 +140,15 @@
       border-radius: 99999px;
       border: transparent 1px solid;
 
-      &:hover {
-        background-color: oklch(94% 0 0);
-      }
       cursor: pointer;
+
+      &:hover {
+        background-color: var(--skel-clickable-hover-background-color);
+      }
+
+      &:active {
+        background-color: var(--skel-clickable-active-background-color);
+      }
     }
 
     &.skel-date-picker_today {
