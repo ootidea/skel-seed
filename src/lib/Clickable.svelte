@@ -3,7 +3,6 @@
   import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
 
   type Result = $$Generic
-
   export let onClick: Arrow<[MouseEvent], Result> | undefined = undefined
   export let disabled = false
 
@@ -12,12 +11,31 @@
   export let style: StyleProp = {}
   $: injectors = createInjectors('Clickable', classProp, style)
 
-  let result: Result | undefined = undefined
+  let result: Result | undefined
+  let awaited: unknown
+  let error: unknown
+  let isInProgress = false
 
-  function clickEventHandler(event: MouseEvent) {
-    if (disabled) return
+  async function clickEventHandler(event: MouseEvent) {
+    if (disabled || isInProgress) return
+    if (onClick === undefined) return
 
-    result = onClick?.(event)
+    try {
+      result = onClick(event)
+
+      if (result instanceof Promise) {
+        isInProgress = true
+      }
+      awaited = await result
+      error = undefined
+    } catch (error_) {
+      error = error_
+      awaited = undefined
+      result = undefined
+      throw error_
+    } finally {
+      isInProgress = false
+    }
   }
 </script>
 
@@ -26,7 +44,7 @@
   class:skel-clickable_disabled={disabled}
   on:click={clickEventHandler}
 >
-  <slot {disabled} {result} />
+  <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>
 
 <CommonCss />
