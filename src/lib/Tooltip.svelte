@@ -11,7 +11,7 @@
 </script>
 
 <div class={getClass('root')} style={getStyle('root')}>
-  <div class="wrapper">
+  <div class={getClass('content-wrapper')} style={getStyle('content-wrapper')}>
     <slot />
   </div>
   <span class={getClass('popup-wrapper')} style={getStyle('popup-wrapper')}>
@@ -26,6 +26,7 @@
 <style global lang="scss">
   .skel-tooltip_root {
     position: relative;
+    width: max-content;
   }
 
   .skel-tooltip_popup-wrapper {
