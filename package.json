@@ -37,5 +37,8 @@
   "type": "module",
   "volta": {
     "node": "16.14.2"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.1"
   }
 }

@@ -79,6 +79,13 @@ export function createStyleGetter(styleProp: StyleProp): (partName: string) => s
 }
 
 /**
+ * A utility for abbreviating function types.
+ * @example
+ * Arrow<[number], boolean> is equivalent to (value: number) => boolean
+ */
+export type Arrow<Tuple extends unknown[], Return> = (...args: [...Tuple]) => Return
+
+/**
  * Utility for defining tagged union types.
  * Note that can't define recursive types.
  * @example
