@@ -59,7 +59,7 @@
 
     {#each until(6) as weakIndex}
       <div {...injectors.attr('date-row')}>
-        {#each dayNames as dayName, day}
+        {#each dayNames as _, day}
           {@const date = firstDateOfSelectedMonthCal.add(weakIndex, 'week').add(day, 'day')}
           <div
             {...injectors.attr('cell')}
