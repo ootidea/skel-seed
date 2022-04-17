@@ -1,12 +1,6 @@
 <script lang="ts">
   import Icon from './Icon.svelte'
-  import {
-    type Arrow,
-    type ClassProp,
-    createClassGetter,
-    createStyleGetter,
-    type StyleProp,
-  } from './utility'
+  import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let src = ''
   export let size = 'var(--skel-icon-default-size)'
@@ -15,17 +9,11 @@
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('IconButton', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('IconButton', classProp, style)
 </script>
 
-<div
-  class={getClass('root')}
-  style={getStyle('root')}
-  style:--skel-icon-button_size={size}
-  on:click={onClick}
->
+<div {...injectors.attr('root')} style:--skel-icon-button_size={size} on:click={onClick}>
   <Icon {src} {size} {color} />
 </div>
 

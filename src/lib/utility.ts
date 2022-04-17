@@ -60,15 +60,10 @@ function toKebabCase(pascalCase: string) {
   )
 }
 
-export type ClassProp = string | Partial<Record<string, string>>
-
-export function createClassGetter(
-  componentName: string,
-  classProp: ClassProp
-): (partName: string) => string {
+export function createInjectors(componentName: string, classProp: ClassProp, styleProp: StyleProp) {
   const prefix = `skel-${toKebabCase(componentName)}_`
 
-  return (partName: string) => {
+  function getClassAttr(partName: string): string {
     const baseClassName = prefix + partName
 
     if (typeof classProp === 'string') {
@@ -80,12 +75,35 @@ export function createClassGetter(
     const klass = classProp[partName]
     return klass !== undefined ? `${baseClassName} ${klass}` : baseClassName
   }
-}
 
-export type StyleProp = string | Partial<Record<string, string>>
+  function getStyleAttr(partName: string): string | undefined {
+    if (typeof styleProp === 'string') {
+      if (partName === 'root') return styleProp
 
-export function createStyleGetter(styleProp: StyleProp): (partName: string) => string | undefined {
-  return (partName: string) => {
+      return undefined
+    }
+
+    const styleAttr = styleProp[partName]
+    if (typeof styleAttr === 'string') return styleAttr
+
+    return undefined
+  }
+
+  function getClassProp(partName: string): ClassProp | undefined {
+    if (classProp === undefined) return undefined
+
+    if (typeof classProp === 'string') {
+      if (partName === 'root') return classProp
+
+      return undefined
+    }
+
+    return classProp[partName]
+  }
+
+  function getStyleProp(partName: string): StyleProp | undefined {
+    if (styleProp === undefined) return undefined
+
     if (typeof styleProp === 'string') {
       if (partName === 'root') return styleProp
 
@@ -94,7 +112,25 @@ export function createStyleGetter(styleProp: StyleProp): (partName: string) => s
 
     return styleProp[partName]
   }
+
+  return {
+    attr: (partName: string) => {
+      return {
+        class: getClassAttr(partName),
+        style: getStyleAttr(partName),
+      }
+    },
+    props: (partName: string) => {
+      return {
+        class: getClassProp(partName),
+        style: getStyleProp(partName),
+      }
+    },
+  }
 }
+
+export type ClassProp = string | { [K in string]?: ClassProp }
+export type StyleProp = string | { [K in string]?: StyleProp }
 
 /**
  * A utility for abbreviating function types.

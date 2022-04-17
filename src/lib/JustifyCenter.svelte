@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('JustifyCenter', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('JustifyCenter', classProp, style)
 </script>
 
-<div class={getClass('root')} style={getStyle('root')}>
+<div {...injectors.attr('root')}>
   <slot />
 </div>
 

@@ -1,15 +1,14 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let href = ''
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('Link', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('Link', classProp, style)
 </script>
 
-<a class={getClass('root')} style={getStyle('root')} {href}>
+<a {...injectors.attr('root')} {href}>
   <slot>{href}</slot>
 </a>

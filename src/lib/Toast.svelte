@@ -70,14 +70,14 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
-
-  import { createClassGetter, type ClassProp, createStyleGetter, type StyleProp } from './utility'
+  import StretchLayout from './StretchLayout.svelte'
+  import Icon from './Icon.svelte'
+  import { type ClassProp, type StyleProp, createInjectors } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('Toast', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('Toast', classProp, style)
 
   onDestroy(() => {
     // Clear the toast data before transitioning to another page on the SPA
@@ -91,13 +91,12 @@
   }
 </script>
 
-<div class={getClass('root')} style={getStyle('root')}>
+<div {...injectors.attr('root')}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
-    <div class={getClass('toast')} style={getStyle('toast')} animate:flip>
+    <div {...injectors.attr('toast')} animate:flip>
       <slot model={toastModel}>
         <div
-          class={getClass('default-view')}
-          style={getStyle('default-view')}
+          {...injectors.attr('default-view')}
           transition:scale
           on:click={(event) => onClick(toastModel, event)}
         >

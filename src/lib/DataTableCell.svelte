@@ -4,8 +4,7 @@
   import Link from './Link.svelte'
   import {
     type ClassProp,
-    createClassGetter,
-    createStyleGetter,
+    createInjectors,
     type DiscriminatedUnion,
     type StyleProp,
   } from './utility'
@@ -14,9 +13,8 @@
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('DataTableCell', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('DataTableCell', classProp, style)
 
   $: analysisResult = analyze(value)
 
@@ -50,7 +48,7 @@
   }>
 </script>
 
-<div class={getClass('root')} style={getStyle('root')} data-type={analysisResult.type}>
+<div {...injectors.attr('root')} data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

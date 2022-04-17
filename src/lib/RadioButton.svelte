@@ -1,6 +1,6 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let group = ''
   export let value: string | undefined = undefined
@@ -8,20 +8,12 @@
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('radio-button', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('RadioButton', classProp, style)
 </script>
 
-<label class={getClass('root')} style={getStyle('root')} class:skel-disabled={disabled}>
-  <input
-    type="radio"
-    class={getClass('radio')}
-    style={getStyle('radio')}
-    bind:group
-    {value}
-    {disabled}
-  />
+<label {...injectors.attr('root')} class:skel-disabled={disabled}>
+  <input type="radio" {...injectors.attr('radio')} bind:group {value} {disabled} />
   <slot>
     {#if value !== undefined}
       {value}

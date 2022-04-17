@@ -1,18 +1,17 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('OverlayLayout', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('OverlayLayout', classProp, style)
 </script>
 
-<div class={getClass('root')} style={getStyle('root')}>
-  <div class={getClass('lower-layer')} style={getStyle('lower-layer')}>
+<div {...injectors.attr('root')}>
+  <div {...injectors.attr('lower-layer')}>
     <slot />
   </div>
-  <div class={getClass('upper-layer')} style={getStyle('upper-layer')}>
+  <div {...injectors.attr('upper-layer')}>
     <slot name="overlay" />
   </div>
 </div>

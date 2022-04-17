@@ -1,19 +1,12 @@
 <script lang="ts">
-  import {
-    type ClassProp,
-    createClassGetter,
-    createStyleGetter,
-    isInsideOf,
-    type StyleProp,
-  } from './utility'
+  import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
   export let hidden = true
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('Popover', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('Popover', classProp, style)
 
   const show = () => (hidden = false)
   const hide = () => (hidden = true)
@@ -39,16 +32,12 @@
   }
 </script>
 
-<div class={getClass('root')} style={getStyle('root')}>
-  <div class={getClass('content-area')} style={getStyle('content-area')} bind:this={contentElement}>
+<div {...injectors.attr('root')}>
+  <div {...injectors.attr('content-area')} bind:this={contentElement}>
     <slot {show} {hide} {toggleHidden} />
   </div>
   {#if !hidden}
-    <div
-      class={getClass('popover-area')}
-      style={getStyle('popover-area')}
-      bind:this={popoverElement}
-    >
+    <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
       <slot name="popover" />
     </div>
   {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let src = ''
   export let size = 'var(--skel-icon-default-size)'
@@ -7,17 +7,15 @@
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('Icon', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('Icon', classProp, style)
 </script>
 
 <div
-  class={getClass('root')}
+  {...injectors.attr('root')}
   style:--skel-icon-url="url('{src}')"
   style:--skel-icon-size={size}
   style:--skel-icon-color={color}
-  style={getStyle('root')}
 />
 
 <style global lang="scss">

@@ -1,6 +1,7 @@
 <script lang="ts">
   import DataTableCell from './DataTableCell.svelte'
   import Divider from './Divider.svelte'
+  import { type ClassProp, type StyleProp, createInjectors } from './utility'
 
   export let rows: readonly Row[] = []
   type Row = $$Generic<Record<string, unknown>>
@@ -8,13 +9,10 @@
   export let columns: readonly Column[] = []
   type Column = string | { id: string; title?: string }
 
-  import { createClassGetter, type ClassProp, type StyleProp, createStyleGetter } from './utility'
-
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('DataTable', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('DataTable', classProp, style)
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column
@@ -29,20 +27,16 @@
   }
 </script>
 
-<div
-  class={getClass('root')}
-  style={getStyle('root')}
-  style:--skel-data-table-column-count={columns.length}
->
-  <div class={getClass('horizontal-ruled-line')} style={getStyle('horizontal-ruled-line')}>
+<div {...injectors.attr('root')} style:--skel-data-table-column-count={columns.length}>
+  <div {...injectors.attr('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={0}>
       <Divider />
     </slot>
   </div>
 
-  <div class={getClass('header-row')} style={getStyle('header-row')}>
+  <div {...injectors.attr('header-row')}>
     {#each columns as column, columnIndex}
-      <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
+      <div {...injectors.attr('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" rowIndex={0} {columnIndex}>
           <Divider direction="vertical" />
         </slot>
@@ -50,14 +44,14 @@
 
       {@const columnId = getColumnId(column)}
       {@const columnTitle = getColumnTitle(column)}
-      <div class={getClass('cell')} style={getStyle('cell')} data-column-id={columnId}>
+      <div {...injectors.attr('cell')} data-column-id={columnId}>
         <slot name="header-cell" {columnId} {columnTitle} {columnIndex}>
           {columnTitle}
         </slot>
       </div>
     {/each}
 
-    <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
+    <div {...injectors.attr('vertical-ruled-line')}>
       <slot name="vertical-ruled-line" rowIndex={0} columnIndex={columns.length}>
         <Divider direction="vertical" />
       </slot>
@@ -66,20 +60,19 @@
 
   {#each rows as row, index}
     {@const rowIndex = index + 1}
-    <div class={getClass('horizontal-ruled-line')} style={getStyle('horizontal-ruled-line')}>
+    <div {...injectors.attr('horizontal-ruled-line')}>
       <slot name="horizontal-ruled-line" {rowIndex}>
         <Divider />
       </slot>
     </div>
 
     <div
-      class={getClass('body-row')}
+      {...injectors.attr('body-row')}
       class:skel-data-table_even-row={index % 2 === 0}
       class:skel-data-table_odd-row={index % 2 === 1}
-      style={getStyle('body-row')}
     >
       {#each columns as column, columnIndex}
-        <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
+        <div {...injectors.attr('vertical-ruled-line')}>
           <slot name="vertical-ruled-line" {rowIndex} {columnIndex}>
             <Divider direction="vertical" />
           </slot>
@@ -87,14 +80,14 @@
 
         {@const columnId = getColumnId(column)}
         {@const value = row[columnId]}
-        <div class={getClass('cell')} style={getStyle('cell')} data-column-id={columnId}>
+        <div {...injectors.attr('cell')} data-column-id={columnId}>
           <slot name="cell" {row} {columnId} {value} {rowIndex} {columnIndex}>
             <DataTableCell {value} />
           </slot>
         </div>
       {/each}
 
-      <div class={getClass('vertical-ruled-line')} style={getStyle('vertical-ruled-line')}>
+      <div {...injectors.attr('vertical-ruled-line')}>
         <slot name="vertical-ruled-line" {rowIndex} columnIndex={columns.length}>
           <Divider direction="vertical" />
         </slot>
@@ -102,7 +95,7 @@
     </div>
   {/each}
 
-  <div class={getClass('horizontal-ruled-line')} style={getStyle('horizontal-ruled-line')}>
+  <div {...injectors.attr('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={rows.length + 1}>
       <Divider />
     </slot>

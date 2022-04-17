@@ -1,22 +1,20 @@
 <script lang="ts">
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
+
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
   export let thickness = 'var(--skel-divider-default-thickness)'
   export let color = 'var(--skel-divider-default-color)'
 
-  import { type ClassProp, createClassGetter, createStyleGetter, type StyleProp } from './utility'
-
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('Divider', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('Divider', classProp, style)
 </script>
 
 <div
-  class={getClass('root')}
+  {...injectors.attr('root')}
   style:--skel-divider-thickness={thickness}
   style:--skel-divider-color={color}
-  style={getStyle('root')}
   data-direction={direction}
 />
 

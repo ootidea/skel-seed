@@ -1,22 +1,15 @@
 <script lang="ts">
   import dayjs, { Dayjs } from 'dayjs'
   import IconButton from './IconButton.svelte'
-  import {
-    type ClassProp,
-    createClassGetter,
-    createStyleGetter,
-    type StyleProp,
-    until,
-  } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp, until } from './utility'
 
   export let selectedMonth: Dayjs = new dayjs()
   export let bindingDate: Dayjs = new dayjs()
 
   let classProp: ClassProp = {}
   export { classProp as class }
-  $: getClass = createClassGetter('DatePicker', classProp)
   export let style: StyleProp = {}
-  $: getStyle = createStyleGetter(style)
+  $: injectors = createInjectors('DatePicker', classProp, style)
 
   // TODO: i18n
   const dayNames = ['日', '月', '火', '水', '木', '金', '土']
@@ -32,19 +25,19 @@
   }
 </script>
 
-<div class={getClass('root')} style={getStyle('root')}>
-  <div class={getClass('year-month-area')} style={getStyle('year-month-area')}>
+<div {...injectors.attr('root')}>
+  <div {...injectors.attr('year-month-area')}>
     <IconButton
       src="src/assets/chevron-left.svg"
       onClick={() => (selectedMonth = selectedMonth.subtract(1, 'month'))}
       size="1.6em"
     />
-    <div class={getClass('year-month')} style={getStyle('year-month')}>
+    <div {...injectors.attr('year-month')}>
       <!-- TODO: i18n -->
-      <span class={getClass('year')} style={getStyle('year')}>
+      <span {...injectors.attr('year')}>
         {selectedMonth.format('YYYY')}年
       </span>
-      <span class={getClass('month')} style={getStyle('month')}>
+      <span {...injectors.attr('month')}>
         {selectedMonth.format('M')}月
       </span>
     </div>
@@ -55,25 +48,24 @@
     />
   </div>
 
-  <div class={getClass('grid')} style={getStyle('grid')}>
-    <div class={getClass('day-row')} style={getStyle('day-row')}>
+  <div {...injectors.attr('grid')}>
+    <div {...injectors.attr('day-row')}>
       {#each dayNames as dayName, day}
-        <div class={getClass('cell')} style={getStyle('cell')} data-day={day}>
+        <div {...injectors.attr('cell')} data-day={day}>
           {dayName}
         </div>
       {/each}
     </div>
 
     {#each until(6) as weakIndex}
-      <div class={getClass('date-row')} style={getStyle('date-row')}>
+      <div {...injectors.attr('date-row')}>
         {#each dayNames as dayName, day}
           {@const date = firstDateOfSelectedMonthCal.add(weakIndex, 'week').add(day, 'day')}
           <div
-            class={getClass('cell')}
+            {...injectors.attr('cell')}
             class:skel-date-picker_today={date.isSame(bindingDate, 'date')}
             class:skel-date-picker_next-month={date.isAfter(selectedMonth, 'month')}
             class:skel-date-picker_prev-month={date.isBefore(selectedMonth, 'month')}
-            style={getStyle('cell')}
             data-day={day}
             on:click={() => onClickDate(date)}
           >
