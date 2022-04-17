@@ -9,6 +9,15 @@ export function assertNonUndefined<T>(value: T | undefined, message?: string): a
 }
 
 /**
+ * Create sequence starting with 0.
+ * @example
+ * until(5) is equivalent to [0, 1, 2, 3, 4]
+ */
+export function until(size: number): readonly number[] {
+  return [...Array(size)].map((_, i) => i)
+}
+
+/**
  * Read CSS custom property.
  * Note that there is usually a leading space character in return value.
  * @param propertyName Property name containing the prefix '--'
