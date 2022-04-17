@@ -12,7 +12,7 @@
   $: injectors = createInjectors('RadioButton', classProp, style)
 </script>
 
-<label {...injectors.attr('root')} class:skel-disabled={disabled}>
+<label {...injectors.attr('root')} class:skel-radio-button_disabled={disabled}>
   <input type="radio" {...injectors.attr('radio')} bind:group {value} {disabled} />
   <slot>
     {#if value !== undefined}
@@ -32,7 +32,7 @@
 
     cursor: pointer;
 
-    &.skel-disabled {
+    &.skel-radio-button_disabled {
       cursor: default;
 
       color: var(--skel-disabled-text-color);
@@ -45,7 +45,7 @@
 
     cursor: pointer;
 
-    .skel-disabled & {
+    .skel-radio-button_disabled & {
       cursor: default;
     }
   }

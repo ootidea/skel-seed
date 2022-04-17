@@ -14,7 +14,7 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div {...injectors.attr('root')} class:skel-disabled={disabled}>
+<div {...injectors.attr('root')} class:skel-text-area_disabled={disabled}>
   <div {...injectors.attr('dummy')} aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
@@ -65,7 +65,7 @@
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
 
-    .skel-disabled & {
+    .skel-text-area_disabled & {
       color: var(--skel-disabled-text-color);
     }
   }
