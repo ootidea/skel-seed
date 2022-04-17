@@ -23,7 +23,7 @@
 <style global lang="scss">
   :root {
     --skel-divider-default-thickness: 1px;
-    --skel-divider-default-color: oklch(80% 0 0);
+    --skel-divider-default-color: oklch(90% 0 0);
   }
 
   .skel-divider_root {
