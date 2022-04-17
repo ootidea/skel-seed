@@ -8,6 +8,7 @@
   <div class="sidebar">
     <Link href="./">index</Link>
     <Link href="DataTable" />
+    <Link href="Popover" />
   </div>
   <Divider direction="vertical" />
   <slot />

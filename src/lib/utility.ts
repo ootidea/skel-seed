@@ -17,6 +17,15 @@ export function until(size: number): readonly number[] {
   return [...Array(size)].map((_, i) => i)
 }
 
+export function isInsideOf(x: number, y: number, rect: DOMRect): boolean {
+  if (x < rect.left) return false
+  if (rect.right < x) return false
+  if (y < rect.top) return false
+  if (rect.bottom < y) return false
+
+  return true
+}
+
 /**
  * Read CSS custom property.
  * Note that there is usually a leading space character in return value.
