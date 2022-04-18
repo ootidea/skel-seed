@@ -8,10 +8,10 @@
 </script>
 
 <div {...injectors.attr('root')}>
-  <div {...injectors.attr('lower-layer')}>
+  <div {...injectors.attr('main')}>
     <slot />
   </div>
-  <div {...injectors.attr('upper-layer')}>
+  <div {...injectors.attr('overlay')}>
     <slot name="overlay" />
   </div>
 </div>
@@ -22,7 +22,7 @@
     width: max-content;
   }
 
-  .skel-overlay-layout_upper-layer {
+  .skel-overlay-layout_overlay {
     position: absolute;
     top: 0;
     left: 0;
