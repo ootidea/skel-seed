@@ -6,6 +6,7 @@
   export let size = 'var(--skel-icon-default-size)'
   export let color = 'var(--skel-icon-default-color)'
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
+  export let disabled = false
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -13,7 +14,12 @@
   $: injectors = createInjectors('IconButton', classProp, style)
 </script>
 
-<div {...injectors.attr('root')} style:--skel-icon-button_size={size} on:click={onClick}>
+<div
+  {...injectors.attr('root')}
+  class:skel-icon-button_disabled={disabled}
+  style:--skel-icon-button_size={size}
+  on:click={onClick}
+>
   <Icon {src} {size} {color} />
 </div>
 
@@ -24,17 +30,24 @@
     height: var(--skel-icon-button_size);
     border-radius: 50%;
 
-    cursor: pointer;
     transition: var(--skel-backward-transition);
 
-    &:hover {
-      background-color: var(--skel-clickable-hover-background-color);
-      transition: var(--skel-forward-transition);
+    &:not(.skel-icon-button_disabled) {
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--skel-clickable-hover-background-color);
+        transition: var(--skel-forward-transition);
+      }
+
+      &:active {
+        background-color: var(--skel-clickable-active-background-color);
+        transition: var(--skel-forward-transition);
+      }
     }
 
-    &:active {
-      background-color: var(--skel-clickable-active-background-color);
-      transition: var(--skel-forward-transition);
+    &.skel-icon-button_disabled {
+      filter: brightness(250%);
     }
   }
 </style>
