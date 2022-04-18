@@ -1,7 +1,10 @@
 <script lang="ts">
+  import { type JointPosition, toXPercent, toYPercent } from './JointPosition'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
   export let hidden = true
+  export let contentJoint: JointPosition = 'bottom'
+  export let popoverJoint: JointPosition = 'top'
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -32,7 +35,14 @@
   }
 </script>
 
-<div {...injectors.attr('root')}>
+<div
+  {...injectors.attr('root')}
+  style:--skel-popover_left={toXPercent(contentJoint)}
+  style:--skel-popover_top={toYPercent(contentJoint)}
+  style:--skel-popover_transform="translate(-{toXPercent(popoverJoint)}, -{toYPercent(
+    popoverJoint
+  )})"
+>
   <div {...injectors.attr('content-area')} bind:this={contentElement}>
     <slot {show} {hide} {toggleHidden} />
   </div>
@@ -53,8 +63,8 @@
 
   .skel-popover_popover-area {
     position: absolute;
-    // Show at the center of the bottom
-    left: 50%;
-    transform: translate(-50%, 0);
+    left: var(--skel-popover_left);
+    top: var(--skel-popover_top);
+    transform: var(--skel-popover_transform);
   }
 </style>
