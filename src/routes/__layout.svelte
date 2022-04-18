@@ -36,6 +36,7 @@
     width: 16vw;
     display: flex;
     flex-direction: column;
+    align-items: start;
     padding: 1em;
   }
 </style>
