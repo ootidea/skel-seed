@@ -39,6 +39,8 @@
     .skel-tooltip_root:hover & {
       visibility: visible;
     }
+
+    z-index: 1500;
   }
 
   .skel-tooltip_default-popup {

@@ -66,5 +66,7 @@
     left: var(--skel-popover_left);
     top: var(--skel-popover_top);
     transform: var(--skel-popover_transform);
+
+    z-index: 500;
   }
 </style>
