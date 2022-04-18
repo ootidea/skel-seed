@@ -7,6 +7,7 @@
   export let color = 'var(--skel-icon-default-color)'
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
+  export let disabledColor = 'var(--skel-icon-button_disabled-default-color)'
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -20,10 +21,14 @@
   style:--skel-icon-button_size={size}
   on:click={onClick}
 >
-  <Icon {src} {size} {color} />
+  <Icon {src} {size} color={disabled ? disabledColor : color} />
 </div>
 
 <style global lang="scss">
+  :root {
+    --skel-icon-button_disabled-default-color: oklch(70% 0 0);
+  }
+
   .skel-icon-button_root {
     display: inline-block;
     width: var(--skel-icon-button_size);
@@ -44,10 +49,6 @@
         background-color: var(--skel-clickable-active-background-color);
         transition: var(--skel-forward-transition);
       }
-    }
-
-    &.skel-icon-button_disabled {
-      filter: brightness(250%);
     }
   }
 </style>
