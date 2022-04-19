@@ -22,7 +22,9 @@
   style:--skel-icon-button_size={size}
   on:click={onClick}
 >
-  <Icon {src} {size} color={disabled ? disabledColor : color} />
+  <slot>
+    <Icon {...injectors.props('icon')} {src} {size} color={disabled ? disabledColor : color} />
+  </slot>
 </div>
 
 <CommonCss />
@@ -33,11 +35,16 @@
   }
 
   .skel-icon-button_root {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     width: var(--skel-icon-button_size);
     height: var(--skel-icon-button_size);
     border-radius: 50%;
     overflow: hidden;
+
+    user-select: none;
 
     transition: var(--skel-backward-transition);
 
