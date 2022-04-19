@@ -6,6 +6,7 @@
   export let color = 'var(--skel-spinner_default-color)'
   // TODO: Can convert this to CSS variable?
   export let thickness = 25
+  export let frequency = 1.4
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -22,6 +23,7 @@
   style:--skel-spinner_size={size}
   style:--skel-spinner_color={color}
   style:--skel-spinner_svg-url={svgUrl}
+  style:--skel-spinner_period="{1 / frequency}s"
 >
   <div {...injectors.attr('ring')} />
 </div>
@@ -60,7 +62,7 @@
     mask: var(--skel-spinner_svg-url) no-repeat center;
     mask-size: contain;
 
-    animation: rotation 0.7s infinite linear;
+    animation: rotation var(--skel-spinner_period) infinite linear;
   }
 
   @keyframes rotation {
