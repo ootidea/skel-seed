@@ -48,7 +48,11 @@
   </div>
   {#if isVisible}
     <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
-      <slot name="popover" />
+      <slot name="popover-frame">
+        <div {...injectors.attr('popover-frame')}>
+          <slot name="popover" />
+        </div>
+      </slot>
     </div>
   {/if}
 </div>
@@ -68,5 +72,11 @@
     transform: var(--skel-popover_transform);
 
     z-index: 500;
+  }
+
+  .skel-popover_popover-frame {
+    background-color: oklch(100% 0 0);
+    border-radius: 0.4em;
+    box-shadow: 0 1px 4px oklch(75% 0 0);
   }
 </style>

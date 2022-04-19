@@ -7,14 +7,14 @@
   <Popover let:toggle>
     <button on:click={toggle}>hoge</button>
     <TextArea />
-    <div slot="popover" class="popover">
+    <div slot="popover-frame">
       <TextArea />
       <button on:click={toggle}>x</button>
     </div>
   </Popover>
   <Popover let:toggle>
     <button on:click={toggle}>hoge</button>
-    <div slot="popover" class="popover">
+    <div slot="popover">
       <TextArea />
       <button on:click={toggle}>x</button>
     </div>
@@ -24,9 +24,10 @@
   <div>@@@@@@@@@@@</div>
   <Popover let:toggle>
     <button on:click={toggle}>hoge</button>
-    <div slot="popover" class="popover">
-      <TextArea />
-      <button on:click={toggle}>x</button>
+    <div slot="popover">
+      <div>@@@@@@@@@@@</div>
+      <div>@@@@@@@@@@@</div>
+      <div>@@@@@@@@@@@</div>
     </div>
   </Popover>
   <div>@@@@@@@@@@@</div>
@@ -35,7 +36,4 @@
 </div>
 
 <style global lang="scss">
-  .popover {
-    background-color: oklch(100% 0 0);
-  }
 </style>
