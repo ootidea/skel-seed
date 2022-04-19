@@ -9,36 +9,45 @@ export type JointPosition =
   | 'bottom left'
   | 'bottom right'
 
+export type HorizontalPosition = 'left' | 'center' | 'right'
+export type VerticalPosition = 'top' | 'center' | 'bottom'
+
+export function toHorizontalPosition(position: JointPosition): HorizontalPosition {
+  const mapping = {
+    'top left': 'left',
+    left: 'left',
+    'bottom left': 'left',
+    top: 'center',
+    center: 'center',
+    bottom: 'center',
+    'top right': 'right',
+    right: 'right',
+    'bottom right': 'right',
+  } as const
+  return mapping[position]
+}
+
+export function toVerticalPosition(position: JointPosition): VerticalPosition {
+  const mapping = {
+    'top left': 'top',
+    top: 'top',
+    'top right': 'top',
+    left: 'center',
+    center: 'center',
+    right: 'center',
+    'bottom left': 'bottom',
+    bottom: 'bottom',
+    'bottom right': 'bottom',
+  } as const
+  return mapping[position]
+}
+
 export function toXPercent(position: JointPosition): `${number}%` {
-  switch (position) {
-    case 'top left':
-    case 'left':
-    case 'bottom left':
-      return '0%'
-    case 'top':
-    case 'center':
-    case 'bottom':
-      return '50%'
-    case 'top right':
-    case 'right':
-    case 'bottom right':
-      return '100%'
-  }
+  const mapping = { left: '0%', center: '50%', right: '100%' } as const
+  return mapping[toHorizontalPosition(position)]
 }
 
 export function toYPercent(position: JointPosition): `${number}%` {
-  switch (position) {
-    case 'top left':
-    case 'top':
-    case 'top right':
-      return '0%'
-    case 'left':
-    case 'center':
-    case 'right':
-      return '50%'
-    case 'bottom left':
-    case 'bottom':
-    case 'bottom right':
-      return '100%'
-  }
+  const mapping = { top: '0%', center: '50%', bottom: '100%' } as const
+  return mapping[toVerticalPosition(position)]
 }

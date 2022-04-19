@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type JointPosition } from './JointPosition'
+  import { type JointPosition, toHorizontalPosition, toVerticalPosition } from './JointPosition'
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let position: JointPosition = 'center'
@@ -10,7 +10,12 @@
   $: injectors = createInjectors('Gravity', classProp, style)
 </script>
 
-<div {...injectors.attr('root')} data-position={position}>
+<div
+  {...injectors.attr('root')}
+  data-position={position}
+  data-horizontal-position={toHorizontalPosition(position)}
+  data-vertical-position={toVerticalPosition(position)}
+>
   <slot />
 </div>
 
@@ -20,39 +25,27 @@
     width: 100%;
     height: 100%;
 
-    &[data-position='top left'],
-    &[data-position='left'],
-    &[data-position='bottom left'] {
+    &[data-horizontal-position='left'] {
       justify-content: left;
     }
 
-    &[data-position='top'],
-    &[data-position='center'],
-    &[data-position='bottom'] {
+    &[data-horizontal-position='center'] {
       justify-content: center;
     }
 
-    &[data-position='top right'],
-    &[data-position='right'],
-    &[data-position='bottom right'] {
+    &[data-horizontal-position='right'] {
       justify-content: right;
     }
 
-    &[data-position='top left'],
-    &[data-position='top'],
-    &[data-position='top right'] {
+    &[data-vertical-position='top'] {
       align-items: start;
     }
 
-    &[data-position='left'],
-    &[data-position='center'],
-    &[data-position='right'] {
+    &[data-vertical-position='center'] {
       align-items: center;
     }
 
-    &[data-position='bottom left'],
-    &[data-position='bottom'],
-    &[data-position='bottom right'] {
+    &[data-vertical-position='bottom'] {
       align-items: end;
     }
   }
