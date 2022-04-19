@@ -4,8 +4,8 @@
   import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let src = ''
-  export let size = 'var(--skel-icon-default-size)'
-  export let color = 'var(--skel-icon-default-color)'
+  export let size: string | undefined = undefined
+  export let iconColor: string | undefined = undefined
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
   export let disabledColor = 'var(--skel-icon-button_disabled-default-color)'
@@ -23,7 +23,12 @@
   on:click={onClick}
 >
   <slot>
-    <Icon {...injectors.props('icon')} {src} {size} color={disabled ? disabledColor : color} />
+    <Icon
+      {...injectors.props('icon')}
+      {src}
+      {size}
+      iconColor={disabled ? disabledColor : iconColor}
+    />
   </slot>
 </div>
 
