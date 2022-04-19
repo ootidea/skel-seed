@@ -2,7 +2,7 @@
   import CommonCss from './CommonCss.svelte'
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
-  export let group = ''
+  export let group: string | undefined = undefined
   export let value: string | undefined = undefined
   export let name: string | undefined = undefined
   export let disabled = false
