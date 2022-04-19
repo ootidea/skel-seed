@@ -24,7 +24,7 @@
 
   function onClickDate(date: Dayjs) {
     selectedDate = date
-    onSelect?.(date.toDate)
+    onSelect?.(date.toDate())
   }
 </script>
 
