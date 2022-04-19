@@ -37,7 +37,7 @@
 
   .skel-checkbox_checkbox {
     margin: 0;
-    accent-color: var(--skel-accent-color);
+    accent-color: var(--skel-primary-color);
 
     cursor: pointer;
 

@@ -35,7 +35,7 @@
     --skel-spinner_default-background-image: conic-gradient(
       transparent,
       transparent,
-      var(--skel-accent-color)
+      var(--skel-primary-color)
     );
   }
 

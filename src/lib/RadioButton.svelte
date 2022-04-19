@@ -41,7 +41,7 @@
 
   .skel-radio-button_radio {
     margin: 0;
-    accent-color: var(--skel-accent-color);
+    accent-color: var(--skel-primary-color);
 
     cursor: pointer;
 

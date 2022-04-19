@@ -71,6 +71,6 @@
   }
 
   .skel-text-area_text-area:focus {
-    outline: 1px solid var(--skel-accent-color);
+    outline: 1px solid var(--skel-primary-color);
   }
 </style>

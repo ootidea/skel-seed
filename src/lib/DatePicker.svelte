@@ -152,7 +152,7 @@
     }
 
     &.skel-date-picker_today {
-      border-color: var(--skel-accent-color);
+      border-color: var(--skel-primary-color);
     }
   }
 
