@@ -29,12 +29,18 @@
 
 <style global lang="scss">
   .skel-list_root {
-    display: flex;
+    display: grid;
     align-items: start;
     width: max-content;
 
+    &[data-direction='horizontal'] {
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+    }
+
     &[data-direction='vertical'] {
-      flex-direction: column;
+      grid-auto-flow: row;
+      grid-auto-rows: max-content;
     }
   }
 </style>
