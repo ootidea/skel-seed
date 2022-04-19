@@ -4,6 +4,7 @@
 
   export let group = ''
   export let value: string | undefined = undefined
+  export let name: string | undefined = undefined
   export let disabled = false
 
   let classProp: ClassProp = {}
@@ -13,7 +14,7 @@
 </script>
 
 <label {...injectors.attr('root')} class:skel-radio-button_disabled={disabled}>
-  <input type="radio" {...injectors.attr('radio')} bind:group {value} {disabled} />
+  <input type="radio" {...injectors.attr('radio')} bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}
       {value}
