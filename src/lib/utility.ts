@@ -60,7 +60,18 @@ function toKebabCase(pascalCase: string) {
   )
 }
 
-export function createInjectors(componentName: string, classProp: ClassProp, styleProp: StyleProp) {
+function safeConcat(a: string | undefined, b: string | undefined): string | undefined {
+  if (a === undefined && b == undefined) return undefined
+
+  return (a ?? '') + (b ?? '')
+}
+
+export function createInjectors(
+  componentName: string,
+  classProp: ClassProp,
+  styleProp: StyleProp,
+  styles: StyleProp = {}
+) {
   const prefix = `skel-${toKebabCase(componentName)}_`
 
   function getClassAttr(partName: string): string {
@@ -77,16 +88,19 @@ export function createInjectors(componentName: string, classProp: ClassProp, sty
   }
 
   function getStyleAttr(partName: string): string | undefined {
-    if (typeof styleProp === 'string') {
-      if (partName === 'root') return styleProp
+    const width = typeof styles === 'string' ? undefined : styles.width
+    const additional = width !== undefined ? `width: ${width};` : undefined
 
-      return undefined
+    if (typeof styleProp === 'string') {
+      if (partName === 'root') return safeConcat(styleProp, additional)
+
+      return additional
     }
 
     const styleAttr = styleProp[partName]
-    if (typeof styleAttr === 'string') return styleAttr
+    if (typeof styleAttr === 'string') return safeConcat(styleAttr, additional)
 
-    return undefined
+    return additional
   }
 
   function getClassProp(partName: string): ClassProp | undefined {
