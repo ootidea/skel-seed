@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CommonCss from './CommonCss.svelte'
   import Icon from './Icon.svelte'
   import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
 
@@ -24,6 +25,8 @@
   <Icon {src} {size} color={disabled ? disabledColor : color} />
 </div>
 
+<CommonCss />
+
 <style global lang="scss">
   :root {
     --skel-icon-button_disabled-default-color: oklch(70% 0 0);
@@ -34,6 +37,7 @@
     width: var(--skel-icon-button_size);
     height: var(--skel-icon-button_size);
     border-radius: 50%;
+    overflow: hidden;
 
     transition: var(--skel-backward-transition);
 
