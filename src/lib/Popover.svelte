@@ -2,7 +2,7 @@
   import { type JointPosition, toXPercent, toYPercent } from './JointPosition'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
-  export let hidden = true
+  export let isVisible = false
   export let contentJoint: JointPosition = 'bottom'
   export let popoverJoint: JointPosition = 'top'
 
@@ -11,15 +11,15 @@
   export let style: StyleProp = {}
   $: injectors = createInjectors('Popover', classProp, style)
 
-  const show = () => (hidden = false)
-  const hide = () => (hidden = true)
-  const toggleHidden = () => (hidden = !hidden)
+  const open = () => (isVisible = true)
+  const close = () => (isVisible = false)
+  const toggle = () => (isVisible = !isVisible)
 
   let contentElement: HTMLElement | undefined | null
   let popoverElement: HTMLElement | undefined | null
 
   function onClickWindow(event: MouseEvent) {
-    if (hidden) return
+    if (!isVisible) return
     if (contentElement == null) return
     if (popoverElement == null) return
 
@@ -31,7 +31,7 @@
     const popoverRect = popoverElement.getBoundingClientRect()
     if (isInsideOf(x, y, popoverRect)) return
 
-    hide()
+    close()
   }
 </script>
 
@@ -44,9 +44,9 @@
   )})"
 >
   <div {...injectors.attr('content-area')} bind:this={contentElement}>
-    <slot {show} {hide} {toggleHidden} />
+    <slot {open} {close} {toggle} />
   </div>
-  {#if !hidden}
+  {#if isVisible}
     <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
       <slot name="popover" />
     </div>

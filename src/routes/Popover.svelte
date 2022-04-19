@@ -4,29 +4,29 @@
 </script>
 
 <div>
-  <Popover let:toggleHidden>
-    <button on:click={toggleHidden}>hoge</button>
+  <Popover let:toggle>
+    <button on:click={toggle}>hoge</button>
     <TextArea />
     <div slot="popover" class="popover">
       <TextArea />
-      <button on:click={toggleHidden}>x</button>
+      <button on:click={toggle}>x</button>
     </div>
   </Popover>
-  <Popover let:toggleHidden>
-    <button on:click={toggleHidden}>hoge</button>
+  <Popover let:toggle>
+    <button on:click={toggle}>hoge</button>
     <div slot="popover" class="popover">
       <TextArea />
-      <button on:click={toggleHidden}>x</button>
+      <button on:click={toggle}>x</button>
     </div>
   </Popover>
   <div>@@@@@@@@@@@</div>
   <div>@@@@@@@@@@@</div>
   <div>@@@@@@@@@@@</div>
-  <Popover let:toggleHidden>
-    <button on:click={toggleHidden}>hoge</button>
+  <Popover let:toggle>
+    <button on:click={toggle}>hoge</button>
     <div slot="popover" class="popover">
       <TextArea />
-      <button on:click={toggleHidden}>x</button>
+      <button on:click={toggle}>x</button>
     </div>
   </Popover>
   <div>@@@@@@@@@@@</div>

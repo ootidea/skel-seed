@@ -4,9 +4,9 @@
   import IconButton from './IconButton.svelte'
   import { type Arrow, type ClassProp, createInjectors, type StyleProp, until } from './utility'
 
-  export let bindingDate: Dayjs | undefined = undefined
+  export let selectedDate: Dayjs | undefined = undefined
   export let selectedMonth: Dayjs = new dayjs()
-  export let onSelect: Arrow<Date, unknown> | undefined = undefined
+  export let onSelect: Arrow<[Date], unknown> | undefined = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -23,7 +23,7 @@
   )
 
   function onClickDate(date: Dayjs) {
-    bindingDate = date
+    selectedDate = date
     onSelect?.(date.toDate)
   }
 </script>
@@ -66,7 +66,7 @@
           {@const date = firstDateOfSelectedMonthCal.add(weakIndex, 'week').add(day, 'day')}
           <div
             {...injectors.attr('cell')}
-            class:skel-date-picker_today={bindingDate?.isSame(date, 'date')}
+            class:skel-date-picker_today={selectedDate?.isSame(date, 'date')}
             class:skel-date-picker_next-month={date.isAfter(selectedMonth, 'month')}
             class:skel-date-picker_prev-month={date.isBefore(selectedMonth, 'month')}
             data-day={day}
