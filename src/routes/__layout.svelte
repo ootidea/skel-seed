@@ -9,6 +9,7 @@
     <Link href="./">index</Link>
     <Link href="DataTable" />
     <Link href="Popover" />
+    <Link href="Spinner" />
   </div>
   <Divider direction="vertical" />
   <slot />
