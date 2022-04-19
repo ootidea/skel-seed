@@ -27,7 +27,13 @@
   }
 </script>
 
-<div {...injectors.attr('root')} style:--skel-data-table-column-count={columns.length}>
+<div
+  {...injectors.attr('root')}
+  style:--skel-data-table_template-columns={Array(columns.length + 1)
+    .fill('max-content')
+    .join(' auto ')}
+  style:--skel-data-table-column-count={columns.length}
+>
   <div {...injectors.attr('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={0}>
       <Divider />
@@ -112,7 +118,7 @@
 
   .skel-data-table_root {
     display: grid;
-    grid-template-columns: repeat(calc(2 * var(--skel-data-table-column-count) + 1), auto);
+    grid-template-columns: var(--skel-data-table_template-columns);
     width: max-content;
   }
 
