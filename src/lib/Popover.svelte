@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { type JointPosition, toXPercent, toYPercent } from './JointPosition'
+  import { type EnneaPosition, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
   export let isVisible = false
-  export let contentJoint: JointPosition = 'bottom'
-  export let popoverJoint: JointPosition = 'top'
+  export let contentJoint: EnneaPosition = 'bottom'
+  export let popoverJoint: EnneaPosition = 'top'
 
   let classProp: ClassProp = {}
   export { classProp as class }

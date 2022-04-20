@@ -1,4 +1,4 @@
-export type JointPosition =
+export type EnneaPosition =
   | 'top'
   | 'bottom'
   | 'left'
@@ -12,7 +12,7 @@ export type JointPosition =
 export type HorizontalPosition = 'left' | 'center' | 'right'
 export type VerticalPosition = 'top' | 'center' | 'bottom'
 
-export function toHorizontalPosition(position: JointPosition): HorizontalPosition {
+export function toHorizontalPosition(position: EnneaPosition): HorizontalPosition {
   const mapping = {
     'top left': 'left',
     left: 'left',
@@ -27,7 +27,7 @@ export function toHorizontalPosition(position: JointPosition): HorizontalPositio
   return mapping[position]
 }
 
-export function toVerticalPosition(position: JointPosition): VerticalPosition {
+export function toVerticalPosition(position: EnneaPosition): VerticalPosition {
   const mapping = {
     'top left': 'top',
     top: 'top',
@@ -42,12 +42,12 @@ export function toVerticalPosition(position: JointPosition): VerticalPosition {
   return mapping[position]
 }
 
-export function toXPercent(position: JointPosition): `${number}%` {
+export function toXPercent(position: EnneaPosition): `${number}%` {
   const mapping = { left: '0%', center: '50%', right: '100%' } as const
   return mapping[toHorizontalPosition(position)]
 }
 
-export function toYPercent(position: JointPosition): `${number}%` {
+export function toYPercent(position: EnneaPosition): `${number}%` {
   const mapping = { top: '0%', center: '50%', bottom: '100%' } as const
   return mapping[toVerticalPosition(position)]
 }

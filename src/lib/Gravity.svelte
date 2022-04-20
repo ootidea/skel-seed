@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { type JointPosition, toHorizontalPosition, toVerticalPosition } from './JointPosition'
+  import { type EnneaPosition, toHorizontalPosition, toVerticalPosition } from './Position'
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
-  export let position: JointPosition = 'center'
+  export let to: EnneaPosition = 'center'
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -12,9 +12,8 @@
 
 <div
   {...injectors.attr('root')}
-  data-position={position}
-  data-horizontal-position={toHorizontalPosition(position)}
-  data-vertical-position={toVerticalPosition(position)}
+  data-horizontal-position={toHorizontalPosition(to)}
+  data-vertical-position={toVerticalPosition(to)}
 >
   <slot />
 </div>
