@@ -12,7 +12,9 @@
     <Link href="Spinner" />
   </div>
   <Divider direction="vertical" />
-  <slot />
+  <div>
+    <slot />
+  </div>
 </StretchLayout>
 
 <style global lang="scss">
