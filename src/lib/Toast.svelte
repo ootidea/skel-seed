@@ -47,11 +47,11 @@
 
     if (index > 0) return
 
-    const nestFirstToast = toastModels[0]
-    if (nestFirstToast !== undefined) {
-      const durationMs = getDurationMs(nestFirstToast.options)
+    const nextFirstToast = toastModels[0]
+    if (nextFirstToast !== undefined) {
+      const durationMs = getDurationMs(nextFirstToast.options)
       if (Number.isFinite(durationMs)) {
-        setTimeout(() => removeToast(nestFirstToast.id), durationMs)
+        setTimeout(() => removeToast(nextFirstToast.id), durationMs)
       }
     }
   }
