@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { type EnneaPosition, toXPercent, toYPercent } from './Position'
+  import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
   export let isVisible = false
-  export let contentJoint: EnneaPosition = 'bottom'
-  export let popoverJoint: EnneaPosition = 'top'
+  export let on: EnneaPosition = 'bottom'
+  export let joint: EnneaPosition | undefined = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -37,10 +37,10 @@
 
 <div
   {...injectors.attr('root')}
-  style:--skel-popover_left={toXPercent(contentJoint)}
-  style:--skel-popover_top={toYPercent(contentJoint)}
-  style:--skel-popover_transform="translate(-{toXPercent(popoverJoint)}, -{toYPercent(
-    popoverJoint
+  style:--skel-popover_left={toXPercent(on)}
+  style:--skel-popover_top={toYPercent(on)}
+  style:--skel-popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(
+    joint ?? toOpposite(on)
   )})"
 >
   <div {...injectors.attr('content-area')} bind:this={contentElement}>

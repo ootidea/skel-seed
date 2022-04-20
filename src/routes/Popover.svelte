@@ -4,7 +4,7 @@
 </script>
 
 <div>
-  <Popover let:toggle>
+  <Popover on="left" let:toggle>
     <button on:click={toggle}>hoge</button>
     <TextArea />
     <div slot="popover-frame">
@@ -12,7 +12,7 @@
       <button on:click={toggle}>x</button>
     </div>
   </Popover>
-  <Popover let:toggle>
+  <Popover on="right" joint="top left" let:toggle>
     <button on:click={toggle}>hoge</button>
     <div slot="popover">
       <TextArea />
@@ -22,7 +22,7 @@
   <div>@@@@@@@@@@@</div>
   <div>@@@@@@@@@@@</div>
   <div>@@@@@@@@@@@</div>
-  <Popover let:toggle>
+  <Popover on="right" joint="bottom left" let:toggle>
     <button on:click={toggle}>hoge</button>
     <div slot="popover">
       <div>@@@@@@@@@@@</div>

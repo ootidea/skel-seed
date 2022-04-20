@@ -12,6 +12,29 @@ export type EnneaPosition =
 export type HorizontalPosition = 'left' | 'center' | 'right'
 export type VerticalPosition = 'top' | 'center' | 'bottom'
 
+export function toOpposite(position: EnneaPosition) {
+  switch (position) {
+    case 'top':
+      return 'bottom'
+    case 'bottom':
+      return 'top'
+    case 'left':
+      return 'right'
+    case 'right':
+      return 'left'
+    case 'center':
+      return 'center'
+    case 'top left':
+      return 'bottom right'
+    case 'top right':
+      return 'bottom left'
+    case 'bottom left':
+      return 'top right'
+    case 'bottom right':
+      return 'top left'
+  }
+}
+
 export function toHorizontalPosition(position: EnneaPosition): HorizontalPosition {
   const mapping = {
     'top left': 'left',
