@@ -49,13 +49,15 @@
 
   .skel-multi-select-toggle-button_button {
     display: inline-block;
+    padding: 0.3em 0.5em;
     border-block: var(--skel-toggle-button-border);
     border-left: var(--skel-toggle-button-border);
 
-    padding: 0.3em 0.5em;
-
     color: var(--skel-toggle-button-text-color);
+
     cursor: pointer;
+
+    transition: var(--skel-backward-transition);
 
     &:first-of-type {
       border-top-left-radius: var(--skel-toggle-button-border-radius);
@@ -69,6 +71,16 @@
       border-right: var(--skel-toggle-button-border);
     }
 
+    &:hover {
+      background-color: var(--skel-clickable-hover-background-color);
+      transition: var(--skel-forward-transition);
+    }
+
+    &:active {
+      background-color: var(--skel-clickable-active-background-color);
+      transition: var(--skel-forward-transition);
+    }
+
     &.skel-multi-select-toggle-button_selected {
       border-color: var(--skel-toggle-button-selected-border-color);
 
@@ -79,6 +91,14 @@
       background-color: var(--skel-toggle-button-selected-background-color);
       color: var(--skel-toggle-button-selected-text-color);
       font-weight: var(--skel-toggle-button-selected-font-weight);
+
+      &:hover {
+        background-color: var(--skel-primary-background-hover-color);
+      }
+
+      &:active {
+        background-color: var(--skel-primary-background-active-color);
+      }
     }
   }
 </style>
