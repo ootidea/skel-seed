@@ -24,13 +24,13 @@
 </script>
 
 <div {...injectors.attr('root')}>
-  {#each values as value, i (value)}
+  {#each values as value, index (value)}
     <div
       {...injectors.attr('button')}
       class:skel-multi-select-toggle-button_selected={selected.includes(value)}
       on:click={() => clickEventHandler(value)}
     >
-      <slot {value} {i}>
+      <slot {value} {index}>
         {value}
       </slot>
     </div>
@@ -40,15 +40,15 @@
 <CommonCss />
 
 <style global lang="scss">
-  :root {
-  }
-
   .skel-multi-select-toggle-button_root {
     display: inline-flex;
   }
 
   .skel-multi-select-toggle-button_button {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 0.3em 0.5em;
     border-block: var(--skel-toggle-button-border);
     border-left: var(--skel-toggle-button-border);
