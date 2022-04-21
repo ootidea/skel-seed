@@ -25,7 +25,7 @@
   style:--skel-spinner_svg-url={svgUrl}
   style:--skel-spinner_period="{1 / frequency}s"
 >
-  <div {...injectors.attr('ring')} />
+  <div {...injectors.attr('spinner')} />
 </div>
 
 <CommonCss />
@@ -48,7 +48,7 @@
     height: var(--skel-spinner_size);
   }
 
-  .skel-spinner_ring {
+  .skel-spinner_spinner {
     width: 100%;
     height: 100%;
 
