@@ -14,12 +14,12 @@
   function clickEventHandler(value: Value) {
     const index = selected.indexOf(value)
     if (index === -1) {
-      // TODO: Sort into values order.
       selected.push(value)
+      selected = values.filter((value) => selected.includes(value))
     } else {
       selected.splice(index, 1)
+      selected = selected
     }
-    selected = selected
   }
 </script>
 
