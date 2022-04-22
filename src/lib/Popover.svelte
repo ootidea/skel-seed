@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { scale } from 'svelte/transition'
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
@@ -47,7 +48,11 @@
     <slot {open} {close} {toggle} />
   </div>
   {#if isVisible}
-    <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
+    <div
+      {...injectors.attr('popover-area')}
+      bind:this={popoverElement}
+      transition:scale={{ duration: 300, start: 0.92 }}
+    >
       <slot name="popover-frame">
         <div {...injectors.attr('popover-frame')}>
           <slot name="popover" />
