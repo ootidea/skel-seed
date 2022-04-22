@@ -21,16 +21,27 @@
 <CommonCss />
 
 <style global lang="scss">
+  :root {
+    --skel-toggle-button_border-radius: 0.4em;
+    --skel-toggle-button_border: var(--skel-toggle-button_border-color) 1px solid;
+    --skel-toggle-button_border-color: oklch(80% 0 0);
+    --skel-toggle-button_text-color: oklch(50% 0 0);
+    --skel-toggle-button_selected-border-color: oklch(70% 0.08 255.4);
+    --skel-toggle-button_selected-text-color: oklch(50% 0.22 255.4);
+    --skel-toggle-button_selected-background-color: var(--skel-primary-background-color);
+    --skel-toggle-button_selected-font-weight: inherit;
+  }
+
   .skel-toggle-button_root {
     display: flex;
     align-items: center;
     justify-content: center;
 
     padding: 0.3em 0.5em;
-    border-block: var(--skel-toggle-button-border);
-    border-left: var(--skel-toggle-button-border);
+    border-block: var(--skel-toggle-button_border);
+    border-left: var(--skel-toggle-button_border);
 
-    color: var(--skel-toggle-button-text-color);
+    color: var(--skel-toggle-button_text-color);
     // set default color of included icons
     --skel-icon_icon-default-color: currentColor;
 
@@ -39,15 +50,15 @@
     transition: var(--skel-backward-transition);
 
     &:first-of-type {
-      border-top-left-radius: var(--skel-toggle-button-border-radius);
-      border-bottom-left-radius: var(--skel-toggle-button-border-radius);
+      border-top-left-radius: var(--skel-toggle-button_border-radius);
+      border-bottom-left-radius: var(--skel-toggle-button_border-radius);
     }
 
     &:last-of-type {
-      border-top-right-radius: var(--skel-toggle-button-border-radius);
-      border-bottom-right-radius: var(--skel-toggle-button-border-radius);
+      border-top-right-radius: var(--skel-toggle-button_border-radius);
+      border-bottom-right-radius: var(--skel-toggle-button_border-radius);
 
-      border-right: var(--skel-toggle-button-border);
+      border-right: var(--skel-toggle-button_border);
     }
 
     &:hover {
@@ -61,15 +72,15 @@
     }
 
     &.skel-toggle-button_selected {
-      border-color: var(--skel-toggle-button-selected-border-color);
+      border-color: var(--skel-toggle-button_selected-border-color);
 
       & + .skel-toggle-button_button {
-        border-left-color: var(--skel-toggle-button-selected-border-color);
+        border-left-color: var(--skel-toggle-button_selected-border-color);
       }
 
-      background-color: var(--skel-toggle-button-selected-background-color);
-      color: var(--skel-toggle-button-selected-text-color);
-      font-weight: var(--skel-toggle-button-selected-font-weight);
+      background-color: var(--skel-toggle-button_selected-background-color);
+      color: var(--skel-toggle-button_selected-text-color);
+      font-weight: var(--skel-toggle-button_selected-font-weight);
 
       &:hover {
         background-color: var(--skel-primary-background-hover-color);
