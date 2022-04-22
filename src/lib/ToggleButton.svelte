@@ -2,8 +2,6 @@
   import CommonCss from './CommonCss.svelte'
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
-  type Value = $$Generic<string>
-  export let value: Value
   export let selected = false
 
   let classProp: ClassProp = {}
@@ -13,9 +11,7 @@
 </script>
 
 <div {...injectors.attr('root')} class:skel-toggle-button_selected={selected} on:click>
-  <slot {value}>
-    {value}
-  </slot>
+  <slot />
 </div>
 
 <CommonCss />
@@ -36,6 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: max-content;
 
     padding: 0.3em 0.5em;
     border-block: var(--skel-toggle-button_border);
