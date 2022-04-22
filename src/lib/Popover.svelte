@@ -5,6 +5,7 @@
   export let isVisible = false
   export let on: EnneaPosition = 'bottom'
   export let joint: EnneaPosition | undefined = undefined
+  export let persistent = false
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -19,9 +20,8 @@
   let popoverElement: HTMLElement | undefined | null
 
   function onClickWindow(event: MouseEvent) {
-    if (!isVisible) return
-    if (contentElement == null) return
-    if (popoverElement == null) return
+    if (persistent || !isVisible) return
+    if (contentElement == null || popoverElement == null) return
 
     const x = event.clientX
     const y = event.clientY
