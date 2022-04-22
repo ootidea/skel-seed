@@ -9,12 +9,12 @@
   let classProp: ClassProp = {}
   export { classProp as class }
   export let style: StyleProp = {}
-  $: injectors = createInjectors('TextArea', classProp, style)
+  $: injectors = createInjectors('AutoSizeTextArea', classProp, style)
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div {...injectors.attr('root')} class:skel-text-area_disabled={disabled}>
+<div {...injectors.attr('root')} class:skel-auto-size-text-area_disabled={disabled}>
   <div {...injectors.attr('dummy')} aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
@@ -24,14 +24,14 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-text-area_root {
+  .skel-auto-size-text-area_root {
     position: relative;
     width: max-content;
     min-width: 10em;
   }
 
-  .skel-text-area_dummy,
-  .skel-text-area_text-area {
+  .skel-auto-size-text-area_dummy,
+  .skel-auto-size-text-area_text-area {
     box-sizing: border-box;
 
     padding: 0.4em 0.6em;
@@ -44,11 +44,11 @@
     overflow-wrap: break-word;
   }
 
-  .skel-text-area_dummy {
+  .skel-auto-size-text-area_dummy {
     visibility: hidden;
   }
 
-  .skel-text-area_text-area {
+  .skel-auto-size-text-area_text-area {
     position: absolute;
     top: 0;
     left: 0;
@@ -65,12 +65,12 @@
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
 
-    .skel-text-area_disabled & {
+    .skel-auto-size-text-area_disabled & {
       color: var(--skel-disabled-text-color);
     }
   }
 
-  .skel-text-area_text-area:focus {
+  .skel-auto-size-text-area_text-area:focus {
     outline: 1px solid var(--skel-primary-color);
   }
 </style>

@@ -1,21 +1,21 @@
 <script lang="ts">
+  import AutoSizeTextArea from '../lib/AutoSizeTextArea.svelte'
   import Popover from '../lib/Popover.svelte'
-  import TextArea from '../lib/TextArea.svelte'
 </script>
 
 <div>
   <Popover on="left" let:toggle>
     <button on:click={toggle}>hoge</button>
-    <TextArea />
+    <AutoSizeTextArea />
     <div slot="popover-frame">
-      <TextArea />
+      <AutoSizeTextArea />
       <button on:click={toggle}>x</button>
     </div>
   </Popover>
   <Popover on="right" joint="top left" let:toggle>
     <button on:click={toggle}>hoge</button>
     <div slot="popover">
-      <TextArea />
+      <AutoSizeTextArea />
       <button on:click={toggle}>x</button>
     </div>
   </Popover>
