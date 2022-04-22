@@ -5,28 +5,25 @@
 
   type Value = $$Generic<string>
   export let values: Value[] = []
-  export let selected: Value[] = []
+  export let selected: Value | undefined = undefined
 
   let classProp: ClassProp = {}
   export { classProp as class }
   export let style: StyleProp = {}
-  $: injectors = createInjectors('MultiSelectToggleButton', classProp, style)
+  $: injectors = createInjectors('SingleSelectToggleButton', classProp, style)
 
   function clickEventHandler(value: Value) {
-    const index = selected.indexOf(value)
-    if (index === -1) {
-      selected.push(value)
-      selected = values.filter((value) => selected.includes(value))
+    if (value !== selected) {
+      selected = value
     } else {
-      selected.splice(index, 1)
-      selected = selected
+      selected = undefined
     }
   }
 </script>
 
 <div {...injectors.attr('root')}>
   {#each values as value, index (value)}
-    <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
+    <ToggleButton selected={value === selected} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>
         {value}
       </slot>
@@ -37,7 +34,7 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-multi-select-toggle-button_root {
+  .skel-single-select-toggle-button_root {
     display: inline-flex;
   }
 </style>
