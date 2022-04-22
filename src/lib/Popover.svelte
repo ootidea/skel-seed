@@ -16,12 +16,12 @@
   const close = () => (isVisible = false)
   const toggle = () => (isVisible = !isVisible)
 
-  let contentElement: HTMLElement | undefined | null
-  let popoverElement: HTMLElement | undefined | null
+  let contentElement: HTMLElement | null = null
+  let popoverElement: HTMLElement | null = null
 
   function onClickWindow(event: MouseEvent) {
     if (persistent || !isVisible) return
-    if (contentElement == null || popoverElement == null) return
+    if (contentElement === null || popoverElement === null) return
 
     const x = event.clientX
     const y = event.clientY
