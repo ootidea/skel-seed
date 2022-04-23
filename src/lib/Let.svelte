@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Arrow } from './utility'
 
-  export let value: unknown = undefined
+  export let value: any = undefined
 
   function set<T>(newValue: T): T {
     value = newValue
