@@ -70,8 +70,6 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
-  import StretchLayout from './StretchLayout.svelte'
-  import Icon from './Icon.svelte'
   import { type ClassProp, type StyleProp, createInjectors } from './utility'
 
   let classProp: ClassProp = {}
