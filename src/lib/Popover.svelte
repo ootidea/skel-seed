@@ -3,7 +3,7 @@
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
-  export let isVisible = false
+  export let visible = false
   export let on: EnneaPosition = 'bottom'
   export let joint: EnneaPosition | undefined = undefined
   export let persistent = false
@@ -13,15 +13,15 @@
   export let style: StyleProp = {}
   $: injectors = createInjectors('Popover', classProp, style)
 
-  const open = () => (isVisible = true)
-  const close = () => (isVisible = false)
-  const toggle = () => (isVisible = !isVisible)
+  const open = () => (visible = true)
+  const close = () => (visible = false)
+  const toggle = () => (visible = !visible)
 
   let contentElement: HTMLElement | null = null
   let popoverElement: HTMLElement | null = null
 
   function onClickWindow(event: MouseEvent) {
-    if (persistent || !isVisible) return
+    if (persistent || !visible) return
     if (contentElement === null || popoverElement === null) return
 
     const x = event.clientX
@@ -47,7 +47,7 @@
   <div {...injectors.attr('content-area')} bind:this={contentElement}>
     <slot {open} {close} {toggle} />
   </div>
-  {#if isVisible}
+  {#if visible}
     <div
       {...injectors.attr('popover-area')}
       bind:this={popoverElement}
