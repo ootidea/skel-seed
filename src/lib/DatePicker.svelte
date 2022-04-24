@@ -5,7 +5,7 @@
   import { type Arrow, type ClassProp, createInjectors, type StyleProp, until } from './utility'
 
   export let selectedDate: Dayjs | undefined = undefined
-  export let selectedMonth: Dayjs = new dayjs()
+  export let selectedMonth: Dayjs = dayjs()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
 
   let classProp: ClassProp = {}
