@@ -7,6 +7,7 @@
 <StretchLayout class="full-height" stretchAt={2}>
   <div class="sidebar">
     <Link href="./">index</Link>
+    <Link href="Button" />
     <Link href="ToggleButton" />
     <Link href="DataTable" />
     <Link href="Popover" />

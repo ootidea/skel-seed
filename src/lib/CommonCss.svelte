@@ -1,6 +1,8 @@
 <style lang="scss">
   :root {
     --skel-primary-color: oklch(59% 0.17 255.4);
+    --skel-primary-inverted-background-hover-color: oklch(64% 0.15 255.4);
+    --skel-primary-inverted-background-active-color: oklch(69% 0.13 255.4);
     --skel-primary-background-color: oklch(99% 0.01 255.4);
     --skel-primary-background-hover-color: oklch(97% 0.02 255.4);
     --skel-primary-background-active-color: oklch(95% 0.04 255.4);
