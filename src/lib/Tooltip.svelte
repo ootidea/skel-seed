@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CommonCss from './CommonCss.svelte'
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let text: string | undefined = undefined
@@ -22,6 +23,8 @@
   </span>
 </div>
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-tooltip_root {
     position: relative;
@@ -40,7 +43,7 @@
       visibility: visible;
     }
 
-    z-index: 1500;
+    z-index: var(--skel-tooltip-z-index);
   }
 
   .skel-tooltip_default-popup {

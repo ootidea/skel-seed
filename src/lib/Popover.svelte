@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CommonCss from './CommonCss.svelte'
   import { scale } from 'svelte/transition'
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
@@ -64,6 +65,8 @@
 
 <svelte:window on:click={onClickWindow} />
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-popover_root {
     position: relative;
@@ -76,7 +79,7 @@
     top: var(--skel-popover_top);
     transform: var(--skel-popover_transform);
 
-    z-index: 500;
+    z-index: var(--skel-popover-z-index);
   }
 
   .skel-popover_popover-frame {

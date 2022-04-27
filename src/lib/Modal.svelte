@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CommonCss from './CommonCss.svelte'
   import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let visible = false
@@ -20,6 +21,8 @@
   </div>
 {/if}
 
+<CommonCss />
+
 <style global lang="scss">
   :root {
     --skel-modal-background-color: oklch(50% 0 0 / 0.05);
@@ -31,7 +34,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 1000;
+    z-index: var(--skel-modal-z-index);
 
     display: flex;
     align-items: center;
