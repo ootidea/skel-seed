@@ -3,11 +3,13 @@
   import Divider from './Divider.svelte'
   import { type ClassProp, type StyleProp, createInjectors } from './utility'
 
-  export let rows: readonly Row[] = []
   type Row = $$Generic<Record<string, unknown>>
-
-  export let columns: readonly Column[] = []
   type Column = string | { id: string; title?: string }
+
+  export let rows: readonly Row[] = []
+  export let columns: readonly Column[] = []
+  export let evenRowBackgroundColor = 'var(--skel-data-table_even-row-background-default-color)'
+  export let oddRowBackgroundColor = 'var(--skel-data-table_odd-row-background-default-color)'
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -33,6 +35,8 @@
     .fill('max-content')
     .join(' auto ')}
   style:--skel-data-table-column-count={columns.length}
+  style:--skel-data-table_even-row-background-color={evenRowBackgroundColor}
+  style:--skel-data-table_odd-row-background-color={oddRowBackgroundColor}
 >
   <div {...injectors.attr('horizontal-ruled-line')}>
     <slot name="horizontal-ruled-line" rowIndex={0}>
@@ -110,10 +114,9 @@
 
 <style global lang="scss">
   :root {
-    // TODO: Define and integrate color palettes
-    --skel-data-table-header-background-default-color: oklch(90% 0.04 200);
-    --skel-data-table-even-row-background-default-color: inherit;
-    --skel-data-table-odd-row-background-default-color: oklch(96% 0.015 200);
+    --skel-data-table_header-background-default-color: oklch(90% 0.04 200);
+    --skel-data-table_even-row-background-default-color: transparent;
+    --skel-data-table_odd-row-background-default-color: transparent;
   }
 
   .skel-data-table_root {
@@ -137,15 +140,15 @@
       font-weight: bold;
       text-align: center;
 
-      background-color: var(--skel-data-table-header-background-default-color);
+      background-color: var(--skel-data-table_header-background-default-color);
     }
 
     .skel-data-table_even-row & {
-      background-color: var(--skel-data-table-even-row-background-default-color);
+      background-color: var(--skel-data-table_even-row-background-color);
     }
 
     .skel-data-table_odd-row & {
-      background-color: var(--skel-data-table-odd-row-background-default-color);
+      background-color: var(--skel-data-table_odd-row-background-color);
     }
   }
 
