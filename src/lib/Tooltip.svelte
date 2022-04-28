@@ -51,7 +51,7 @@
     padding: 0.1em 0.4em;
 
     background-color: oklch(50% 0 0);
-    color: oklch(100% 0 0);
+    color: var(--skel-inverted-text-color);
 
     font-size: 0.9em;
     white-space: pre-wrap;

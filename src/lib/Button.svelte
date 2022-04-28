@@ -39,7 +39,7 @@
     border-radius: 0.3em;
     border: var(--skel-primary-color) 1px solid;
     background-color: var(--skel-primary-color);
-    color: oklch(100% 0 0);
+    color: var(--skel-inverted-text-color);
 
     user-select: none;
     transition: var(--skel-backward-transition);
