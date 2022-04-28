@@ -1,6 +1,6 @@
 <script lang="ts">
-  import CommonCss from './CommonCss.svelte'
   import { scale } from 'svelte/transition'
+  import CommonCss from './CommonCss.svelte'
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
 
@@ -83,7 +83,7 @@
   }
 
   .skel-popover_popover-frame {
-    background-color: oklch(100% 0 0);
+    background-color: var(--skel-background-color);
     border-radius: 0.4em;
     box-shadow: 0 1px 4px oklch(75% 0 0);
   }

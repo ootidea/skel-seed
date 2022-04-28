@@ -134,7 +134,7 @@
     margin: 1em;
     padding: 0.8em 1.4em;
 
-    background: oklch(100% 0 0);
+    background-color: var(--skel-background-color);
     box-shadow: 0 1px 4px oklch(75% 0 0);
 
     cursor: pointer;
