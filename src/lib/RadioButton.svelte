@@ -13,7 +13,11 @@
   $: injectors = createInjectors('RadioButton', classProp, style)
 </script>
 
-<label {...injectors.attr('root')} class:skel-radio-button_disabled={disabled}>
+<label
+  {...injectors.attr('root')}
+  class:skel-radio-button_disabled={disabled}
+  class:skel-radio-button_selected={group === value}
+>
   <input type="radio" {...injectors.attr('radio')} bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}
@@ -25,11 +29,19 @@
 <CommonCss />
 
 <style global lang="scss">
+  @use 'utility.scss';
+
+  :root {
+    --skel-radio-button_radio-size: 1.2em;
+    --skel-radio-button_inner-circle-size: 0.6em;
+  }
+
   .skel-radio-button_root {
     display: inline-grid;
     grid-auto-flow: column;
     align-items: center;
     gap: 0.3em;
+    vertical-align: top;
 
     cursor: pointer;
 
@@ -41,13 +53,48 @@
   }
 
   .skel-radio-button_radio {
+    appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: utility.toEvenPx(var(--skel-radio-button_radio-size));
+    height: utility.toEvenPx(var(--skel-radio-button_radio-size));
+    border-radius: 100%;
     margin: 0;
-    accent-color: var(--skel-primary-color);
+
+    border: oklch(60% 0 0) 0.1em solid;
 
     cursor: pointer;
 
+    transition: all 0.15s ease-out;
+
+    .skel-radio-button_selected & {
+      border-color: var(--skel-primary-color);
+      transition: all 0.15s ease-out;
+    }
+
     .skel-radio-button_disabled & {
       cursor: default;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-radius: 100%;
+
+      transition: all 0.15s ease-out;
+
+      .skel-radio-button_selected & {
+        width: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
+        height: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
+        background-color: var(--skel-primary-color);
+
+        transition: all 0.15s ease-out;
+      }
     }
   }
 </style>
