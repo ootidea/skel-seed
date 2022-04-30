@@ -68,11 +68,11 @@
 
     cursor: pointer;
 
-    transition: all 0.15s ease-out;
+    transition: all 0.1s ease-out;
 
     .skel-radio-button_selected & {
       border-color: var(--skel-primary-color);
-      transition: all 0.15s ease-out;
+      transition: all 0.1s ease-out;
     }
 
     .skel-radio-button_disabled & {
@@ -86,14 +86,14 @@
       height: 0;
       border-radius: 100%;
 
-      transition: all 0.15s ease-out;
+      transition: all 0.1s ease-out;
 
       .skel-radio-button_selected & {
         width: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
         height: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
         background-color: var(--skel-primary-color);
 
-        transition: all 0.15s ease-out;
+        transition: all 0.1s ease-out;
       }
     }
   }
