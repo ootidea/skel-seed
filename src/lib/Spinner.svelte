@@ -3,7 +3,6 @@
   import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let size = 'var(--skel-spinner_default-size)'
-  export let color = 'var(--skel-spinner_default-color)'
   // TODO: Can convert this to CSS variable?
   export let thickness = 25
   export let frequency = 1.4
@@ -21,7 +20,6 @@
 <div
   {...injectors.attr('root')}
   style:--skel-spinner_size={size}
-  style:--skel-spinner_color={color}
   style:--skel-spinner_svg-url={svgUrl}
   style:--skel-spinner_period="{1 / frequency}s"
 >
@@ -32,7 +30,6 @@
 
 <style global lang="scss">
   :root {
-    --skel-spinner_default-color: oklch(40% 0 0);
     --skel-spinner_default-size: 1.2em;
     --skel-spinner_default-background-image: conic-gradient(
       transparent,
