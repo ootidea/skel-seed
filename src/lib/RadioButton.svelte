@@ -13,11 +13,7 @@
   $: injectors = createInjectors('RadioButton', classProp, style)
 </script>
 
-<label
-  {...injectors.attr('root')}
-  class:skel-radio-button_disabled={disabled}
-  class:skel-radio-button_selected={group === value}
->
+<label {...injectors.attr('root')} class:skel-radio-button_disabled={disabled}>
   <input type="radio" {...injectors.attr('radio')} bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}
@@ -70,15 +66,6 @@
 
     transition: all 0.1s ease-out;
 
-    .skel-radio-button_selected & {
-      border-color: var(--skel-primary-color);
-      transition: all 0.1s ease-out;
-    }
-
-    .skel-radio-button_disabled & {
-      cursor: default;
-    }
-
     &::before {
       content: '';
       display: inline-block;
@@ -87,14 +74,23 @@
       border-radius: 100%;
 
       transition: all 0.1s ease-out;
+    }
 
-      .skel-radio-button_selected & {
+    &:checked {
+      border-color: var(--skel-primary-color);
+      transition: all 0.1s ease-out;
+
+      &::before {
         width: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
         height: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
         background-color: var(--skel-primary-color);
 
         transition: all 0.1s ease-out;
       }
+    }
+
+    .skel-radio-button_disabled & {
+      cursor: default;
     }
   }
 </style>
