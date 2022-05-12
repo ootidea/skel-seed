@@ -14,7 +14,7 @@ export function assertNonUndefined<T>(value: T | undefined, message?: string): a
  * until(5) is equivalent to [0, 1, 2, 3, 4]
  */
 export function until(size: number): readonly number[] {
-  return [...Array(size)].map((_, i) => i)
+  return Array(size).map((_, i) => i)
 }
 
 export function isInsideOf(x: number, y: number, rect: DOMRect): boolean {
@@ -151,7 +151,7 @@ export type StyleProp = string | { [K in string]?: StyleProp }
  * @example
  * Arrow<[number], boolean> is equivalent to (value: number) => boolean
  */
-export type Arrow<Tuple extends unknown[], Return> = (...args: [...Tuple]) => Return
+export type Arrow<Tuple extends unknown[], Return> = (...args: Tuple) => Return
 
 /**
  * Utility for defining tagged union types.
