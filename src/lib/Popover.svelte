@@ -49,13 +49,9 @@
     <slot {open} {close} {toggle} />
   </div>
   {#if visible}
-    <div
-      {...injectors.attr('popover-area')}
-      bind:this={popoverElement}
-      transition:scale={{ duration: 300, start: 0.92 }}
-    >
+    <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
       <slot name="popover-frame">
-        <div {...injectors.attr('popover-frame')}>
+        <div {...injectors.attr('popover-frame')} transition:scale={{ duration: 300, start: 0.92 }}>
           <slot name="popover" />
         </div>
       </slot>
