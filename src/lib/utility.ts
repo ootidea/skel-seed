@@ -53,8 +53,9 @@ export function getCssVariableAsNumber(
   return number
 }
 
-type CssLengthUnit = 'px' | 'em' | 'ex' | 'rem' | '%' | 'vw' | 'vh' | 'vmin' | 'vmax'
-export type CssLength = `${number}${CssLengthUnit}`
+export type AutoComplete<Literal extends Base, Base = string> =
+  | Literal
+  | (Base & Record<never, never>)
 
 function toKebabCase(pascalCase: string) {
   return (

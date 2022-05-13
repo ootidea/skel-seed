@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { type CssLength, generateStyleString } from './utility'
+  import { type AutoComplete, generateStyleString } from './utility'
 
-  export let width: CssLength | undefined = undefined
+  export let width: AutoComplete<'max-content' | 'min-content'> | undefined = undefined
   let klass: string | undefined = undefined
   export { klass as class }
 
