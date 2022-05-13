@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CssLength, generateStyleString } from './utility'
+  import { type CssLength, generateStyleString } from './utility'
 
   export let width: CssLength | undefined = undefined
   let klass: string | undefined = undefined
