@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
+  import { generateStyleString } from './utility'
 
   export let width: string | undefined = undefined
+  let klass: string | undefined = undefined
+  export { klass as class }
 
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Div', classProp, style, { width })
+  $: style = generateStyleString({ width })
 </script>
 
-<div {...injectors.attr('root')}>
+<div class={klass} {style}>
   <slot />
 </div>
