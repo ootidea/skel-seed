@@ -1,14 +1,14 @@
 <script lang="ts">
   import type {
     AlignItems,
-    BackgroundColor,
+    BoxSizing,
     Display,
+    FontWeight,
     Height,
     JustifyContent,
     Position,
     Width,
   } from './styleType'
-  import { BoxSizing } from './styleType'
   import { generateStyleString } from './utility'
 
   export let position: Position | undefined = undefined
@@ -41,7 +41,9 @@
   export let width: Width | undefined = undefined
   export let height: Height | undefined = undefined
   export let borderRadius: string | undefined = undefined
-  export let backgroundColor: BackgroundColor | undefined = undefined
+  export let backgroundColor: string | undefined = undefined
+  export let color: string | undefined = undefined
+  export let fontWeight: FontWeight | undefined = undefined
   let klass: string | undefined = undefined
   export { klass as class }
 
@@ -77,6 +79,8 @@
     alignItems,
     justifyContent,
     backgroundColor,
+    color,
+    fontWeight,
   })
 </script>
 
