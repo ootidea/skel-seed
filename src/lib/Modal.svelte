@@ -1,9 +1,9 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
+  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let visible = false
-  export let onClickBackdrop: Arrow<[MouseEvent], unknown> | undefined = undefined
+  export let disableAutoClose = false
 
   let classProp: ClassProp = {}
   export { classProp as class }
@@ -13,6 +13,12 @@
   const open = () => (visible = true)
   const close = () => (visible = false)
   const toggle = () => (visible = !visible)
+
+  function onClickBackdrop() {
+    if (!disableAutoClose) {
+      close()
+    }
+  }
 </script>
 
 {#if visible}
