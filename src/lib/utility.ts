@@ -53,10 +53,6 @@ export function getCssVariableAsNumber(
   return number
 }
 
-export type AutoComplete<Literal extends Base, Base = string> =
-  | Literal
-  | (Base & Record<never, never>)
-
 function toKebabCase(pascalCase: string) {
   return (
     pascalCase.charAt(0).toLowerCase() +
