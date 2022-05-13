@@ -1,11 +1,35 @@
 <script lang="ts">
-  import type { AlignItems, Display, JustifyContent, Position, Width } from './styleType'
-  import { BackgroundColor } from './styleType'
+  import type {
+    AlignItems,
+    BackgroundColor,
+    Display,
+    JustifyContent,
+    Position,
+    Width,
+  } from './styleType'
   import { generateStyleString } from './utility'
 
   export let position: Position | undefined = undefined
-  export let width: Width | undefined = undefined
   export let display: Display | undefined = undefined
+  export let margin: string | undefined = undefined
+  export let marginTop: string | undefined = undefined
+  export let marginBottom: string | undefined = undefined
+  export let marginLeft: string | undefined = undefined
+  export let marginRight: string | undefined = undefined
+  export let marginStart: string | undefined = undefined
+  export let marginEnd: string | undefined = undefined
+  export let marginBlock: string | undefined = undefined
+  export let marginInline: string | undefined = undefined
+  export let padding: string | undefined = undefined
+  export let paddingTop: string | undefined = undefined
+  export let paddingBottom: string | undefined = undefined
+  export let paddingLeft: string | undefined = undefined
+  export let paddingRight: string | undefined = undefined
+  export let paddingStart: string | undefined = undefined
+  export let paddingEnd: string | undefined = undefined
+  export let paddingBlock: string | undefined = undefined
+  export let paddingInline: string | undefined = undefined
+  export let width: Width | undefined = undefined
   export let alignItems: AlignItems | undefined = undefined
   export let justifyContent: JustifyContent | undefined = undefined
   export let backgroundColor: BackgroundColor | undefined = undefined
@@ -14,8 +38,26 @@
 
   $: style = generateStyleString({
     position,
-    width,
     display,
+    margin,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    marginStart,
+    marginEnd,
+    marginBlock,
+    marginInline,
+    padding,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingStart,
+    paddingEnd,
+    paddingBlock,
+    paddingInline,
+    width,
     alignItems,
     justifyContent,
     backgroundColor,
