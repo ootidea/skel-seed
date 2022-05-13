@@ -79,6 +79,8 @@
     top: var(--skel-popover_top);
     transform: var(--skel-popover_transform);
 
+    width: max-content;
+
     z-index: var(--skel-popover-z-index);
   }
 
