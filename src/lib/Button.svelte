@@ -1,21 +1,18 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
+  import type { Arrow } from './utility'
 
   export let achromatic = false
   export let rounded = false
   export let ghost: boolean | undefined = undefined
   export let disabled = false
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Button', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
 <button
-  {...injectors.attr('root')}
+  class="skel-button_root {klass}"
   class:skel-button_achromatic={achromatic}
   class:skel-button_rounded={rounded}
   class:skel-button_ghost={ghost ?? achromatic}

@@ -1,15 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
+  import type { Arrow } from './utility'
 
   type Result = $$Generic
   export let onClick: Arrow<[MouseEvent], Result> | undefined = undefined
   export let disabled = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Clickable', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   let result: Result | undefined
   let awaited: unknown
@@ -40,7 +37,7 @@
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-clickable_root {klass}"
   class:skel-clickable_disabled={disabled}
   on:click={clickEventHandler}
 >

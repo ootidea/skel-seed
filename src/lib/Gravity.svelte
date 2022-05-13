@@ -1,17 +1,13 @@
 <script lang="ts">
   import { type EnneaPosition, toHorizontalPosition, toVerticalPosition } from './Position'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let to: EnneaPosition = 'center'
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Gravity', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-gravity_root {klass}"
   data-horizontal-position={toHorizontalPosition(to)}
   data-vertical-position={toVerticalPosition(to)}
 >

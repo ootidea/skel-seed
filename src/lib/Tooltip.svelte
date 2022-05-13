@@ -1,23 +1,19 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let text: string | undefined = undefined
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Tooltip', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<div {...injectors.attr('root')}>
-  <div {...injectors.attr('content-wrapper')}>
+<div class="skel-tooltip_root {klass}">
+  <div class="skel-tooltip_content-wrapper">
     <slot />
   </div>
-  <span {...injectors.attr('popup-wrapper')}>
+  <span class="skel-tooltip_popup-wrapper">
     <slot name="popup">
       {#if text !== undefined}
-        <div {...injectors.attr('default-popup')}>{text}</div>
+        <div class="skel-tooltip_default-popup">{text}</div>
       {/if}
     </slot>
   </span>

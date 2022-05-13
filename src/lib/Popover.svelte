@@ -2,17 +2,14 @@
   import { scale } from 'svelte/transition'
   import CommonCss from './CommonCss.svelte'
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
-  import { type ClassProp, createInjectors, isInsideOf, type StyleProp } from './utility'
+  import { isInsideOf } from './utility'
 
   export let visible = false
   export let on: EnneaPosition = 'bottom'
   export let joint: EnneaPosition | undefined = undefined
   export let persistent = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Popover', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   const open = () => (visible = true)
   const close = () => (visible = false)
@@ -38,20 +35,20 @@
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-popover_root {klass}"
   style:--skel-popover_left={toXPercent(on)}
   style:--skel-popover_top={toYPercent(on)}
   style:--skel-popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(
     joint ?? toOpposite(on)
   )})"
 >
-  <div {...injectors.attr('content-area')} bind:this={contentElement}>
+  <div class="skel-popover_content-area" bind:this={contentElement}>
     <slot {open} {close} {toggle} />
   </div>
   {#if visible}
-    <div {...injectors.attr('popover-area')} bind:this={popoverElement}>
+    <div class="skel-popover_popover-area" bind:this={popoverElement}>
       <slot name="popover-frame">
-        <div {...injectors.attr('popover-frame')} transition:scale={{ duration: 300, start: 0.92 }}>
+        <div class="skel-popover_popover-frame" transition:scale={{ duration: 300, start: 0.92 }}>
           <slot name="popover" />
         </div>
       </slot>

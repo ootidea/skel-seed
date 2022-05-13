@@ -1,17 +1,13 @@
 <script lang="ts">
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('OverlayLayout', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<div {...injectors.attr('root')}>
-  <div {...injectors.attr('main')}>
+<div class="skel-overlay-layout_root {klass}">
+  <div class="skel-overlay-layout_main">
     <slot />
   </div>
-  <div {...injectors.attr('overlay')}>
+  <div class="skel-overlay-layout_overlay">
     <slot name="overlay" />
   </div>
 </div>

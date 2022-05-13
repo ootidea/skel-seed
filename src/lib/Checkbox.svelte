@@ -1,19 +1,15 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let checked = false
   export let value: string | undefined = undefined
   export let disabled = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Checkbox', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<label {...injectors.attr('root')} class:skel-checkbox_disabled={disabled}>
-  <input type="checkbox" {...injectors.attr('checkbox')} {value} bind:checked {disabled} />
+<label class="skel-checkbox_root {klass}" class:skel-checkbox_disabled={disabled}>
+  <input type="checkbox" class="skel-checkbox_checkbox" {value} bind:checked {disabled} />
   <slot />
 </label>
 

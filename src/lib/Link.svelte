@@ -1,14 +1,9 @@
 <script lang="ts">
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
-
   export let href = ''
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Link', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<a {...injectors.attr('root')} {href}>
+<a class="skel-link_root {klass}" {href}>
   <slot>{href}</slot>
 </a>

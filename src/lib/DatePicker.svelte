@@ -2,16 +2,13 @@
   import dayjs, { Dayjs } from 'dayjs'
   import CommonCss from './CommonCss.svelte'
   import IconButton from './IconButton.svelte'
-  import { type Arrow, type ClassProp, createInjectors, type StyleProp, until } from './utility'
+  import { type Arrow, until } from './utility'
 
   export let selectedDate: Dayjs | undefined = undefined
   export let selectedMonth: Dayjs = dayjs()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('DatePicker', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   // TODO: i18n
   const dayNames = ['日', '月', '火', '水', '木', '金', '土']
@@ -28,19 +25,19 @@
   }
 </script>
 
-<div {...injectors.attr('root')}>
-  <div {...injectors.attr('year-month-area')}>
+<div class="skel-date-picker_root {klass}">
+  <div class="skel-date-picker_year-month-area">
     <IconButton
       src="src/assets/chevron-left.svg"
       onClick={() => (selectedMonth = selectedMonth.subtract(1, 'month'))}
       size="1.6em"
     />
-    <div {...injectors.attr('year-month')}>
+    <div class="skel-date-picker_year-month">
       <!-- TODO: i18n -->
-      <span {...injectors.attr('year')}>
+      <span class="skel-date-picker_year">
         {selectedMonth.format('YYYY')}年
       </span>
-      <span {...injectors.attr('month')}>
+      <span class="skel-date-picker_month">
         {selectedMonth.format('M')}月
       </span>
     </div>
@@ -51,21 +48,21 @@
     />
   </div>
 
-  <div {...injectors.attr('grid')}>
-    <div {...injectors.attr('day-row')}>
+  <div class="skel-date-picker_grid">
+    <div class="skel-date-picker_day-row">
       {#each dayNames as dayName, day}
-        <div {...injectors.attr('cell')} data-day={day}>
+        <div class="skel-date-picker_cell" data-day={day}>
           {dayName}
         </div>
       {/each}
     </div>
 
     {#each until(6) as weakIndex}
-      <div {...injectors.attr('date-row')}>
+      <div class="skel-date-picker_date-row">
         {#each dayNames as _, day}
           {@const date = firstDateOfSelectedMonthCal.add(weakIndex, 'week').add(day, 'day')}
           <div
-            {...injectors.attr('cell')}
+            class="skel-date-picker_cell"
             class:skel-date-picker_today={selectedDate?.isSame(date, 'date')}
             class:skel-date-picker_next-month={date.isAfter(selectedMonth, 'month')}
             class:skel-date-picker_prev-month={date.isBefore(selectedMonth, 'month')}

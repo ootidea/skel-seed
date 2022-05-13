@@ -1,7 +1,7 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import Icon from './Icon.svelte'
-  import { type Arrow, type ClassProp, createInjectors, type StyleProp } from './utility'
+  import type { Arrow } from './utility'
 
   export let src = ''
   export let size: string | undefined = undefined
@@ -9,26 +9,18 @@
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
   export let disabledColor = 'var(--skel-icon-button_disabled-default-color)'
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('IconButton', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-icon-button_root {klass}"
   class:skel-icon-button_disabled={disabled}
   style:--skel-icon-button_size={size}
   on:click={onClick}
 >
   <slot>
-    <Icon
-      {...injectors.props('icon')}
-      {src}
-      {size}
-      iconColor={disabled ? disabledColor : iconColor}
-    />
+    <Icon {src} {size} iconColor={disabled ? disabledColor : iconColor} />
   </slot>
 </div>
 

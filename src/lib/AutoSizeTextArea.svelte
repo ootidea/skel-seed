@@ -1,24 +1,23 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let text = ''
   export let placeholder = ''
   export let disabled = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('AutoSizeTextArea', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div {...injectors.attr('root')} class:skel-auto-size-text-area_disabled={disabled}>
-  <div {...injectors.attr('dummy')} aria-hidden="true">
+<div
+  class="skel-auto-size-text-area_root {klass}"
+  class:skel-auto-size-text-area_disabled={disabled}
+>
+  <div class="skel-auto-size-text-area_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea {...injectors.attr('text-area')} bind:value={text} {placeholder} {disabled} />
+  <textarea class="skel-auto-size-text-area_text-area" bind:value={text} {placeholder} {disabled} />
 </div>
 
 <CommonCss />

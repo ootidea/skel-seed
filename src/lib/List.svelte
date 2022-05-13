@@ -1,18 +1,14 @@
 <script lang="ts">
   import Divider from './Divider.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   type Item = $$Generic
   export let items: readonly Item[]
   export let direction: 'horizontal' | 'vertical' = 'vertical'
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('List', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<div {...injectors.attr('root')} data-direction={direction}>
+<div class="skel-list_root {klass}" data-direction={direction}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

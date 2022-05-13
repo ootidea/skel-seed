@@ -1,16 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import ToggleButton from './ToggleButton.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   type Value = $$Generic<string>
   export let values: Value[] = []
   export let selected: Value | undefined = undefined
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('SingleSelectToggleButton', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   function clickEventHandler(value: Value) {
     if (value !== selected) {
@@ -21,7 +17,7 @@
   }
 </script>
 
-<div {...injectors.attr('root')}>
+<div class="skel-single-select-toggle-button_root {klass}">
   {#each values as value, index (value)}
     <ToggleButton selected={value === selected} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

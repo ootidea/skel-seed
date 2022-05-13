@@ -1,16 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import ToggleButton from './ToggleButton.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   type Value = $$Generic<string>
   export let values: Value[] = []
   export let selected: Value[] = []
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('MultiSelectToggleButton', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   function clickEventHandler(value: Value) {
     const index = selected.indexOf(value)
@@ -24,7 +20,7 @@
   }
 </script>
 
-<div {...injectors.attr('root')}>
+<div class="skel-multi-select-toggle-button_root {klass}">
   {#each values as value, index (value)}
     <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

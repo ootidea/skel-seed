@@ -1,16 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let size = 'var(--skel-spinner_default-size)'
   // TODO: Can convert this to CSS variable?
   export let thickness = 25
   export let frequency = 1.4
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Spinner', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   $: svgUrl = `url('data:image/svg+xml;utf8,<svg width="200mm" height="200mm" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="${
     100 - thickness / 2
@@ -18,12 +14,12 @@
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-spinner_root {klass}"
   style:--skel-spinner_size={size}
   style:--skel-spinner_svg-url={svgUrl}
   style:--skel-spinner_period="{1 / frequency}s"
 >
-  <div {...injectors.attr('spinner')} />
+  <div class="skel-spinner_spinner" />
 </div>
 
 <CommonCss />

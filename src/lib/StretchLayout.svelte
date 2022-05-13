@@ -1,17 +1,12 @@
 <script lang="ts">
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
-
   export let stretchAt = 0
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('StretchLayout', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
 <div
-  {...injectors.attr('root')}
+  class="skel-stretch-layout_root {klass}"
   style:--skel-stretch-layout_template={'auto '.repeat(stretchAt) + 'minmax(0, 1fr)'}
   data-direction={direction}
 >

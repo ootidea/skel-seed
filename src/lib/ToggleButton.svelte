@@ -1,16 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let selected = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('ToggleButton', classProp, style)
+  let klass = ''
+  export { klass as class }
 </script>
 
-<div {...injectors.attr('root')} class:skel-toggle-button_selected={selected} on:click>
+<div class="skel-toggle-button_root {klass}" class:skel-toggle-button_selected={selected} on:click>
   <slot />
 </div>
 

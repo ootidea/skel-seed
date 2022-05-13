@@ -2,19 +2,11 @@
   import check from '/src/assets/check.svg'
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
-  import {
-    type ClassProp,
-    createInjectors,
-    type DiscriminatedUnion,
-    type StyleProp,
-  } from './utility'
+  import type { DiscriminatedUnion } from './utility'
 
   export let value: unknown = undefined
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('DataTableCell', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   $: analysisResult = analyze(value)
 
@@ -48,7 +40,7 @@
   }>
 </script>
 
-<div {...injectors.attr('root')} data-type={analysisResult.type}>
+<div class="skel-data-table-cell_root {klass}" data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

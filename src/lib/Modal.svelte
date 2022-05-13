@@ -1,14 +1,10 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { type ClassProp, createInjectors, type StyleProp } from './utility'
 
   export let visible = false
   export let disableAutoClose = false
-
-  let classProp: ClassProp = {}
-  export { classProp as class }
-  export let style: StyleProp = {}
-  $: injectors = createInjectors('Modal', classProp, style)
+  let klass = ''
+  export { klass as class }
 
   const open = () => (visible = true)
   const close = () => (visible = false)
@@ -22,7 +18,7 @@
 </script>
 
 {#if visible}
-  <div {...injectors.attr('root')} on:click|self={onClickBackdrop}>
+  <div class="skel-modal_root {klass}" on:click|self={onClickBackdrop}>
     <slot {open} {close} {toggle} />
   </div>
 {/if}
