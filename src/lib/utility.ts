@@ -80,7 +80,7 @@ export function generateStyleString(
 }
 
 function safeConcat(a: string | undefined, b: string | undefined): string | undefined {
-  if (a === undefined && b == undefined) return undefined
+  if (a === undefined && b === undefined) return undefined
 
   return (a ?? '') + (b ?? '')
 }
