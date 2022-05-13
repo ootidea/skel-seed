@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { generateStyleString } from './utility'
+  import { CssLength, generateStyleString } from './utility'
 
-  export let width: string | undefined = undefined
+  export let width: CssLength | undefined = undefined
   let klass: string | undefined = undefined
   export { klass as class }
 

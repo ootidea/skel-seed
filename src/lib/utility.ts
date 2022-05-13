@@ -53,6 +53,9 @@ export function getCssVariableAsNumber(
   return number
 }
 
+type CssLengthUnit = 'px' | 'em' | 'ex' | 'rem' | '%' | 'vw' | 'vh' | 'vmin' | 'vmax'
+export type CssLength = `${number}${CssLengthUnit}`
+
 function toKebabCase(pascalCase: string) {
   return (
     pascalCase.charAt(0).toLowerCase() +
