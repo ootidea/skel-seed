@@ -1,7 +1,7 @@
 <script lang="ts">
   import RadioButton from '../lib/RadioButton.svelte'
 
-  let group
+  let group: string | undefined
 </script>
 
 <RadioButton bind:group value="TypeScript" />
