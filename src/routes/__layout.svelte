@@ -5,7 +5,7 @@
 </script>
 
 <StretchLayout class="full-height" stretchAt={2}>
-  <div class="sidebar">
+  <aside class="sidebar">
     <Link href="./">index</Link>
     <Link href="Button" />
     <Link href="RadioButton" />
@@ -13,11 +13,11 @@
     <Link href="DataTable" />
     <Link href="Popover" />
     <Link href="Spinner" />
-  </div>
+  </aside>
   <Divider direction="vertical" />
-  <div>
+  <main>
     <slot />
-  </div>
+  </main>
 </StretchLayout>
 
 <style global lang="scss">
@@ -44,5 +44,15 @@
     flex-direction: column;
     align-items: start;
     padding: 1em;
+
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  main {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
   }
 </style>
