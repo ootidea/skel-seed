@@ -15,7 +15,7 @@
 <br />
 
 <List direction="horizontal" {items} let:item>
-  <Button rounded>{item}</Button>
+  <Button tint="achromatic">{item}</Button>
   <div slot="divider" style="width: 0.3em;" />
 </List>
 
@@ -29,7 +29,7 @@
 <br />
 
 <List direction="horizontal" {items} let:item>
-  <Button ghost rounded>{item}</Button>
+  <Button ghost tint="achromatic">{item}</Button>
   <div slot="divider" style="width: 0.3em;" />
 </List>
 

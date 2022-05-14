@@ -2,9 +2,9 @@
   import CommonCss from './CommonCss.svelte'
   import type { Arrow } from './utility'
 
-  export let achromatic = false
+  export let tint: 'primary' | 'achromatic' = 'primary'
+  export let ghost = false
   export let rounded = false
-  export let ghost: boolean | undefined = undefined
   export let disabled = false
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   let klass = ''
@@ -13,10 +13,10 @@
 
 <button
   class="skel-button_root {klass}"
-  class:skel-button_achromatic={achromatic}
+  class:skel-button_ghost={ghost}
   class:skel-button_rounded={rounded}
-  class:skel-button_ghost={ghost ?? achromatic}
   class:skel-button_disabled={disabled}
+  data-tint={tint}
   on:click={onClick}
 >
   <slot />
@@ -34,16 +34,38 @@
     height: 2.45em;
     padding: 0 1.3em;
     border-radius: 0.3em;
-    border: var(--skel-primary-color) 1px solid;
-    background-color: var(--skel-primary-color);
-    color: var(--skel-inverted-text-color);
+    border-width: 1px;
+    border-style: solid;
 
     user-select: none;
     transition: var(--skel-backward-transition);
 
+    &:not(.skel-button_ghost) {
+      color: var(--skel-inverted-text-color);
+      border-color: var(--skel-button_tint-color);
+      background-color: var(--skel-button_tint-color);
+
+      &[data-tint='primary'] {
+        --skel-button_tint-color: var(--skel-primary-color);
+      }
+
+      &[data-tint='achromatic'] {
+        --skel-button_tint-color: oklch(55% 0 0);
+      }
+    }
+
     &.skel-button_ghost {
+      color: var(--skel-button_tint-color);
+      border-color: var(--skel-button_tint-color);
       background-color: transparent;
-      color: var(--skel-primary-color);
+
+      &[data-tint='primary'] {
+        --skel-button_tint-color: var(--skel-primary-color);
+      }
+
+      &[data-tint='achromatic'] {
+        --skel-button_tint-color: oklch(50% 0 0);
+      }
     }
 
     &:not(.skel-button_disabled) {
