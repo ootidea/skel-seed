@@ -44,10 +44,12 @@
   export let backgroundColor: string | undefined = undefined
   export let color: string | undefined = undefined
   export let fontWeight: FontWeight | undefined = undefined
+
+  export let style: string | undefined = undefined
   let klass: string | undefined = undefined
   export { klass as class }
 
-  $: style = generateStyleString({
+  $: style = generateStyleString(style, {
     position,
     top,
     bottom,

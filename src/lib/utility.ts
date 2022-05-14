@@ -61,9 +61,15 @@ function toKebabCase(pascalCase: string) {
 }
 
 export function generateStyleString(
+  style: string | undefined,
   record: Record<string, string | undefined>
 ): string | undefined {
-  const result: string[] = []
+  const result: string[] = (style ?? '')
+    .split(';')
+    .map((part) => part.trim())
+    .filter((part) => part !== '')
+    .map((part) => `${part};`)
+
   for (const key in record) {
     const value = record[key]
     if (value !== undefined) {
@@ -73,13 +79,7 @@ export function generateStyleString(
 
   if (result.length === 0) return undefined
 
-  return result.join('')
-}
-
-function safeConcat(a: string | undefined, b: string | undefined): string | undefined {
-  if (a === undefined && b === undefined) return undefined
-
-  return (a ?? '') + (b ?? '')
+  return result.join(' ')
 }
 
 /**
