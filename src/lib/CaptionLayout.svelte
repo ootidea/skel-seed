@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let captionPosition: 'above' | 'below' = 'below'
+
   let klass = ''
   export { klass as class }
 
@@ -6,12 +8,21 @@
 </script>
 
 <div class="skel-caption-layout_root {klass}" style:--skel-caption-layout_width="{clientWidth}px">
-  <div class="skel-caption-layout_unnamed-slot-wrapper" bind:clientWidth>
-    <slot />
-  </div>
-  <div class="skel-caption-layout_caption">
-    <slot name="caption" />
-  </div>
+  {#if captionPosition === 'below'}
+    <div class="skel-caption-layout_unnamed-slot-wrapper" bind:clientWidth>
+      <slot />
+    </div>
+    <div class="skel-caption-layout_caption">
+      <slot name="caption" />
+    </div>
+  {:else}
+    <div class="skel-caption-layout_caption">
+      <slot name="caption" />
+    </div>
+    <div class="skel-caption-layout_unnamed-slot-wrapper" bind:clientWidth>
+      <slot />
+    </div>
+  {/if}
 </div>
 
 <style global lang="scss">
