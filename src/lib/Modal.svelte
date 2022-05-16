@@ -17,9 +17,16 @@
   }
 </script>
 
+{#if $$slots.modal}
+  <slot {open} {close} {toggle} />
+{/if}
 {#if visible}
   <div class="skel-modal_root {klass}" on:click|self={onClickBackdrop}>
-    <slot {open} {close} {toggle} />
+    {#if $$slots.modal}
+      <slot name="modal" {open} {close} {toggle} />
+    {:else}
+      <slot {open} {close} {toggle} />
+    {/if}
   </div>
 {/if}
 
