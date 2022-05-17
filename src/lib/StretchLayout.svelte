@@ -9,6 +9,7 @@
   class="skel-stretch-layout_root {klass}"
   style:--skel-stretch-layout_template={'auto '.repeat(stretchAt) + 'minmax(0, 1fr)'}
   data-direction={direction}
+  on:click
 >
   <slot />
 </div>
