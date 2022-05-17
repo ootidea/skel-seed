@@ -1,15 +1,16 @@
 <script lang="ts">
   import RadioButton from '../lib/RadioButton.svelte'
+  import Sample from './Sample.svelte'
 
   let group: string | undefined
 </script>
 
-<RadioButton bind:group value="TypeScript" />
-<RadioButton bind:group value="Kotlin" />
+<Sample>
+  <RadioButton bind:group value="TypeScript" />
+  <RadioButton bind:group value="Kotlin" />
+</Sample>
 
-<br />
-
-<RadioButton name="2nd" value="Swift" />
-<RadioButton name="2nd">Prolog</RadioButton>
-
-<br />
+<Sample>
+  <RadioButton name="2nd" value="Swift" />
+  <RadioButton name="2nd">Prolog</RadioButton>
+</Sample>
