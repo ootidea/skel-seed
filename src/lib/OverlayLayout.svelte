@@ -4,9 +4,7 @@
 </script>
 
 <div class="skel-overlay-layout_root {klass}">
-  <div class="skel-overlay-layout_main">
-    <slot />
-  </div>
+  <slot />
   <div class="skel-overlay-layout_overlay">
     <slot name="overlay" />
   </div>

@@ -1,5 +1,8 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import Gravity from './Gravity.svelte'
+  import OverlayLayout from './OverlayLayout.svelte'
+  import Spinner from './Spinner.svelte'
   import type { Arrow } from './utility'
 
   export let tint: 'primary' | 'achromatic' = 'primary'
@@ -9,6 +12,18 @@
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   let klass = ''
   export { klass as class }
+
+  $: isSpinnerInverted = !ghost
+
+  let isInProgress = false
+
+  function clickEventHandler(event: MouseEvent) {
+    const promise = onClick?.(event)
+    if (promise instanceof Promise) {
+      isInProgress = true
+      promise.finally(() => (isInProgress = false))
+    }
+  }
 </script>
 
 <button
@@ -17,9 +32,20 @@
   class:skel-button_rounded={rounded}
   class:skel-button_disabled={disabled}
   data-tint={tint}
-  on:click={onClick}
+  on:click={clickEventHandler}
 >
-  <slot />
+  {#if isInProgress}
+    <OverlayLayout>
+      <div class="skel-button_invisible">
+        <slot />
+      </div>
+      <Gravity slot="overlay">
+        <Spinner inverted={isSpinnerInverted} />
+      </Gravity>
+    </OverlayLayout>
+  {:else}
+    <slot />
+  {/if}
 </button>
 
 <CommonCss />
@@ -93,5 +119,9 @@
 
   .skel-button_rounded {
     border-radius: 99999px;
+  }
+
+  .skel-button_invisible {
+    visibility: hidden;
   }
 </style>

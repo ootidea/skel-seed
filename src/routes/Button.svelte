@@ -6,6 +6,12 @@
   import SectionTitle from './SectionTitle.svelte'
 
   const items = ['Button', 'finish', 'cancel', '完了', 'キャンセル']
+
+  async function awaitSomeSeconds() {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 2000)
+    })
+  }
 </script>
 
 <Sample>
@@ -37,6 +43,14 @@
     <Button tint="achromatic" ghost>{item}</Button>
     <div slot="divider" style="width: 0.3em;" />
   </List>
+</Sample>
+
+<SectionTitle>onClick function that returns a Promise</SectionTitle>
+<Sample>
+  <Button onClick={awaitSomeSeconds}>First</Button>
+  <Button ghost onClick={awaitSomeSeconds}>First</Button>
+  <Button tint="achromatic" onClick={awaitSomeSeconds}>First</Button>
+  <Button tint="achromatic" ghost onClick={awaitSomeSeconds}>First</Button>
 </Sample>
 
 <SectionTitle>with icon</SectionTitle>

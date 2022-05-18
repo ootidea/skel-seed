@@ -5,6 +5,7 @@
   // TODO: Can convert this to CSS variable?
   export let thickness = 25
   export let frequency = 1.4
+  export let inverted = false
   let klass = ''
   export { klass as class }
 
@@ -18,6 +19,9 @@
   style:--skel-spinner_size={size}
   style:--skel-spinner_svg-url={svgUrl}
   style:--skel-spinner_period="{1 / frequency}s"
+  style:--skel-spinner_color={inverted
+    ? 'var(--skel-inverted-text-color)'
+    : 'var(--skel-primary-color)'}
 >
   <div class="skel-spinner_spinner" />
 </div>
@@ -25,16 +29,14 @@
 <CommonCss />
 
 <style global lang="scss">
-  :root {
+  .skel-spinner_root {
     --skel-spinner_default-size: 1.2em;
     --skel-spinner_default-background-image: conic-gradient(
       transparent,
       transparent,
-      var(--skel-primary-color)
+      var(--skel-spinner_color)
     );
-  }
 
-  .skel-spinner_root {
     display: inline-block;
     position: relative;
     width: var(--skel-spinner_size);
