@@ -8,7 +8,7 @@
   export { klass as class }
 
   function onClick() {
-    goto(`./${componentName}`)
+    goto(`./${componentName}-component`)
   }
 
   function getFileName(url: string): string {
@@ -19,7 +19,7 @@
 
 <div
   class="root {klass}"
-  class:active={getFileName($page.url.pathname) === componentName}
+  class:active={getFileName($page.url.pathname) === `${componentName}-component`}
   on:click={onClick}
 >
   {componentName}
