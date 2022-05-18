@@ -1,10 +1,11 @@
 <script lang="ts">
   import MultiSelectToggleButton from '../lib/MultiSelectToggleButton.svelte'
   import SingleSelectToggleButton from '../lib/SingleSelectToggleButton.svelte'
+  import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
 </script>
 
-<h1>Toggle button</h1>
+<PageTitle>Toggle Button</PageTitle>
 
 <h2>Single select</h2>
 <Sample>

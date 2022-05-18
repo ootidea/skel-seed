@@ -1,10 +1,11 @@
 <script lang="ts">
   import DatePicker from '../lib/DatePicker.svelte'
   import Foldable from '../lib/Foldable.svelte'
+  import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
 </script>
 
-<h1>Foldable</h1>
+<PageTitle>Foldable</PageTitle>
 
 <Sample>
   <Foldable>

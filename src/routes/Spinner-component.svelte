@@ -1,9 +1,10 @@
 <script lang="ts">
   import Spinner from '../lib/Spinner.svelte'
+  import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
 </script>
 
-<h1>Spinner</h1>
+<PageTitle>Spinner</PageTitle>
 
 <h2>Default</h2>
 <Sample>

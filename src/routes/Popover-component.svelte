@@ -1,8 +1,11 @@
 <script lang="ts">
   import AutoSizeTextArea from '../lib/AutoSizeTextArea.svelte'
   import Popover from '../lib/Popover.svelte'
+  import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
 </script>
+
+<PageTitle>Popover</PageTitle>
 
 <Sample>
   <Popover on="left" let:toggle>

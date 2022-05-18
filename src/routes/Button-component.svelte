@@ -2,6 +2,7 @@
   import Button from '../lib/Button.svelte'
   import Icon from '../lib/Icon.svelte'
   import List from '../lib/List.svelte'
+  import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
   import SectionTitle from './_components/SectionTitle.svelte'
 
@@ -13,6 +14,8 @@
     })
   }
 </script>
+
+<PageTitle>Button</PageTitle>
 
 <Sample>
   <List direction="horizontal" {items} let:item>
