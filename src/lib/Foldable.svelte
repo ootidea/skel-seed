@@ -5,16 +5,27 @@
   import Gravity from './Gravity.svelte'
   import Icon from './Icon.svelte'
   import StretchLayout from './StretchLayout.svelte'
+  import type { Arrow } from './utility'
 
   export let unfolded = false
   export let headerBackgroundColor = 'var(--skel-foldable_header-background-default-color)'
   export let borderColor = 'var(--skel-foldable_border-default-color)'
+  export let onUnfold: Arrow<[], unknown> | undefined = undefined
   let klass = ''
   export { klass as class }
 
   const fold = () => (unfolded = true)
   const unfold = () => (unfolded = false)
   const toggle = () => (unfolded = !unfolded)
+
+  // Mirror variable for value change detection.
+  let _unfolded = unfolded
+  $: if (_unfolded !== unfolded) {
+    _unfolded = unfolded
+    if (unfolded) {
+      onUnfold?.()
+    }
+  }
 </script>
 
 <div
