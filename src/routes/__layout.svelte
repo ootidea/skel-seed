@@ -11,6 +11,7 @@
     <SidebarMenu componentName="ToggleButton" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
+    <SidebarMenu componentName="Foldable" />
     <SidebarMenu componentName="Spinner" />
   </aside>
   <Divider direction="vertical" />
