@@ -1,6 +1,6 @@
 <script lang="ts">
   import Spinner from '../lib/Spinner.svelte'
-  import Sample from './Sample.svelte'
+  import Sample from './_components/Sample.svelte'
 </script>
 
 <h1>Spinner</h1>

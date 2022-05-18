@@ -1,7 +1,7 @@
 <script lang="ts">
   import AutoSizeTextArea from '../lib/AutoSizeTextArea.svelte'
   import Popover from '../lib/Popover.svelte'
-  import Sample from './Sample.svelte'
+  import Sample from './_components/Sample.svelte'
 </script>
 
 <Sample>

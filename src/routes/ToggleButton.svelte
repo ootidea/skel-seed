@@ -1,7 +1,7 @@
 <script lang="ts">
   import MultiSelectToggleButton from '../lib/MultiSelectToggleButton.svelte'
   import SingleSelectToggleButton from '../lib/SingleSelectToggleButton.svelte'
-  import Sample from './Sample.svelte'
+  import Sample from './_components/Sample.svelte'
 </script>
 
 <h1>Toggle button</h1>

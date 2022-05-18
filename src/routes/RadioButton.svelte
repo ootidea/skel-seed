@@ -1,6 +1,6 @@
 <script lang="ts">
   import RadioButton from '../lib/RadioButton.svelte'
-  import Sample from './Sample.svelte'
+  import Sample from './_components/Sample.svelte'
 
   let group: string | undefined
 </script>

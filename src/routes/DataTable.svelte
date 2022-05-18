@@ -1,7 +1,7 @@
 <script lang="ts">
   import DataTable from '../lib/DataTable.svelte'
   import DataTableCell from '../lib/DataTableCell.svelte'
-  import Sample from './Sample.svelte'
+  import Sample from './_components/Sample.svelte'
 
   const rows = [
     { name: 'hoge', age: 10, createdAt: new Date(), ed: true, image: 'src/assets/plus.svg' },

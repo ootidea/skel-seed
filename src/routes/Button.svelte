@@ -2,8 +2,8 @@
   import Button from '../lib/Button.svelte'
   import Icon from '../lib/Icon.svelte'
   import List from '../lib/List.svelte'
-  import Sample from './Sample.svelte'
-  import SectionTitle from './SectionTitle.svelte'
+  import Sample from './_components/Sample.svelte'
+  import SectionTitle from './_components/SectionTitle.svelte'
 
   const items = ['Button', 'finish', 'cancel', '完了', 'キャンセル']
 
