@@ -1,18 +1,17 @@
 <script lang="ts">
   import Divider from '../lib/Divider.svelte'
-  import Link from '../lib/Link.svelte'
   import StretchLayout from '../lib/StretchLayout.svelte'
+  import SidebarMenu from './_components/SidebarMenu.svelte'
 </script>
 
 <StretchLayout class="full-height" stretchAt={2}>
   <aside class="sidebar">
-    <Link href="./">index</Link>
-    <Link href="Button" />
-    <Link href="RadioButton" />
-    <Link href="ToggleButton" />
-    <Link href="DataTable" />
-    <Link href="Popover" />
-    <Link href="Spinner" />
+    <SidebarMenu componentName="Button" />
+    <SidebarMenu componentName="RadioButton" />
+    <SidebarMenu componentName="ToggleButton" />
+    <SidebarMenu componentName="DataTable" />
+    <SidebarMenu componentName="Popover" />
+    <SidebarMenu componentName="Spinner" />
   </aside>
   <Divider direction="vertical" />
   <main>
@@ -40,10 +39,7 @@
 
   .sidebar {
     width: 16vw;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 1em;
+    padding-block: 1em;
 
     box-sizing: border-box;
     height: 100%;
