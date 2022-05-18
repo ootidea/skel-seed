@@ -22,50 +22,37 @@
   style:--skel-spinner_color={inverted
     ? 'var(--skel-inverted-text-color)'
     : 'var(--skel-primary-color)'}
->
-  <div class="skel-spinner_spinner" />
-</div>
+/>
 
 <CommonCss />
 
 <style global lang="scss">
-  .skel-spinner_root {
+  :root {
     --skel-spinner_default-size: 1.2em;
-    --skel-spinner_default-background-image: conic-gradient(
-      transparent,
-      transparent,
-      var(--skel-spinner_color)
-    );
+  }
 
+  .skel-spinner_root {
     display: inline-block;
     position: relative;
     width: var(--skel-spinner_size);
     height: var(--skel-spinner_size);
-  }
-
-  .skel-spinner_spinner {
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
 
     vertical-align: top;
 
-    background-image: var(--skel-spinner_default-background-image);
+    background-image: conic-gradient(transparent, transparent, var(--skel-spinner_color));
     mask: var(--skel-spinner_svg-url) no-repeat center;
     mask-size: contain;
 
+    transform-origin: center;
     animation: rotation var(--skel-spinner_period) infinite linear;
   }
 
   @keyframes rotation {
     0% {
-      transform: translate(-50%, -50%) rotate(0deg);
+      transform: rotate(0deg);
     }
     100% {
-      transform: translate(-50%, -50%) rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 </style>
