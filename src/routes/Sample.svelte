@@ -2,7 +2,7 @@
   <slot />
 </div>
 
-<style global lang="scss">
+<style lang="scss">
   .root {
     padding: 2em;
     border-radius: 0.5rem;
