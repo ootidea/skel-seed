@@ -9,6 +9,7 @@
     <SidebarMenu componentName="Button" />
     <SidebarMenu componentName="RadioButton" />
     <SidebarMenu componentName="ToggleButton" />
+    <SidebarMenu componentName="PastDatePicker" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
     <SidebarMenu componentName="Foldable" />

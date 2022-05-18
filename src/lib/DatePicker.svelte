@@ -5,7 +5,7 @@
   import { type Arrow, until } from './utility'
 
   export let selectedDate: Dayjs | undefined = undefined
-  export let selectedMonth: Dayjs = dayjs()
+  export let selectedMonth: Date = new Date()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   let klass = ''
   export { klass as class }
@@ -13,8 +13,9 @@
   // TODO: i18n
   const dayNames = ['日', '月', '火', '水', '木', '金', '土']
 
-  $: firstDateOfSelectedMonth = selectedMonth.date(1)
-  $: firstDateOfSelectedMonthCal = firstDateOfSelectedMonth.subtract(
+  $: _selectedMonth = dayjs(selectedMonth)
+  $: firstDateOfSelectedMonth = _selectedMonth.date(1)
+  $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(
     firstDateOfSelectedMonth.day(),
     'day'
   )
@@ -29,21 +30,21 @@
   <div class="skel-date-picker_year-month-area">
     <IconButton
       src="src/assets/chevron-left.svg"
-      onClick={() => (selectedMonth = selectedMonth.subtract(1, 'month'))}
+      onClick={() => (selectedMonth = _selectedMonth.subtract(1, 'month').toDate())}
       size="1.6em"
     />
     <div class="skel-date-picker_year-month">
       <!-- TODO: i18n -->
       <span class="skel-date-picker_year">
-        {selectedMonth.format('YYYY')}年
+        {_selectedMonth.format('YYYY')}年
       </span>
       <span class="skel-date-picker_month">
-        {selectedMonth.format('M')}月
+        {_selectedMonth.format('M')}月
       </span>
     </div>
     <IconButton
       src="src/assets/chevron-right.svg"
-      onClick={() => (selectedMonth = selectedMonth.add(1, 'month'))}
+      onClick={() => (selectedMonth = _selectedMonth.add(1, 'month').toDate())}
       size="1.6em"
     />
   </div>
@@ -60,12 +61,12 @@
     {#each until(6) as weakIndex}
       <div class="skel-date-picker_date-row">
         {#each dayNames as _, day}
-          {@const date = firstDateOfSelectedMonthCal.add(weakIndex, 'week').add(day, 'day')}
+          {@const date = firstDateOfSelectedCalendar.add(weakIndex, 'week').add(day, 'day')}
           <div
             class="skel-date-picker_cell"
             class:skel-date-picker_today={selectedDate?.isSame(date, 'date')}
-            class:skel-date-picker_next-month={date.isAfter(selectedMonth, 'month')}
-            class:skel-date-picker_prev-month={date.isBefore(selectedMonth, 'month')}
+            class:skel-date-picker_next-month={date.isAfter(_selectedMonth, 'month')}
+            class:skel-date-picker_prev-month={date.isBefore(_selectedMonth, 'month')}
             data-day={day}
             on:click={() => onClickDate(date)}
           >

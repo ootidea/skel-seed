@@ -17,6 +17,29 @@ export function until(length: number): readonly number[] {
   return Array.from({ length }, (_, i) => i)
 }
 
+/**
+ * @example
+ * range(0, 2) is equivalent to [0, 1, 2]
+ * range(10, 20, 3) is equivalent to [10, 13, 16, 19]
+ * range(0, 2, 0.5) is equivalent to [0, 0.5, 1, 1.5, 2]
+ * range(10, 0, -2) is equivalent to [10, 8, 6, 4, 2, 0]
+ * range(10, 0, 2) is equivalent to [10, 8, 6, 4, 2, 0]
+ * range(100, 100) is equivalent to [100]
+ */
+export function range(start: number, end: number, step?: number): readonly number[] {
+  const normalizedStep = Math.abs(step ?? 1)
+
+  if (start <= end) {
+    return [...Array(Math.floor((end - start) / normalizedStep) + 1)].map(
+      (_, i) => start + i * normalizedStep
+    )
+  } else {
+    return [...Array(Math.floor((start - end) / normalizedStep) + 1)].map(
+      (_, i) => start - i * normalizedStep
+    )
+  }
+}
+
 export function isInsideOf(x: number, y: number, rect: DOMRect): boolean {
   if (x < rect.left) return false
   if (rect.right < x) return false

@@ -32,6 +32,7 @@
   class:skel-button_rounded={rounded}
   class:skel-button_disabled={disabled}
   data-tint={tint}
+  {disabled}
   on:click={clickEventHandler}
 >
   {#if isInProgress}
@@ -58,7 +59,7 @@
 
     // Since character height is different between full-pitch and half-pitch, set height instead of padding.
     height: 2.45em;
-    padding: 0 1.3em;
+    padding: 0 1em;
     border-radius: 0.3em;
     border-width: 1px;
     border-style: solid;
