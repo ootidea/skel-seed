@@ -1,14 +1,14 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
 
-  export let visible = false
+  export let opened = false
   export let disableAutoClose = false
   let klass = ''
   export { klass as class }
 
-  const open = () => (visible = true)
-  const close = () => (visible = false)
-  const toggle = () => (visible = !visible)
+  const open = () => (opened = true)
+  const close = () => (opened = false)
+  const toggle = () => (opened = !opened)
 
   function onClickBackdrop() {
     if (!disableAutoClose) {
@@ -20,7 +20,7 @@
 {#if $$slots.modal}
   <slot {open} {close} {toggle} />
 {/if}
-{#if visible}
+{#if opened}
   <div class="skel-modal_root {klass}" on:click|self={onClickBackdrop}>
     {#if $$slots.modal}
       <slot name="modal" {open} {close} {toggle} />

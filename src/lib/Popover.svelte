@@ -4,22 +4,22 @@
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
   import { isInsideOf } from './utility'
 
-  export let visible = false
+  export let opened = false
   export let on: EnneaPosition = 'bottom'
   export let joint: EnneaPosition | undefined = undefined
   export let persistent = false
   let klass = ''
   export { klass as class }
 
-  const open = () => (visible = true)
-  const close = () => (visible = false)
-  const toggle = () => (visible = !visible)
+  const open = () => (opened = true)
+  const close = () => (opened = false)
+  const toggle = () => (opened = !opened)
 
   let contentElement: HTMLElement | null = null
   let popoverElement: HTMLElement | null = null
 
   function onClickWindow(event: MouseEvent) {
-    if (persistent || !visible) return
+    if (persistent || !opened) return
     if (contentElement === null || popoverElement === null) return
 
     const x = event.clientX
@@ -45,7 +45,7 @@
   <div class="skel-popover_content-area" bind:this={contentElement}>
     <slot {open} {close} {toggle} />
   </div>
-  {#if visible}
+  {#if opened}
     <div class="skel-popover_popover-area" bind:this={popoverElement}>
       <slot name="popover-frame">
         <div class="skel-popover_popover-frame" transition:scale={{ duration: 300, start: 0.92 }}>
