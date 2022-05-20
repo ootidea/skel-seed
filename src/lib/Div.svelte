@@ -17,8 +17,13 @@
   export let left: string | undefined = undefined
   export let right: string | undefined = undefined
   export let display: Display | undefined = undefined
+  export let gridTemplateColumns: string | undefined = undefined
+  export let gridTemplateRows: string | undefined = undefined
   export let alignItems: AlignItems | undefined = undefined
   export let justifyContent: JustifyContent | undefined = undefined
+  export let gap: string | undefined = undefined
+  export let columnGap: string | undefined = undefined
+  export let rowGap: string | undefined = undefined
   export let margin: string | undefined = undefined
   export let marginTop: string | undefined = undefined
   export let marginBottom: string | undefined = undefined
@@ -56,6 +61,13 @@
     left,
     right,
     display,
+    gridTemplateColumns,
+    gridTemplateRows,
+    alignItems,
+    justifyContent,
+    gap,
+    columnGap,
+    rowGap,
     margin,
     marginTop,
     marginBottom,
@@ -78,8 +90,6 @@
     width,
     height,
     borderRadius,
-    alignItems,
-    justifyContent,
     backgroundColor,
     color,
     fontWeight,
