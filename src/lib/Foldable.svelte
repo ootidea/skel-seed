@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition'
+  import { onMount } from 'svelte'
   import CommonCss from './CommonCss.svelte'
   import Divider from './Divider.svelte'
   import Gravity from './Gravity.svelte'
@@ -23,8 +23,44 @@
   $: if (_unfolded !== unfolded) {
     _unfolded = unfolded
     if (unfolded) {
+      startUnfoldingAnimation()
       onUnfold?.()
+    } else {
+      startFoldingAnimation()
     }
+  }
+
+  let contentAreaElement: HTMLElement | null = null
+  let contentHeight = 0
+
+  onMount(() => {
+    if (!unfolded && contentAreaElement !== null) {
+      contentAreaElement.style.height = '0'
+      contentAreaElement.style.visibility = 'hidden'
+    }
+  })
+
+  const ANIMATION_OPTION = {
+    duration: 140,
+    easing: 'ease-out',
+  }
+
+  async function startFoldingAnimation() {
+    if (contentAreaElement === null) return
+
+    await contentAreaElement.animate({ height: [`${contentHeight}px`, '0'] }, ANIMATION_OPTION)
+      .finished
+    contentAreaElement.style.height = '0'
+    contentAreaElement.style.visibility = 'hidden'
+  }
+
+  async function startUnfoldingAnimation() {
+    if (contentAreaElement === null) return
+
+    contentAreaElement.style.visibility = 'visible'
+    await contentAreaElement.animate({ height: ['0', `${contentHeight}px`] }, ANIMATION_OPTION)
+      .finished
+    contentAreaElement.style.height = 'auto'
   }
 </script>
 
@@ -53,10 +89,12 @@
     <slot name="divider">
       <Divider color="var(--skel-foldable_border-color)" />
     </slot>
-    <div transition:slide={{ duration: 100 }}>
+  {/if}
+  <div class="skel-foldable_content-area" bind:this={contentAreaElement}>
+    <div class="skel-foldable_content" bind:clientHeight={contentHeight}>
       <slot {fold} {unfold} {toggle} />
     </div>
-  {/if}
+  </div>
 </div>
 
 <CommonCss />
@@ -91,10 +129,16 @@
 
   .skel-foldable_icon {
     transform-origin: center;
-    transition: all 0.2s ease-out;
+    transition: all 140ms ease-out;
 
     .skel-foldable_unfolded & {
       transform: rotate(-180deg);
     }
+  }
+
+  .skel-foldable_content-area {
+    overflow: hidden;
+
+    // height and visibility are set by JavaScript.
   }
 </style>
