@@ -60,6 +60,7 @@
   export let lineHeight: string | undefined = undefined
 
   export let style: string | undefined = undefined
+  export let use: unknown = undefined
   let klass: string | undefined = undefined
   export { klass as class }
 
@@ -114,6 +115,6 @@
   })
 </script>
 
-<div class={klass} {style}>
+<div class={klass} {style} use:use>
   <slot />
 </div>
