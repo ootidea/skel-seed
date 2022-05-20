@@ -7,6 +7,7 @@
 <StretchLayout class="full-height" stretchAt={2}>
   <aside class="sidebar">
     <SidebarMenu componentName="Button" />
+    <SidebarMenu componentName="IconButton" />
     <SidebarMenu componentName="RadioButton" />
     <SidebarMenu componentName="ToggleButton" />
     <SidebarMenu componentName="PastDatePicker" />

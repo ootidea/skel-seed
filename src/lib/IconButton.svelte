@@ -4,7 +4,7 @@
   import type { Arrow } from './utility'
 
   export let src = ''
-  export let size: string | undefined = undefined
+  export let size = 'var(--skel-icon-button_default-size)'
   export let iconColor: string | undefined = undefined
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
@@ -28,11 +28,13 @@
 
 <style global lang="scss">
   :root {
+    --skel-icon-button_default-size: 2em;
     --skel-icon-button_disabled-default-color: oklch(70% 0 0);
   }
 
   .skel-icon-button_root {
     display: inline-flex;
+    vertical-align: top;
     align-items: center;
     justify-content: center;
 
