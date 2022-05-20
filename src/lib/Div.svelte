@@ -44,11 +44,20 @@
   export let paddingInline: string | undefined = undefined
   export let boxSizing: BoxSizing | undefined = undefined
   export let width: Width | undefined = undefined
+  export let minWidth: string | undefined = undefined
+  export let maxWidth: string | undefined = undefined
   export let height: Height | undefined = undefined
+  export let minHeight: string | undefined = undefined
+  export let maxHeight: string | undefined = undefined
   export let borderRadius: string | undefined = undefined
+  export let border: string | undefined = undefined
+  export let outline: string | undefined = undefined
+  export let boxShadow: string | undefined = undefined
   export let backgroundColor: string | undefined = undefined
   export let color: string | undefined = undefined
+  export let fontSize: string | undefined = undefined
   export let fontWeight: FontWeight | undefined = undefined
+  export let lineHeight: string | undefined = undefined
 
   export let style: string | undefined = undefined
   let klass: string | undefined = undefined
@@ -88,11 +97,20 @@
     paddingInline,
     boxSizing,
     width,
+    minWidth,
+    maxWidth,
     height,
+    minHeight,
+    maxHeight,
     borderRadius,
+    border,
+    outline,
+    boxShadow,
     backgroundColor,
     color,
+    fontSize,
     fontWeight,
+    lineHeight,
   })
 </script>
 
