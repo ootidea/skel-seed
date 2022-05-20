@@ -9,7 +9,7 @@
     Position,
     Width,
   } from './styleType'
-  import { generateStyleString } from './utility'
+  import { type Arrow, generateStyleString } from './utility'
 
   export let position: Position | undefined = undefined
   export let top: string | undefined = undefined
@@ -60,7 +60,8 @@
   export let lineHeight: string | undefined = undefined
 
   export let style: string | undefined = undefined
-  export let use: unknown = undefined
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  export let use: Arrow<unknown, unknown> = () => {}
   let klass: string | undefined = undefined
   export { klass as class }
 
