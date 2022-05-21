@@ -98,6 +98,11 @@
     --skel-Foldable_border-default-color: oklch(93% 0 0);
 
     border: var(--skel-Foldable_border-color) 1px solid;
+
+    &:not(:first-of-type) {
+      // Helpful for making accordions
+      border-top: none;
+    }
   }
 
   .skel-Foldable_header {
