@@ -13,6 +13,8 @@
     --skel-clickable-active-background-color: oklch(95% 0 0);
     --skel-error-color: oklch(55% 0.2 30);
     --skel-success-color: oklch(55% 0.2 150);
+    --skel-input-border-color: oklch(82% 0 0);
+    --skel-input-border-radius: 0.3em;
 
     --skel-forward-transition: all 0.2s ease-out;
     --skel-backward-transition: all 0.4s ease-out;

@@ -29,8 +29,8 @@
     box-sizing: border-box;
 
     padding: 0.4em 0.6em;
-    border: none;
-    border-radius: 0.3em;
+    border-radius: var(--skel-input-border-radius);
+    border: var(--skel-input-border-color) 1px solid;
 
     overflow: hidden;
     white-space: pre-wrap;
@@ -59,8 +59,6 @@
     height: 100%;
 
     resize: none;
-
-    box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
 
     .skel-AutoSizeTextArea_disabled & {
       color: var(--skel-disabled-text-color);

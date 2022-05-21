@@ -64,13 +64,9 @@
 </StretchLayout>
 
 <style global lang="scss">
-  :root {
-    --skel-TextInput_border-color: oklch(82% 0 0);
-  }
-
   .skel-TextInput_root {
-    border-radius: 0.3em;
-    border: var(--skel-TextInput_border-color) 1px solid;
+    border-radius: var(--skel-input-border-radius);
+    border: var(--skel-input-border-color) 1px solid;
     overflow: hidden;
   }
 
@@ -86,11 +82,11 @@
   }
 
   .skel-TextInput_prefix {
-    border-right: var(--skel-TextInput_border-color) 1px solid;
+    border-right: var(--skel-input-border-color) 1px solid;
   }
 
   .skel-TextInput_postfix {
-    border-left: var(--skel-TextInput_border-color) 1px solid;
+    border-left: var(--skel-input-border-color) 1px solid;
   }
 
   .skel-TextInput_prepend {
