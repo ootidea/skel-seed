@@ -64,9 +64,9 @@
 
 <div
   class="skel-Foldable_root {klass}"
-  class:skel-Foldable_unfolded={unfolded}
   style:--skel-Foldable_header-background-color={headerBackgroundColor}
   style:--skel-Foldable_border-color={borderColor}
+  data-unfolded={unfolded}
 >
   <StretchLayout class="skel-Foldable_header" direction="horizontal" stretchAt={0} on:click={toggle}>
     <div class="skel-Foldable_title">
@@ -129,8 +129,13 @@
     transform-origin: center;
     transition: all 140ms ease-out;
 
-    .skel-Foldable_unfolded & {
+    .skel-Foldable_root[data-unfolded='true'] & {
       transform: rotate(-180deg);
+    }
+
+    // Need for nested Foldable
+    .skel-Foldable_root[data-unfolded='false'] & {
+      transform: rotate(0deg);
     }
   }
 
