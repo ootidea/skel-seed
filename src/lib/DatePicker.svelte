@@ -61,7 +61,7 @@
           {@const date = firstDateOfSelectedCalendar.add(weakIndex, 'week').add(day, 'day')}
           <div
             class="skel-DatePicker_cell"
-            class:skel-DatePicker_today={date.isSame(selectedDate, 'date')}
+            class:skel-DatePicker_selected={date.isSame(selectedDate, 'date')}
             class:skel-DatePicker_next-month={date.isAfter(_selectedMonth, 'month')}
             class:skel-DatePicker_prev-month={date.isBefore(_selectedMonth, 'month')}
             data-day={day}
@@ -148,7 +148,7 @@
       }
     }
 
-    &.skel-DatePicker_today {
+    &.skel-DatePicker_selected {
       border-color: var(--skel-primary-color);
     }
   }
