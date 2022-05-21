@@ -18,6 +18,8 @@
   let isInProgress = false
 
   function clickEventHandler(event: MouseEvent) {
+    if (isInProgress) return
+
     const promise = onClick?.(event)
     if (promise instanceof Promise) {
       isInProgress = true
