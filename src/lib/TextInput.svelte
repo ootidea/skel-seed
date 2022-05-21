@@ -6,13 +6,13 @@
   export let value = ''
   export let placeholder = ''
   export let name: string | undefined = undefined
-  export let disabled = false
-  export let readonly = false
-  export let required = false
+  export let disabled: true | undefined = undefined
+  export let readonly: true | undefined = undefined
+  export let required: true | undefined = undefined
   export let maxlength: number | undefined = undefined
   export let minlength: number | undefined = undefined
   export let pattern: string | undefined = undefined
-  export let autofocus = false
+  export let autofocus: true | undefined = undefined
   export let autocomplete: string | undefined = undefined
   export let list: string | undefined = undefined
 
