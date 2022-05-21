@@ -57,7 +57,7 @@
   }
 
   function getDurationMs(toastOptions: ToastOptions | undefined): number {
-    const durationMs = toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-toast-default-duration-ms')
+    const durationMs = toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-toast_default-duration-ms')
     assertNonUndefined(durationMs)
     return durationMs
   }
@@ -101,7 +101,7 @@
 
 <style global lang="scss">
   :root {
-    --skel-toast-default-duration-ms: 3000;
+    --skel-toast_default-duration-ms: 3000;
   }
 
   .skel-toast_root {
