@@ -36,6 +36,13 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
+
+    color: inherit;
+    font: inherit;
+    line-height: 1.8em;
+    letter-spacing: inherit;
+
+    min-height: 4.8em;
   }
 
   .skel-AutoSizeTextArea_dummy {
@@ -51,10 +58,6 @@
     width: 100%;
     height: 100%;
 
-    color: inherit;
-    font: inherit;
-    line-height: inherit;
-    letter-spacing: inherit;
     resize: none;
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
