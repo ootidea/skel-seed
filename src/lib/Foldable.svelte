@@ -99,7 +99,7 @@
 
     border: var(--skel-Foldable_border-color) 1px solid;
 
-    &:not(:first-of-type) {
+    .skel-Foldable_root + & {
       // Helpful for making accordions
       border-top: none;
     }
