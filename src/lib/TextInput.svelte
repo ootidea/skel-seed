@@ -2,9 +2,33 @@
   import Gravity from './Gravity.svelte'
   import StretchLayout from './StretchLayout.svelte'
 
+  export let type: string | undefined = undefined
   export let value = ''
   export let placeholder = ''
+  export let name: string | undefined = undefined
   export let disabled = false
+  export let readonly = false
+  export let required = false
+  export let maxlength: number | undefined = undefined
+  export let minlength: number | undefined = undefined
+  export let pattern: string | undefined = undefined
+  export let autofocus = false
+  export let autocomplete: string | undefined = undefined
+  export let list: string | undefined = undefined
+
+  $: attrs = {
+    name,
+    placeholder,
+    disabled,
+    readonly,
+    required,
+    maxlength,
+    minlength,
+    pattern,
+    autofocus,
+    autocomplete,
+    list,
+  } as const
 </script>
 
 <StretchLayout class="skel-TextInput_root" stretchAt={1}>
@@ -15,7 +39,21 @@
     <Gravity class="skel-TextInput_prepend">
       <slot name="prepend" />
     </Gravity>
-    <input class="skel-TextInput_input" bind:value {placeholder} {disabled} />
+    {#if type === 'email'}
+      <input class="skel-TextInput_input" type="email" bind:value {...attrs} />
+    {:else if type === 'tel'}
+      <input class="skel-TextInput_input" type="tel" bind:value {...attrs} />
+    {:else if type === 'password'}
+      <input class="skel-TextInput_input" type="password" bind:value {...attrs} />
+    {:else if type === 'search'}
+      <input class="skel-TextInput_input" type="search" bind:value {...attrs} />
+    {:else if type === 'url'}
+      <input class="skel-TextInput_input" type="url" bind:value {...attrs} />
+    {:else if type === 'text'}
+      <input class="skel-TextInput_input" type="text" bind:value {...attrs} />
+    {:else}
+      <input class="skel-TextInput_input" bind:value {...attrs} />
+    {/if}
     <Gravity class="skel-TextInput_append">
       <slot name="append" />
     </Gravity>

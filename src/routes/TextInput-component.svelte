@@ -47,3 +47,12 @@
     <div slot="postfix">.com</div>
   </TextInput>
 </Sample>
+
+<SectionTitle>Types</SectionTitle>
+<Sample>
+  <TextInput type="tel" placeholder="tel" />
+  <br />
+  <TextInput type="email" placeholder="email" />
+  <br />
+  <TextInput type="password" placeholder="password" />
+</Sample>
