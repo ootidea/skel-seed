@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let stretchAt = 0
+  export let stretchAt: number | `${number}` = 0
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
   let klass = ''
   export { klass as class }
@@ -7,7 +7,7 @@
 
 <div
   class="skel-StretchLayout_root {klass}"
-  style:--skel-StretchLayout_template={'auto '.repeat(stretchAt) + 'minmax(0, 1fr)'}
+  style:--skel-StretchLayout_template={'auto '.repeat(Number(stretchAt)) + 'minmax(0, 1fr)'}
   data-direction={direction}
   on:click
 >
