@@ -1,6 +1,4 @@
-export type AutoComplete<Literal extends Base, Base = string> =
-  | Literal
-  | (Base & Record<never, never>)
+export type AutoComplete<Literal extends Base, Base = string> = Literal | (Base & Record<never, never>)
 
 export type Position = AutoComplete<'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'>
 export type Display = AutoComplete<
@@ -14,17 +12,5 @@ export type BoxSizing = AutoComplete<'border-box' | 'content-box'>
 export type Width = AutoComplete<'max-content' | 'min-content'>
 export type Height = AutoComplete<'max-content' | 'min-content'>
 export type FontWeight = AutoComplete<
-  | 'normal'
-  | 'bold'
-  | 'lighter'
-  | 'bolder'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900'
+  'normal' | 'bold' | 'lighter' | 'bolder' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
 >

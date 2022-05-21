@@ -10,10 +10,7 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div
-  class="skel-auto-size-text-area_root {klass}"
-  class:skel-auto-size-text-area_disabled={disabled}
->
+<div class="skel-auto-size-text-area_root {klass}" class:skel-auto-size-text-area_disabled={disabled}>
   <div class="skel-auto-size-text-area_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>

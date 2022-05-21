@@ -57,8 +57,7 @@
   }
 
   function getDurationMs(toastOptions: ToastOptions | undefined): number {
-    const durationMs =
-      toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-toast-default-duration-ms')
+    const durationMs = toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-toast-default-duration-ms')
     assertNonUndefined(durationMs)
     return durationMs
   }
@@ -90,11 +89,7 @@
   {#each $toastModelsStore as toastModel (toastModel.id)}
     <div class="skel-toast_toast" animate:flip>
       <slot model={toastModel}>
-        <div
-          class="skel-toast_default-view"
-          transition:scale
-          on:click={(event) => onClick(toastModel, event)}
-        >
+        <div class="skel-toast_default-view" transition:scale on:click={(event) => onClick(toastModel, event)}>
           {toastModel.payload}
         </div>
       </slot>

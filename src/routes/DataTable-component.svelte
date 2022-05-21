@@ -17,10 +17,7 @@
 <PageTitle>DataTable</PageTitle>
 
 <Sample>
-  <DataTable
-    {rows}
-    columns={['行番号', 'name', { id: 'age', title: '年齢' }, 'ed', 'image', 'createdAt']}
-  >
+  <DataTable {rows} columns={['行番号', 'name', { id: 'age', title: '年齢' }, 'ed', 'image', 'createdAt']}>
     <svelte:fragment slot="cell" let:columnId let:value let:rowIndex>
       {#if columnId === '行番号'}
         <DataTableCell value={rowIndex} />

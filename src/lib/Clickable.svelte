@@ -36,11 +36,7 @@
   }
 </script>
 
-<div
-  class="skel-clickable_root {klass}"
-  class:skel-clickable_disabled={disabled}
-  on:click={clickEventHandler}
->
+<div class="skel-clickable_root {klass}" class:skel-clickable_disabled={disabled} on:click={clickEventHandler}>
   <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>
 

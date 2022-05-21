@@ -15,10 +15,7 @@
 
   $: _selectedMonth = dayjs(selectedMonth)
   $: firstDateOfSelectedMonth = _selectedMonth.date(1)
-  $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(
-    firstDateOfSelectedMonth.day(),
-    'day'
-  )
+  $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(firstDateOfSelectedMonth.day(), 'day')
 
   function onClickDate(date: Dayjs) {
     selectedDate = date

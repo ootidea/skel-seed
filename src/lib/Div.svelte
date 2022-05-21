@@ -1,14 +1,5 @@
 <script lang="ts">
-  import type {
-    AlignItems,
-    BoxSizing,
-    Display,
-    FontWeight,
-    Height,
-    JustifyContent,
-    Position,
-    Width,
-  } from './styleType'
+  import type { AlignItems, BoxSizing, Display, FontWeight, Height, JustifyContent, Position, Width } from './styleType'
   import { type Arrow, generateStyleString } from './utility'
 
   export let position: Position | undefined = undefined

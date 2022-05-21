@@ -19,9 +19,7 @@
   style:--skel-spinner_size={size}
   style:--skel-spinner_svg-url={svgUrl}
   style:--skel-spinner_period="{1 / frequency}s"
-  style:--skel-spinner_color={inverted
-    ? 'var(--skel-inverted-text-color)'
-    : 'var(--skel-primary-color)'}
+  style:--skel-spinner_color={inverted ? 'var(--skel-inverted-text-color)' : 'var(--skel-primary-color)'}
 />
 
 <CommonCss />

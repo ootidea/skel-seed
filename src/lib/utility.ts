@@ -30,13 +30,9 @@ export function range(start: number, end: number, step?: number): readonly numbe
   const normalizedStep = Math.abs(step ?? 1)
 
   if (start <= end) {
-    return [...Array(Math.floor((end - start) / normalizedStep) + 1)].map(
-      (_, i) => start + i * normalizedStep
-    )
+    return [...Array(Math.floor((end - start) / normalizedStep) + 1)].map((_, i) => start + i * normalizedStep)
   } else {
-    return [...Array(Math.floor((start - end) / normalizedStep) + 1)].map(
-      (_, i) => start - i * normalizedStep
-    )
+    return [...Array(Math.floor((start - end) / normalizedStep) + 1)].map((_, i) => start - i * normalizedStep)
   }
 }
 
@@ -66,10 +62,7 @@ export function getCssVariable(propertyName: string, element: HTMLElement = docu
  * @param propertyName Property name containing the prefix '--'
  * @param element Target HTMLElement to read CSS custom property
  */
-export function getCssVariableAsNumber(
-  propertyName: string,
-  element: HTMLElement = document.body
-): number | undefined {
+export function getCssVariableAsNumber(propertyName: string, element: HTMLElement = document.body): number | undefined {
   const number = Number(getCssVariable(propertyName, element))
   if (Number.isNaN(number)) return undefined
 
@@ -78,8 +71,7 @@ export function getCssVariableAsNumber(
 
 function toKebabCase(pascalCase: string) {
   return (
-    pascalCase.charAt(0).toLowerCase() +
-    pascalCase.substring(1).replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
+    pascalCase.charAt(0).toLowerCase() + pascalCase.substring(1).replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
   )
 }
 
@@ -120,6 +112,4 @@ export type Arrow<Tuple extends unknown[], Return> = (...args: Tuple) => Return
  *  ↑↓ equals
  * { type: 'Rect'; width: number; height: number } | { type: 'Circle'; radius: number }
  */
-export type DiscriminatedUnion<T, K extends keyof T = keyof T> = K extends K
-  ? { type: K } & T[K]
-  : never
+export type DiscriminatedUnion<T, K extends keyof T = keyof T> = K extends K ? { type: K } & T[K] : never

@@ -48,8 +48,7 @@
   async function startFoldingAnimation() {
     if (contentAreaElement === null) return
 
-    await contentAreaElement.animate({ height: [`${contentHeight}px`, '0'] }, ANIMATION_OPTION)
-      .finished
+    await contentAreaElement.animate({ height: [`${contentHeight}px`, '0'] }, ANIMATION_OPTION).finished
     contentAreaElement.style.height = '0'
     contentAreaElement.style.visibility = 'hidden'
   }
@@ -58,8 +57,7 @@
     if (contentAreaElement === null) return
 
     contentAreaElement.style.visibility = 'visible'
-    await contentAreaElement.animate({ height: ['0', `${contentHeight}px`] }, ANIMATION_OPTION)
-      .finished
+    await contentAreaElement.animate({ height: ['0', `${contentHeight}px`] }, ANIMATION_OPTION).finished
     contentAreaElement.style.height = 'auto'
   }
 </script>
@@ -70,12 +68,7 @@
   style:--skel-foldable_header-background-color={headerBackgroundColor}
   style:--skel-foldable_border-color={borderColor}
 >
-  <StretchLayout
-    class="skel-foldable_header"
-    direction="horizontal"
-    stretchAt={0}
-    on:click={toggle}
-  >
+  <StretchLayout class="skel-foldable_header" direction="horizontal" stretchAt={0} on:click={toggle}>
     <div class="skel-foldable_title">
       <slot name="title" {fold} {unfold} {toggle} {unfolded} />
     </div>

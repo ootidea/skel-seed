@@ -33,21 +33,13 @@
   {#each range(toPeriodYear(minYear, periodSize), toPeriodYear(maxYear, periodSize), periodSize) as periodYear}
     {@const periodMinYear = Math.max(periodYear, toPeriodYear(minYear, 5))}
     {@const periodMaxYear = Math.min(periodYear + periodSize - 1, maxYear)}
-    <Foldable
-      unfolded={periodYear === unfoldedPeriod}
-      onUnfold={() => (unfoldedPeriod = periodYear)}
-    >
+    <Foldable unfolded={periodYear === unfoldedPeriod} onUnfold={() => (unfoldedPeriod = periodYear)}>
       <div slot="title" class="skel-year-picker_foldable-title">
         {periodMinYear} ~ {periodMaxYear}
       </div>
       <div class="skel-year-picker_button-list">
         {#each range(periodMinYear, periodMaxYear) as year}
-          <Button
-            tint="achromatic"
-            ghost
-            disabled={year < minYear}
-            onClick={() => onSelect?.(year)}
-          >
+          <Button tint="achromatic" ghost disabled={year < minYear} onClick={() => onSelect?.(year)}>
             {String(year % 100).padStart(2, '0')}
           </Button>
         {/each}
