@@ -52,7 +52,7 @@
 
   export let style: string | undefined = undefined
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  export let use: Arrow<unknown, unknown> = () => {}
+  export let use: Arrow<unknown[], any> = () => {}
   let klass: string | undefined = undefined
   export { klass as class }
 
