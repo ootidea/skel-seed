@@ -23,6 +23,12 @@
 
 <SectionTitle>Button size</SectionTitle>
 <Sample>
-  <IconButton src={chevronLeft} size="50px" />
-  <IconButton src={chevronRight} size="2em" />
+  <IconButton src={chevronLeft} size="40px" />
+  <IconButton src={chevronRight} size="1.5em" />
+</Sample>
+
+<SectionTitle>Icon size (without button size)</SectionTitle>
+<Sample>
+  <IconButton src={chevronLeft} iconSize="50%" />
+  <IconButton src={chevronRight} iconSize="100%" />
 </Sample>

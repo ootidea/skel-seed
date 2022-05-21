@@ -5,6 +5,7 @@
 
   export let src = ''
   export let size = 'var(--skel-icon-button_default-size)'
+  export let iconSize = 'var(--skel-icon-button_icon-default-size)'
   export let iconColor: string | undefined = undefined
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
@@ -17,10 +18,11 @@
   class="skel-icon-button_root {klass}"
   class:skel-icon-button_disabled={disabled}
   style:--skel-icon-button_size={size}
+  style:--skel-icon-button_icon-size={iconSize}
   on:click={onClick}
 >
   <slot>
-    <Icon {src} {size} iconColor={disabled ? disabledColor : iconColor} />
+    <Icon {src} size={iconSize} iconColor={disabled ? disabledColor : iconColor} />
   </slot>
 </div>
 
@@ -29,6 +31,7 @@
 <style global lang="scss">
   :root {
     --skel-icon-button_default-size: 2em;
+    --skel-icon-button_icon-default-size: 80%;
     --skel-icon-button_disabled-default-color: oklch(70% 0 0);
   }
 
