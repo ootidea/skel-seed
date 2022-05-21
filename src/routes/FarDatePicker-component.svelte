@@ -1,11 +1,11 @@
 <script lang="ts">
-  import PastDatePicker from '../lib/PastDatePicker.svelte'
+  import FarDatePicker from '../lib/FarDatePicker.svelte'
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
 </script>
 
-<PageTitle>PastDatePicker</PageTitle>
+<PageTitle>FarDatePicker</PageTitle>
 
 <Sample>
-  <PastDatePicker />
+  <FarDatePicker />
 </Sample>
