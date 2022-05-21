@@ -29,15 +29,15 @@
   }
 </script>
 
-<div class="skel-year-picker_root">
+<div class="skel-YearPicker_root">
   {#each range(toPeriodYear(minYear, periodSize), toPeriodYear(maxYear, periodSize), periodSize) as periodYear}
     {@const periodMinYear = Math.max(periodYear, toPeriodYear(minYear, 5))}
     {@const periodMaxYear = Math.min(periodYear + periodSize - 1, maxYear)}
     <Foldable unfolded={periodYear === unfoldedPeriod} onUnfold={() => (unfoldedPeriod = periodYear)}>
-      <div slot="title" class="skel-year-picker_foldable-title">
+      <div slot="title" class="skel-YearPicker_foldable-title">
         {periodMinYear} ~ {periodMaxYear}
       </div>
-      <div class="skel-year-picker_button-list">
+      <div class="skel-YearPicker_button-list">
         {#each range(periodMinYear, periodMaxYear) as year}
           <Button tint="achromatic" ghost disabled={year < minYear} onClick={() => onSelect?.(year)}>
             {String(year % 100).padStart(2, '0')}
@@ -49,16 +49,16 @@
 </div>
 
 <style global lang="scss">
-  .skel-year-picker_root {
+  .skel-YearPicker_root {
     width: max-content;
   }
 
-  .skel-year-picker_foldable-title {
+  .skel-YearPicker_foldable-title {
     font-weight: normal;
     font-size: 14px;
   }
 
-  .skel-year-picker_button-list {
+  .skel-YearPicker_button-list {
     display: grid;
     grid-template-columns: repeat(5, auto);
 

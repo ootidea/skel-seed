@@ -10,24 +10,24 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skel-auto-size-text-area_root {klass}" class:skel-auto-size-text-area_disabled={disabled}>
-  <div class="skel-auto-size-text-area_dummy" aria-hidden="true">
+<div class="skel-AutoSizeTextArea_root {klass}" class:skel-AutoSizeTextArea_disabled={disabled}>
+  <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
     {text ? text : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class="skel-auto-size-text-area_text-area" bind:value={text} {placeholder} {disabled} />
+  <textarea class="skel-AutoSizeTextArea_text-area" bind:value={text} {placeholder} {disabled} />
 </div>
 
 <CommonCss />
 
 <style global lang="scss">
-  .skel-auto-size-text-area_root {
+  .skel-AutoSizeTextArea_root {
     position: relative;
     width: max-content;
     min-width: 10em;
   }
 
-  .skel-auto-size-text-area_dummy,
-  .skel-auto-size-text-area_text-area {
+  .skel-AutoSizeTextArea_dummy,
+  .skel-AutoSizeTextArea_text-area {
     box-sizing: border-box;
 
     padding: 0.4em 0.6em;
@@ -40,11 +40,11 @@
     overflow-wrap: break-word;
   }
 
-  .skel-auto-size-text-area_dummy {
+  .skel-AutoSizeTextArea_dummy {
     visibility: hidden;
   }
 
-  .skel-auto-size-text-area_text-area {
+  .skel-AutoSizeTextArea_text-area {
     position: absolute;
     top: 0;
     left: 0;
@@ -61,12 +61,12 @@
 
     box-shadow: 0 0 2.5px oklch(60% 0 0) inset;
 
-    .skel-auto-size-text-area_disabled & {
+    .skel-AutoSizeTextArea_disabled & {
       color: var(--skel-disabled-text-color);
     }
   }
 
-  .skel-auto-size-text-area_text-area:focus {
+  .skel-AutoSizeTextArea_text-area:focus {
     outline: 1px solid var(--skel-primary-color);
   }
 </style>

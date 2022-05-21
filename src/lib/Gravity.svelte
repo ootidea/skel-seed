@@ -7,7 +7,7 @@
 </script>
 
 <div
-  class="skel-gravity_root {klass}"
+  class="skel-Gravity_root {klass}"
   data-horizontal-position={toHorizontalPosition(to)}
   data-vertical-position={toVerticalPosition(to)}
 >
@@ -15,7 +15,7 @@
 </div>
 
 <style global lang="scss">
-  .skel-gravity_root {
+  .skel-Gravity_root {
     display: flex;
     width: 100%;
     height: 100%;

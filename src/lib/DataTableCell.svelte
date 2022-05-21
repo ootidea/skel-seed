@@ -40,7 +40,7 @@
   }>
 </script>
 
-<div class="skel-data-table-cell_root {klass}" data-type={analysisResult.type}>
+<div class="skel-DataTableCell_root {klass}" data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}
@@ -75,7 +75,7 @@
 </div>
 
 <style global lang="scss">
-  .skel-data-table-cell_root {
+  .skel-DataTableCell_root {
     white-space: pre-wrap;
 
     &[data-type='number'] {

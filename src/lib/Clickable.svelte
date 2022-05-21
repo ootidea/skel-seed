@@ -36,18 +36,18 @@
   }
 </script>
 
-<div class="skel-clickable_root {klass}" class:skel-clickable_disabled={disabled} on:click={clickEventHandler}>
+<div class="skel-Clickable_root {klass}" class:skel-Clickable_disabled={disabled} on:click={clickEventHandler}>
   <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>
 
 <CommonCss />
 
 <style global lang="scss">
-  .skel-clickable_root {
+  .skel-Clickable_root {
     width: max-content;
     transition: var(--skel-backward-transition);
 
-    &:not(.skel-clickable_disabled) {
+    &:not(.skel-Clickable_disabled) {
       cursor: pointer;
 
       &:hover {

@@ -8,15 +8,15 @@
   export { klass as class }
 </script>
 
-<label class="skel-checkbox_root {klass}" class:skel-checkbox_disabled={disabled}>
-  <input type="checkbox" class="skel-checkbox_checkbox" {value} bind:checked {disabled} />
+<label class="skel-Checkbox_root {klass}" class:skel-Checkbox_disabled={disabled}>
+  <input type="checkbox" class="skel-Checkbox_checkbox" {value} bind:checked {disabled} />
   <slot />
 </label>
 
 <CommonCss />
 
 <style global lang="scss">
-  .skel-checkbox_root {
+  .skel-Checkbox_root {
     display: inline-grid;
     grid-auto-flow: column;
     align-items: center;
@@ -24,20 +24,20 @@
 
     cursor: pointer;
 
-    &.skel-checkbox_disabled {
+    &.skel-Checkbox_disabled {
       cursor: default;
 
       color: var(--skel-disabled-text-color);
     }
   }
 
-  .skel-checkbox_checkbox {
+  .skel-Checkbox_checkbox {
     margin: 0;
     accent-color: var(--skel-primary-color);
 
     cursor: pointer;
 
-    .skel-checkbox_disabled & {
+    .skel-Checkbox_disabled & {
       cursor: default;
     }
   }

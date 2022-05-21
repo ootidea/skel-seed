@@ -6,14 +6,14 @@
   export { klass as class }
 </script>
 
-<div class="skel-tooltip_root {klass}">
-  <div class="skel-tooltip_content-wrapper">
+<div class="skel-Tooltip_root {klass}">
+  <div class="skel-Tooltip_content-wrapper">
     <slot />
   </div>
-  <span class="skel-tooltip_popup-wrapper">
+  <span class="skel-Tooltip_popup-wrapper">
     <slot name="popup">
       {#if text !== undefined}
-        <div class="skel-tooltip_default-popup">{text}</div>
+        <div class="skel-Tooltip_default-popup">{text}</div>
       {/if}
     </slot>
   </span>
@@ -22,12 +22,12 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-tooltip_root {
+  .skel-Tooltip_root {
     position: relative;
     width: max-content;
   }
 
-  .skel-tooltip_popup-wrapper {
+  .skel-Tooltip_popup-wrapper {
     position: absolute;
     // Show at the center of the bottom
     left: 50%;
@@ -35,14 +35,14 @@
 
     visibility: hidden;
 
-    .skel-tooltip_root:hover & {
+    .skel-Tooltip_root:hover & {
       visibility: visible;
     }
 
     z-index: var(--skel-tooltip-z-index);
   }
 
-  .skel-tooltip_default-popup {
+  .skel-Tooltip_default-popup {
     border-radius: 0.4em;
     padding: 0.1em 0.4em;
 

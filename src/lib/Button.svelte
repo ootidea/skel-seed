@@ -27,17 +27,17 @@
 </script>
 
 <button
-  class="skel-button_root {klass}"
-  class:skel-button_ghost={ghost}
-  class:skel-button_rounded={rounded}
-  class:skel-button_disabled={disabled}
+  class="skel-Button_root {klass}"
+  class:skel-Button_ghost={ghost}
+  class:skel-Button_rounded={rounded}
+  class:skel-Button_disabled={disabled}
   data-tint={tint}
   {disabled}
   on:click={clickEventHandler}
 >
   {#if isInProgress}
     <OverlayLayout>
-      <div class="skel-button_invisible">
+      <div class="skel-Button_invisible">
         <slot />
       </div>
       <Gravity slot="overlay">
@@ -52,7 +52,7 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-button_root {
+  .skel-Button_root {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -67,42 +67,42 @@
     user-select: none;
     transition: var(--skel-backward-transition);
 
-    &:not(.skel-button_ghost) {
+    &:not(.skel-Button_ghost) {
       color: var(--skel-inverted-text-color);
-      border-color: var(--skel-button_tint-color);
-      background-color: var(--skel-button_tint-color);
+      border-color: var(--skel-Button_tint-color);
+      background-color: var(--skel-Button_tint-color);
 
       &[data-tint='primary'] {
-        --skel-button_tint-color: var(--skel-primary-color);
+        --skel-Button_tint-color: var(--skel-primary-color);
       }
 
       &[data-tint='achromatic'] {
-        --skel-button_tint-color: oklch(55% 0 0);
+        --skel-Button_tint-color: oklch(55% 0 0);
       }
     }
 
-    &.skel-button_ghost {
-      color: var(--skel-button_tint-color);
-      border-color: var(--skel-button_tint-color);
+    &.skel-Button_ghost {
+      color: var(--skel-Button_tint-color);
+      border-color: var(--skel-Button_tint-color);
       background-color: transparent;
 
       &[data-tint='primary'] {
-        --skel-button_tint-color: var(--skel-primary-color);
+        --skel-Button_tint-color: var(--skel-primary-color);
       }
 
       &[data-tint='achromatic'] {
-        --skel-button_tint-color: oklch(50% 0 0);
+        --skel-Button_tint-color: oklch(50% 0 0);
       }
     }
 
-    &:not(.skel-button_disabled) {
+    &:not(.skel-Button_disabled) {
       cursor: pointer;
 
       &:hover {
         transition: var(--skel-forward-transition);
         background-color: var(--skel-primary-inverted-background-hover-color);
 
-        &.skel-button_ghost {
+        &.skel-Button_ghost {
           background-color: var(--skel-primary-background-hover-color);
         }
       }
@@ -111,18 +111,18 @@
         transition: var(--skel-forward-transition);
         background-color: var(--skel-primary-inverted-background-active-color);
 
-        &.skel-button_ghost {
+        &.skel-Button_ghost {
           background-color: var(--skel-primary-background-active-color);
         }
       }
     }
   }
 
-  .skel-button_rounded {
+  .skel-Button_rounded {
     border-radius: 99999px;
   }
 
-  .skel-button_invisible {
+  .skel-Button_invisible {
     visibility: hidden;
   }
 </style>

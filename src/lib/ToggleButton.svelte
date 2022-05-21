@@ -35,8 +35,6 @@
     border-left: var(--skel-toggle-button_border);
 
     color: var(--skel-toggle-button_text-color);
-    // set default color of included icons
-    --skel-icon_icon-default-color: currentColor;
 
     cursor: pointer;
 
