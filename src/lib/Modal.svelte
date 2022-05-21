@@ -17,26 +17,26 @@
   }
 </script>
 
-{#if $$slots.modal}
+{#if $$slots.modal || $$slots.frame}
   <slot {open} {close} {toggle} />
 {/if}
 {#if opened}
   <div class="skel-Modal_root {klass}" on:click|self={onClickBackdrop}>
-    {#if $$slots.modal}
-      <slot name="modal" {open} {close} {toggle} />
-    {:else}
-      <slot {open} {close} {toggle} />
-    {/if}
+    <slot name="frame" {open} {close} {toggle}>
+      <div class="skel-Modal_frame">
+        {#if $$slots.modal}
+          <slot name="modal" {open} {close} {toggle} />
+        {:else}
+          <slot {open} {close} {toggle} />
+        {/if}
+      </div>
+    </slot>
   </div>
 {/if}
 
 <CommonCss />
 
 <style global lang="scss">
-  :root {
-    --skel-modal-background-color: oklch(50% 0 0 / 0.05);
-  }
-
   .skel-Modal_root {
     position: fixed;
     top: 0;
@@ -49,6 +49,12 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--skel-modal-background-color);
+    background-color: oklch(50% 0 0 / 0.05);
+  }
+
+  .skel-Modal_frame {
+    background-color: var(--skel-background-color);
+    border-radius: 0.4em;
+    box-shadow: 0 1px 4px oklch(75% 0 0);
   }
 </style>
