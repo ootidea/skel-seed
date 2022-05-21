@@ -1,7 +1,7 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
 
-  export let text = ''
+  export let value = ''
   export let placeholder = ''
   export let disabled = false
   let klass = ''
@@ -12,9 +12,9 @@
 
 <div class="skel-AutoSizeTextArea_root {klass}" class:skel-AutoSizeTextArea_disabled={disabled}>
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
-    {text ? text : placeholder}{ZERO_WIDTH_SPACE}
+    {value ? value : placeholder}{ZERO_WIDTH_SPACE}
   </div>
-  <textarea class="skel-AutoSizeTextArea_text-area" bind:value={text} {placeholder} {disabled} />
+  <textarea class="skel-AutoSizeTextArea_text-area" bind:value {placeholder} {disabled} />
 </div>
 
 <CommonCss />
@@ -22,8 +22,6 @@
 <style global lang="scss">
   .skel-AutoSizeTextArea_root {
     position: relative;
-    width: max-content;
-    min-width: 10em;
   }
 
   .skel-AutoSizeTextArea_dummy,

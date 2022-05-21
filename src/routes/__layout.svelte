@@ -11,6 +11,7 @@
     <SidebarMenu componentName="RadioButton" />
     <SidebarMenu componentName="ToggleButton" />
     <SidebarMenu componentName="TextInput" />
+    <SidebarMenu componentName="AutoSizeTextArea" />
     <SidebarMenu componentName="PastDatePicker" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
