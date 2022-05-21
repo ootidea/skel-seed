@@ -15,6 +15,7 @@
     <SidebarMenu componentName="Popover" />
     <SidebarMenu componentName="Foldable" />
     <SidebarMenu componentName="Spinner" />
+    <SidebarMenu componentName="Toast" />
   </aside>
   <Divider direction="vertical" />
   <main>
