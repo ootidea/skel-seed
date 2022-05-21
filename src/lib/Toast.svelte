@@ -5,6 +5,7 @@
   import { assertNonUndefined, getCssVariableAsNumber } from './utility'
 
   export type ToastOptions = {
+    type?: ToastType
     /**
      * Amount of time (in milliseconds) that toast remains visible.
      * If non-positive integer, toast is not be displayed.
@@ -14,6 +15,7 @@
     onClick?: (toastModel: ToastModel, event: MouseEvent) => unknown
   }
 
+  export type ToastType = 'normal' | 'error' | 'success'
   export type ToastModel = { id: ToastId; payload: unknown; options?: ToastOptions }
   export type ToastId = number
 
@@ -69,6 +71,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
+  import Icon from './Icon.svelte'
 
   let klass = ''
   export { klass as class }
@@ -81,16 +84,36 @@
 
   function onClick(toastModel: ToastModel, event: MouseEvent) {
     removeToast(toastModel.id)
-    toastModel?.options?.onClick?.(toastModel, event)
+    toastModel.options?.onClick?.(toastModel, event)
   }
 </script>
 
 <div class="skel-toast_root {klass}">
   {#each $toastModelsStore as toastModel (toastModel.id)}
-    <div class="skel-toast_toast" animate:flip>
+    <div class="skel-toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>
-        <div class="skel-toast_default-view" transition:scale on:click={(event) => onClick(toastModel, event)}>
-          {toastModel.payload}
+        <div
+          class="skel-toast_default-view"
+          data-type={toastModel.options?.type ?? 'normal'}
+          transition:scale
+          on:click={(event) => onClick(toastModel, event)}
+        >
+          {#if toastModel.options?.type === 'error'}
+            <Icon
+              class="skel-toast_icon"
+              src="src/assets/alert-outline.svg"
+              size="1.3em"
+              iconColor="var(--skel-error-color)"
+            />
+          {:else if toastModel.options?.type === 'success'}
+            <Icon
+              class="skel-toast_icon"
+              src="src/assets/check-circle-outline.svg"
+              size="1.3em"
+              iconColor="var(--skel-success-color)"
+            />
+          {/if}
+          <div class="skel-toast_payload">{toastModel.payload}</div>
         </div>
       </slot>
     </div>
@@ -118,17 +141,27 @@
   }
 
   .skel-toast_default-view {
-    white-space: pre-wrap;
+    display: flex;
+    align-items: center;
 
     max-width: 40vw;
-    border-radius: 0.4em;
+    border-radius: 0.2em;
+    overflow: hidden;
 
-    margin: 1em;
-    padding: 0.8em 1.4em;
+    margin: 0.5em;
+    padding: 0.4em 1em;
 
     background-color: var(--skel-background-color);
     box-shadow: 0 1px 4px oklch(75% 0 0);
 
     cursor: pointer;
+  }
+
+  .skel-toast_icon {
+    margin-right: 0.5em;
+  }
+
+  .skel-toast_payload {
+    white-space: pre-wrap;
   }
 </style>
