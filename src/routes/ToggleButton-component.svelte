@@ -24,6 +24,3 @@
     {{ female: '女性', male: '男性', other: 'その他' }[value]}
   </MultiSelectToggleButton>
 </Sample>
-
-<style global lang="scss">
-</style>

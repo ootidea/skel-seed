@@ -71,6 +71,3 @@
     <Icon src="src/assets/chevron-down.svg" iconColor="currentColor" />
   </Button>
 </Sample>
-
-<style global lang="scss">
-</style>

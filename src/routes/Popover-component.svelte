@@ -32,6 +32,3 @@
     <div slot="popover" style="padding: 0.2em 0.4em">Pop up text</div>
   </Popover>
 </Sample>
-
-<style global lang="scss">
-</style>
