@@ -2,16 +2,17 @@
   import Spinner from '../lib/Spinner.svelte'
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
+  import SectionTitle from './_components/SectionTitle.svelte'
 </script>
 
 <PageTitle>Spinner</PageTitle>
 
-<h2>Default</h2>
+<SectionTitle>Default</SectionTitle>
 <Sample>
   <Spinner />
 </Sample>
 
-<h2>Size</h2>
+<SectionTitle>Size</SectionTitle>
 <Sample>
   <Spinner size="0.7em" />
   <Spinner size="1.4em" />
@@ -19,7 +20,7 @@
   <Spinner size="2.8em" />
 </Sample>
 
-<h2>Frequency</h2>
+<SectionTitle>Frequency</SectionTitle>
 <Sample>
   <Spinner frequency={0.7} />
   <Spinner frequency={1.4} />
@@ -27,7 +28,7 @@
   <Spinner frequency={2.8} />
 </Sample>
 
-<h2>Thickness</h2>
+<SectionTitle>Thickness</SectionTitle>
 <Sample>
   <Spinner thickness={10} />
   <Spinner thickness={25} />

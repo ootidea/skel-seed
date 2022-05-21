@@ -3,11 +3,12 @@
   import SingleSelectToggleButton from '../lib/SingleSelectToggleButton.svelte'
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
+  import SectionTitle from './_components/SectionTitle.svelte'
 </script>
 
 <PageTitle>Toggle Button</PageTitle>
 
-<h2>Single select</h2>
+<SectionTitle>Single select</SectionTitle>
 <Sample>
   <SingleSelectToggleButton values={['West', 'East']} />
   <SingleSelectToggleButton values={['Enable auto resize']} />
@@ -16,7 +17,7 @@
   </SingleSelectToggleButton>
 </Sample>
 
-<h2>Multi select</h2>
+<SectionTitle>Multi select</SectionTitle>
 <Sample>
   <MultiSelectToggleButton values={['West', 'East']} />
   <MultiSelectToggleButton values={['Enable auto resize']} />
