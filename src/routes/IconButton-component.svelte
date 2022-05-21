@@ -5,6 +5,12 @@
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
   import SectionTitle from './_components/SectionTitle.svelte'
+
+  async function awaitSomeSeconds() {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 2000)
+    })
+  }
 </script>
 
 <PageTitle>IconButton</PageTitle>
@@ -31,4 +37,10 @@
 <Sample>
   <IconButton src={chevronLeft} iconSize="50%" />
   <IconButton src={chevronRight} iconSize="100%" />
+</Sample>
+
+<SectionTitle>onClick function that returns a Promise</SectionTitle>
+<Sample>
+  <IconButton src={chevronLeft} onClick={awaitSomeSeconds} />
+  <IconButton src={chevronRight} onClick={awaitSomeSeconds} />
 </Sample>

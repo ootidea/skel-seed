@@ -1,6 +1,8 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import Gravity from './Gravity.svelte'
   import Icon from './Icon.svelte'
+  import Spinner from './Spinner.svelte'
   import type { Arrow } from './utility'
 
   export let src = ''
@@ -12,6 +14,16 @@
   export let disabledColor = 'var(--skel-IconButton_disabled-default-color)'
   let klass = ''
   export { klass as class }
+
+  let isInProgress = false
+
+  function clickEventHandler(event: MouseEvent) {
+    const promise = onClick?.(event)
+    if (promise instanceof Promise) {
+      isInProgress = true
+      promise.finally(() => (isInProgress = false))
+    }
+  }
 </script>
 
 <div
@@ -19,11 +31,15 @@
   class:skel-IconButton_disabled={disabled}
   style:--skel-IconButton_size={size}
   style:--skel-IconButton_icon-size={iconSize}
-  on:click={onClick}
+  on:click={clickEventHandler}
 >
-  <slot>
+  {#if isInProgress}
+    <Gravity>
+      <Spinner />
+    </Gravity>
+  {:else}
     <Icon {src} size={iconSize} iconColor={disabled ? disabledColor : iconColor} />
-  </slot>
+  {/if}
 </div>
 
 <CommonCss />
