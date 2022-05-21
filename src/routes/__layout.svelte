@@ -15,6 +15,7 @@
     <SidebarMenu componentName="FarDatePicker" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
+    <SidebarMenu componentName="Modal" />
     <SidebarMenu componentName="Foldable" />
     <SidebarMenu componentName="Spinner" />
     <SidebarMenu componentName="Toast" />
