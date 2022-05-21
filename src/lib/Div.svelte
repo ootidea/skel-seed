@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { AlignItems, BoxSizing, Display, FontWeight, Height, JustifyContent, Position, Width } from './styleType'
-  import { type Arrow, generateStyleString } from './utility'
+  import { type Arrow, generateClassString, generateStyleString } from './utility'
 
   export let position: Position | undefined = undefined
   export let top: string | undefined = undefined
@@ -55,6 +55,8 @@
   export let use: Arrow<unknown[], any> = () => {}
   let klass: string | undefined = undefined
   export { klass as class }
+  /** Alternative to Svelte's class directive */
+  export let classes: Record<string, unknown> | undefined = undefined
 
   $: style = generateStyleString(style, {
     position,
@@ -107,6 +109,6 @@
   })
 </script>
 
-<div class={klass} {style} use:use>
+<div class={generateClassString(klass, classes)} {style} use:use>
   <slot />
 </div>

@@ -97,6 +97,17 @@ export function generateStyleString(
   return result.join(' ')
 }
 
+export function generateClassString(klass: string | undefined, classes: Record<string, unknown> | undefined): string {
+  const conditionalClasses = Object.entries(classes ?? {})
+    .filter(([, value]) => Boolean(value))
+    .map(([key]) => key)
+    .join(' ')
+  if (klass === undefined) {
+    return conditionalClasses
+  }
+  return `${klass} ${conditionalClasses}`
+}
+
 /**
  * A utility for abbreviating function types.
  * @example
