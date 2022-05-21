@@ -1,7 +1,7 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
 
-  export let size = 'var(--skel-spinner_default-size)'
+  export let size = 'var(--skel-Spinner_default-size)'
   // TODO: Can convert this to CSS variable?
   export let thickness = 25
   export let frequency = 1.4
@@ -15,34 +15,34 @@
 </script>
 
 <div
-  class="skel-spinner_root {klass}"
-  style:--skel-spinner_size={size}
-  style:--skel-spinner_svg-url={svgUrl}
-  style:--skel-spinner_period="{1 / frequency}s"
-  style:--skel-spinner_color={inverted ? 'var(--skel-inverted-text-color)' : 'var(--skel-primary-color)'}
+  class="skel-Spinner_root {klass}"
+  style:--skel-Spinner_size={size}
+  style:--skel-Spinner_svg-url={svgUrl}
+  style:--skel-Spinner_period="{1 / frequency}s"
+  style:--skel-Spinner_color={inverted ? 'var(--skel-inverted-text-color)' : 'var(--skel-primary-color)'}
 />
 
 <CommonCss />
 
 <style global lang="scss">
   :root {
-    --skel-spinner_default-size: 1.2em;
+    --skel-Spinner_default-size: 1.2em;
   }
 
-  .skel-spinner_root {
+  .skel-Spinner_root {
     display: inline-block;
     position: relative;
-    width: var(--skel-spinner_size);
-    height: var(--skel-spinner_size);
+    width: var(--skel-Spinner_size);
+    height: var(--skel-Spinner_size);
 
     vertical-align: top;
 
-    background-image: conic-gradient(transparent, transparent, var(--skel-spinner_color));
-    mask: var(--skel-spinner_svg-url) no-repeat center;
+    background-image: conic-gradient(transparent, transparent, var(--skel-Spinner_color));
+    mask: var(--skel-Spinner_svg-url) no-repeat center;
     mask-size: contain;
 
     transform-origin: center;
-    animation: rotation var(--skel-spinner_period) infinite linear;
+    animation: rotation var(--skel-Spinner_period) infinite linear;
   }
 
   @keyframes rotation {

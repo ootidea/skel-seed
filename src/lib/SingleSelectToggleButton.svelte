@@ -17,7 +17,7 @@
   }
 </script>
 
-<div class="skel-single-select-toggle-button_root {klass}">
+<div class="skel-SingleSelectToggleButton_root {klass}">
   {#each values as value, index (value)}
     <ToggleButton selected={value === selected} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>
@@ -30,7 +30,7 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-single-select-toggle-button_root {
+  .skel-SingleSelectToggleButton_root {
     display: inline-flex;
   }
 </style>

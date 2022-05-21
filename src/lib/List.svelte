@@ -8,7 +8,7 @@
   export { klass as class }
 </script>
 
-<div class="skel-list_root {klass}" data-direction={direction}>
+<div class="skel-List_root {klass}" data-direction={direction}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">
@@ -24,7 +24,7 @@
 </div>
 
 <style global lang="scss">
-  .skel-list_root {
+  .skel-List_root {
     display: grid;
     align-items: start;
     width: max-content;

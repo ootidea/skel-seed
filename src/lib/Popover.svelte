@@ -35,20 +35,20 @@
 </script>
 
 <div
-  class="skel-popover_root {klass}"
-  style:--skel-popover_left={toXPercent(on)}
-  style:--skel-popover_top={toYPercent(on)}
-  style:--skel-popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(
+  class="skel-Popover_root {klass}"
+  style:--skel-Popover_left={toXPercent(on)}
+  style:--skel-Popover_top={toYPercent(on)}
+  style:--skel-Popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(
     joint ?? toOpposite(on)
   )})"
 >
-  <div class="skel-popover_content-area" bind:this={contentElement}>
+  <div class="skel-Popover_content-area" bind:this={contentElement}>
     <slot {open} {close} {toggle} />
   </div>
   {#if opened}
-    <div class="skel-popover_popover-area" bind:this={popoverElement}>
+    <div class="skel-Popover_popover-area" bind:this={popoverElement}>
       <slot name="popover-frame">
-        <div class="skel-popover_popover-frame" transition:scale={{ duration: 300, start: 0.92 }}>
+        <div class="skel-Popover_popover-frame" transition:scale={{ duration: 300, start: 0.92 }}>
           <slot name="popover" />
         </div>
       </slot>
@@ -61,23 +61,23 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-popover_root {
+  .skel-Popover_root {
     position: relative;
     width: max-content;
   }
 
-  .skel-popover_popover-area {
+  .skel-Popover_popover-area {
     position: absolute;
-    left: var(--skel-popover_left);
-    top: var(--skel-popover_top);
-    transform: var(--skel-popover_transform);
+    left: var(--skel-Popover_left);
+    top: var(--skel-Popover_top);
+    transform: var(--skel-Popover_transform);
 
     width: max-content;
 
     z-index: var(--skel-popover-z-index);
   }
 
-  .skel-popover_popover-frame {
+  .skel-Popover_popover-frame {
     background-color: var(--skel-background-color);
     border-radius: 0.4em;
     box-shadow: 0 1px 4px oklch(75% 0 0);

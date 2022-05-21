@@ -9,7 +9,7 @@
   export let onSelect: Arrow<[number], unknown> | undefined = undefined
 </script>
 
-<div class="skel-month-picker_root">
+<div class="skel-MonthPicker_root">
   <slot {onSelect}>
     {#each range(1, 12) as month}
       <Button tint="achromatic" ghost onClick={() => onSelect?.(month)}>
@@ -20,7 +20,7 @@
 </div>
 
 <style global lang="scss">
-  .skel-month-picker_root {
+  .skel-MonthPicker_root {
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 0.5em;

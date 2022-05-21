@@ -4,21 +4,21 @@
   import type { Arrow } from './utility'
 
   export let src = ''
-  export let size = 'var(--skel-icon-button_default-size)'
-  export let iconSize = 'var(--skel-icon-button_icon-default-size)'
+  export let size = 'var(--skel-IconButton_default-size)'
+  export let iconSize = 'var(--skel-IconButton_icon-default-size)'
   export let iconColor: string | undefined = undefined
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
-  export let disabledColor = 'var(--skel-icon-button_disabled-default-color)'
+  export let disabledColor = 'var(--skel-IconButton_disabled-default-color)'
   let klass = ''
   export { klass as class }
 </script>
 
 <div
-  class="skel-icon-button_root {klass}"
-  class:skel-icon-button_disabled={disabled}
-  style:--skel-icon-button_size={size}
-  style:--skel-icon-button_icon-size={iconSize}
+  class="skel-IconButton_root {klass}"
+  class:skel-IconButton_disabled={disabled}
+  style:--skel-IconButton_size={size}
+  style:--skel-IconButton_icon-size={iconSize}
   on:click={onClick}
 >
   <slot>
@@ -30,19 +30,19 @@
 
 <style global lang="scss">
   :root {
-    --skel-icon-button_default-size: 2em;
-    --skel-icon-button_icon-default-size: 80%;
-    --skel-icon-button_disabled-default-color: oklch(70% 0 0);
+    --skel-IconButton_default-size: 2em;
+    --skel-IconButton_icon-default-size: 80%;
+    --skel-IconButton_disabled-default-color: oklch(70% 0 0);
   }
 
-  .skel-icon-button_root {
+  .skel-IconButton_root {
     display: inline-flex;
     vertical-align: top;
     align-items: center;
     justify-content: center;
 
-    width: var(--skel-icon-button_size);
-    height: var(--skel-icon-button_size);
+    width: var(--skel-IconButton_size);
+    height: var(--skel-IconButton_size);
     border-radius: 50%;
     overflow: hidden;
 
@@ -50,7 +50,7 @@
 
     transition: var(--skel-backward-transition);
 
-    &:not(.skel-icon-button_disabled) {
+    &:not(.skel-IconButton_disabled) {
       cursor: pointer;
 
       &:hover {

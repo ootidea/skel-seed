@@ -6,8 +6,8 @@
 </script>
 
 <div
-  class="skel-stretch-layout_root {klass}"
-  style:--skel-stretch-layout_template={'auto '.repeat(stretchAt) + 'minmax(0, 1fr)'}
+  class="skel-StretchLayout_root {klass}"
+  style:--skel-StretchLayout_template={'auto '.repeat(stretchAt) + 'minmax(0, 1fr)'}
   data-direction={direction}
   on:click
 >
@@ -15,18 +15,18 @@
 </div>
 
 <style global lang="scss">
-  .skel-stretch-layout_root {
+  .skel-StretchLayout_root {
     display: grid;
     box-sizing: border-box;
 
     &[data-direction='horizontal'] {
       grid-auto-flow: column;
-      grid-template-columns: var(--skel-stretch-layout_template);
+      grid-template-columns: var(--skel-StretchLayout_template);
     }
 
     &[data-direction='vertical'] {
       grid-auto-flow: row;
-      grid-template-rows: var(--skel-stretch-layout_template);
+      grid-template-rows: var(--skel-StretchLayout_template);
       height: 100%;
     }
   }

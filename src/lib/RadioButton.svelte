@@ -9,8 +9,8 @@
   export { klass as class }
 </script>
 
-<label class="skel-radio-button_root {klass}" class:skel-radio-button_disabled={disabled}>
-  <input type="radio" class="skel-radio-button_radio" bind:group {value} {name} {disabled} />
+<label class="skel-RadioButton_root {klass}" class:skel-RadioButton_disabled={disabled}>
+  <input type="radio" class="skel-RadioButton_radio" bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}
       {value}
@@ -24,11 +24,11 @@
   @use 'utility.scss';
 
   :root {
-    --skel-radio-button_radio-size: 1.2em;
-    --skel-radio-button_inner-circle-size: 0.6em;
+    --skel-RadioButton_radio-size: 1.2em;
+    --skel-RadioButton_inner-circle-size: 0.6em;
   }
 
-  .skel-radio-button_root {
+  .skel-RadioButton_root {
     display: inline-grid;
     grid-auto-flow: column;
     align-items: center;
@@ -37,22 +37,22 @@
 
     cursor: pointer;
 
-    &.skel-radio-button_disabled {
+    &.skel-RadioButton_disabled {
       cursor: default;
 
       color: var(--skel-disabled-text-color);
     }
   }
 
-  .skel-radio-button_radio {
+  .skel-RadioButton_radio {
     appearance: none;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    width: utility.toEvenPx(var(--skel-radio-button_radio-size));
-    height: utility.toEvenPx(var(--skel-radio-button_radio-size));
+    width: utility.toEvenPx(var(--skel-RadioButton_radio-size));
+    height: utility.toEvenPx(var(--skel-RadioButton_radio-size));
     border-radius: 100%;
     margin: 0;
 
@@ -77,15 +77,15 @@
       transition: all 0.1s ease-out;
 
       &::before {
-        width: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
-        height: utility.toEvenPx(var(--skel-radio-button_inner-circle-size));
+        width: utility.toEvenPx(var(--skel-RadioButton_inner-circle-size));
+        height: utility.toEvenPx(var(--skel-RadioButton_inner-circle-size));
         background-color: var(--skel-primary-color);
 
         transition: all 0.1s ease-out;
       }
     }
 
-    .skel-radio-button_disabled & {
+    .skel-RadioButton_disabled & {
       cursor: default;
     }
   }

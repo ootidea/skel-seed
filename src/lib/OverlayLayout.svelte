@@ -3,20 +3,20 @@
   export { klass as class }
 </script>
 
-<div class="skel-overlay-layout_root {klass}">
+<div class="skel-OverlayLayout_root {klass}">
   <slot />
-  <div class="skel-overlay-layout_overlay">
+  <div class="skel-OverlayLayout_overlay">
     <slot name="overlay" />
   </div>
 </div>
 
 <style global lang="scss">
-  .skel-overlay-layout_root {
+  .skel-OverlayLayout_root {
     position: relative;
     width: max-content;
   }
 
-  .skel-overlay-layout_overlay {
+  .skel-OverlayLayout_overlay {
     position: absolute;
     top: 0;
     left: 0;

@@ -59,7 +59,7 @@
   }
 
   function getDurationMs(toastOptions: ToastOptions | undefined): number {
-    const durationMs = toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-toast_default-duration-ms')
+    const durationMs = toastOptions?.durationMs ?? getCssVariableAsNumber('--skel-Toast_default-duration-ms')
     assertNonUndefined(durationMs)
     return durationMs
   }
@@ -88,32 +88,32 @@
   }
 </script>
 
-<div class="skel-toast_root {klass}">
+<div class="skel-Toast_root {klass}">
   {#each $toastModelsStore as toastModel (toastModel.id)}
-    <div class="skel-toast_toast-wrapper" animate:flip>
+    <div class="skel-Toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>
         <div
-          class="skel-toast_default-view"
+          class="skel-Toast_default-view"
           data-type={toastModel.options?.type ?? 'normal'}
           transition:scale
           on:click={(event) => onClick(toastModel, event)}
         >
           {#if toastModel.options?.type === 'error'}
             <Icon
-              class="skel-toast_icon"
+              class="skel-Toast_icon"
               src="src/assets/alert-outline.svg"
               size="1.3em"
               iconColor="var(--skel-error-color)"
             />
           {:else if toastModel.options?.type === 'success'}
             <Icon
-              class="skel-toast_icon"
+              class="skel-Toast_icon"
               src="src/assets/check-circle-outline.svg"
               size="1.3em"
               iconColor="var(--skel-success-color)"
             />
           {/if}
-          <div class="skel-toast_payload">{toastModel.payload}</div>
+          <div class="skel-Toast_payload">{toastModel.payload}</div>
         </div>
       </slot>
     </div>
@@ -124,10 +124,10 @@
 
 <style global lang="scss">
   :root {
-    --skel-toast_default-duration-ms: 3000;
+    --skel-Toast_default-duration-ms: 3000;
   }
 
-  .skel-toast_root {
+  .skel-Toast_root {
     // Show at bottom right
     position: fixed;
     bottom: 0;
@@ -140,7 +140,7 @@
     align-items: end;
   }
 
-  .skel-toast_default-view {
+  .skel-Toast_default-view {
     display: flex;
     align-items: center;
 
@@ -157,11 +157,11 @@
     cursor: pointer;
   }
 
-  .skel-toast_icon {
+  .skel-Toast_icon {
     margin-right: 0.5em;
   }
 
-  .skel-toast_payload {
+  .skel-Toast_payload {
     white-space: pre-wrap;
   }
 </style>

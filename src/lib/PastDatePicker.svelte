@@ -33,12 +33,12 @@
   }
 </script>
 
-<div class="skel-past-date-picker_root {klass}">
+<div class="skel-PastDatePicker_root {klass}">
   {#if step === 0}
-    <h4 class="skel-past-date-picker_title">年を選択</h4>
+    <h4 class="skel-PastDatePicker_title">年を選択</h4>
     <YearPicker onSelect={onSelectYear} />
   {:else if step === 1}
-    <h4 class="skel-past-date-picker_title">月を選択</h4>
+    <h4 class="skel-PastDatePicker_title">月を選択</h4>
     <MonthPicker onSelect={onSelectMonth} />
   {:else}
     <DatePicker selectedMonth={internalDate} onSelect={onSelectDate} />
@@ -46,7 +46,7 @@
 </div>
 
 <style global lang="scss">
-  .skel-past-date-picker_title {
+  .skel-PastDatePicker_title {
     text-align: center;
     color: oklch(40% 0 0);
     font-size: 16px;

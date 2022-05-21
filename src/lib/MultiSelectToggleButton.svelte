@@ -20,7 +20,7 @@
   }
 </script>
 
-<div class="skel-multi-select-toggle-button_root {klass}">
+<div class="skel-MultiSelectToggleButton_root {klass}">
   {#each values as value, index (value)}
     <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>
@@ -33,7 +33,7 @@
 <CommonCss />
 
 <style global lang="scss">
-  .skel-multi-select-toggle-button_root {
+  .skel-MultiSelectToggleButton_root {
     display: inline-flex;
   }
 </style>

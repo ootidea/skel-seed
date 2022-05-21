@@ -21,7 +21,7 @@
   <slot {open} {close} {toggle} />
 {/if}
 {#if opened}
-  <div class="skel-modal_root {klass}" on:click|self={onClickBackdrop}>
+  <div class="skel-Modal_root {klass}" on:click|self={onClickBackdrop}>
     {#if $$slots.modal}
       <slot name="modal" {open} {close} {toggle} />
     {:else}
@@ -37,7 +37,7 @@
     --skel-modal-background-color: oklch(50% 0 0 / 0.05);
   }
 
-  .skel-modal_root {
+  .skel-Modal_root {
     position: fixed;
     top: 0;
     left: 0;
