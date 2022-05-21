@@ -17,6 +17,7 @@
 <style global lang="scss">
   .skel-stretch-layout_root {
     display: grid;
+    box-sizing: border-box;
 
     &[data-direction='horizontal'] {
       grid-auto-flow: column;

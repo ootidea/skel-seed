@@ -17,6 +17,7 @@
 <style global lang="scss">
   .skel-Gravity_root {
     display: flex;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
 
