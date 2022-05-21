@@ -12,6 +12,7 @@
     <SidebarMenu componentName="ToggleButton" />
     <SidebarMenu componentName="TextInput" />
     <SidebarMenu componentName="AutoSizeTextArea" />
+    <SidebarMenu componentName="DateInput" />
     <SidebarMenu componentName="FarDatePicker" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
