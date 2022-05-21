@@ -4,7 +4,7 @@
   import IconButton from './IconButton.svelte'
   import { type Arrow, until } from './utility'
 
-  export let selectedDate: Dayjs | undefined = undefined
+  export let selectedDate: Date | undefined = undefined
   export let selectedMonth: Date = new Date()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   let klass = ''
@@ -18,7 +18,7 @@
   $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(firstDateOfSelectedMonth.day(), 'day')
 
   function onClickDate(date: Dayjs) {
-    selectedDate = date
+    selectedDate = date.toDate()
     onSelect?.(date.toDate())
   }
 </script>
@@ -61,7 +61,7 @@
           {@const date = firstDateOfSelectedCalendar.add(weakIndex, 'week').add(day, 'day')}
           <div
             class="skel-DatePicker_cell"
-            class:skel-DatePicker_today={selectedDate?.isSame(date, 'date')}
+            class:skel-DatePicker_today={date.isSame(selectedDate, 'date')}
             class:skel-DatePicker_next-month={date.isAfter(_selectedMonth, 'month')}
             class:skel-DatePicker_prev-month={date.isBefore(_selectedMonth, 'month')}
             data-day={day}
