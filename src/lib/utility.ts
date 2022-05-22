@@ -75,26 +75,75 @@ function toKebabCase(pascalCase: string) {
   )
 }
 
-export function generateStyleString(
-  style: string | undefined,
-  record: Record<string, string | undefined>
-): string | undefined {
-  const result: string[] = (style ?? '')
-    .split(';')
-    .map((part) => part.trim())
-    .filter((part) => part !== '')
-    .map((part) => `${part};`)
+type AutoComplete<Literal extends Base, Base = string> = Literal | (Base & Record<never, never>)
 
-  for (const key in record) {
-    const value = record[key]
-    if (value !== undefined) {
-      result.push(`${toKebabCase(key)}: ${value};`)
-    }
-  }
+type Position = AutoComplete<'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'>
+type Display = AutoComplete<'block' | 'inline' | 'inline-block' | 'flex' | 'inline-flex' | 'grid' | 'inline-grid'>
+type AlignItems = AutoComplete<'start' | 'end' | 'center'>
+type JustifyContent = AutoComplete<'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'>
+type BoxSizing = AutoComplete<'border-box' | 'content-box'>
+type Width = AutoComplete<'max-content' | 'min-content'>
+type Height = AutoComplete<'max-content' | 'min-content'>
+type FontWeight = AutoComplete<
+  'normal' | 'bold' | 'lighter' | 'bolder' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
+>
 
-  if (result.length === 0) return undefined
+export type StyleObject = Partial<{
+  position: Position
+  top: string
+  bottom: string
+  left: string
+  right: string
+  display: Display
+  gridTemplateColumns: string
+  gridTemplateRows: string
+  alignItems: AlignItems
+  justifyContent: JustifyContent
+  gap: string
+  columnGap: string
+  rowGap: string
+  margin: string
+  marginTop: string
+  marginBottom: string
+  marginLeft: string
+  marginRight: string
+  marginStart: string
+  marginEnd: string
+  marginBlock: string
+  marginInline: string
+  padding: string
+  paddingTop: string
+  paddingBottom: string
+  paddingLeft: string
+  paddingRight: string
+  paddingStart: string
+  paddingEnd: string
+  paddingBlock: string
+  paddingInline: string
+  boxSizing: BoxSizing
+  width: Width
+  minWidth: string
+  maxWidth: string
+  height: Height
+  minHeight: string
+  maxHeight: string
+  borderRadius: string
+  border: string
+  outline: string
+  boxShadow: string
+  backgroundColor: string
+  color: string
+  fontSize: string
+  fontWeight: FontWeight
+  lineHeight: string
+}>
 
-  return result.join(' ')
+export function toStyle(styleObject: StyleObject | undefined): string | undefined {
+  if (styleObject === undefined) return undefined
+
+  return Object.entries(styleObject)
+    .map(([key, value]) => `${toKebabCase(key)}: ${value}`)
+    .join('; ')
 }
 
 export function generateClassString(klass: string | undefined, classes: Record<string, unknown> | undefined): string {
