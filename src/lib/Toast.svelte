@@ -147,7 +147,6 @@
 
     max-width: 40vw;
     border-radius: 0.2em;
-    overflow: hidden;
 
     margin: 0.5em;
     padding: 0.4em 1em;

@@ -41,7 +41,6 @@
   .skel-DateInput_root {
     border-radius: var(--skel-input-border-radius);
     border: var(--skel-input-border-color) 1px solid;
-    overflow: hidden;
     cursor: pointer;
   }
 

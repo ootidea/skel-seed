@@ -70,7 +70,7 @@
   .skel-TextInput_root {
     border-radius: var(--skel-input-border-radius);
     border: var(--skel-input-border-color) 1px solid;
-    overflow: hidden;
+    background-color: var(--skel-background-color);
   }
 
   .skel-TextInput_prefix,
@@ -113,6 +113,7 @@
     border: none;
     outline: none;
     appearance: none;
+    background-color: transparent;
 
     font: inherit;
     line-height: inherit;
