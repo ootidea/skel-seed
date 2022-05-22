@@ -11,6 +11,7 @@
   export let headerBackgroundColor = 'var(--skel-Foldable_header-background-default-color)'
   export let borderColor = 'var(--skel-Foldable_border-default-color)'
   export let onUnfold: Arrow<[], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -64,6 +65,7 @@
 
 <div
   class="skel-Foldable_root {klass}"
+  {style}
   style:--skel-Foldable_header-background-color={headerBackgroundColor}
   style:--skel-Foldable_border-color={borderColor}
   data-unfolded={unfolded}

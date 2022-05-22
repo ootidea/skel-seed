@@ -5,6 +5,7 @@
   import { until } from './utility'
 
   export let selectedMonth: Date = new Date()
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -16,7 +17,7 @@
   $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(firstDateOfSelectedMonth.day(), 'day')
 </script>
 
-<div class="skel-Calendar_root {klass}">
+<div class="skel-Calendar_root {klass}" {style}>
   <div class="skel-Calendar_year-month-area">
     <IconButton
       src="src/assets/chevron-left.svg"

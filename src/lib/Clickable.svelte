@@ -5,6 +5,7 @@
   type Result = $$Generic
   export let onClick: Arrow<[MouseEvent], Result> | undefined = undefined
   export let disabled = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -36,7 +37,7 @@
   }
 </script>
 
-<div class="skel-Clickable_root {klass}" class:skel-Clickable_disabled={disabled} on:click={clickEventHandler}>
+<div class="skel-Clickable_root {klass}" class:skel-Clickable_disabled={disabled} {style} on:click={clickEventHandler}>
   <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>
 

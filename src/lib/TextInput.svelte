@@ -15,6 +15,9 @@
   export let autofocus: true | undefined = undefined
   export let autocomplete: string | undefined = undefined
   export let list: string | undefined = undefined
+  export let style: string | undefined = undefined
+  let klass = ''
+  export { klass as class }
 
   $: attrs = {
     name,
@@ -31,7 +34,7 @@
   } as const
 </script>
 
-<StretchLayout class="skel-TextInput_root" stretchAt={1}>
+<StretchLayout class="skel-TextInput_root {klass}" {style} stretchAt={1}>
   <Gravity class="skel-TextInput_prefix">
     <slot name="prefix" />
   </Gravity>

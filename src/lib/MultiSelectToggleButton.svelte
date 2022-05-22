@@ -5,6 +5,7 @@
   type Value = $$Generic<string>
   export let values: Value[] = []
   export let selected: Value[] = []
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -20,7 +21,7 @@
   }
 </script>
 
-<div class="skel-MultiSelectToggleButton_root {klass}">
+<div class="skel-MultiSelectToggleButton_root {klass}" {style}>
   {#each values as value, index (value)}
     <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

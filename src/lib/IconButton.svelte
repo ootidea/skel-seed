@@ -12,6 +12,7 @@
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let disabled = false
   export let disabledColor = 'var(--skel-IconButton_disabled-default-color)'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -31,6 +32,7 @@
 <div
   class="skel-IconButton_root {klass}"
   class:skel-IconButton_disabled={disabled}
+  {style}
   style:--skel-IconButton_size={size}
   style:--skel-IconButton_icon-size={iconSize}
   on:click={clickEventHandler}

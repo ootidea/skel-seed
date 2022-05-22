@@ -1,9 +1,10 @@
 <script lang="ts">
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<div class="skel-OverlayLayout_root {klass}">
+<div class="skel-OverlayLayout_root {klass}" {style}>
   <slot />
   <div class="skel-OverlayLayout_overlay">
     <slot name="overlay" />

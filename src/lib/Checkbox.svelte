@@ -4,11 +4,12 @@
   export let checked = false
   export let value: string | undefined = undefined
   export let disabled = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<label class="skel-Checkbox_root {klass}" class:skel-Checkbox_disabled={disabled}>
+<label class="skel-Checkbox_root {klass}" class:skel-Checkbox_disabled={disabled} {style}>
   <input type="checkbox" class="skel-Checkbox_checkbox" {value} bind:checked {disabled} />
   <slot />
 </label>

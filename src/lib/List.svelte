@@ -4,11 +4,12 @@
   type Item = $$Generic
   export let items: readonly Item[]
   export let direction: 'horizontal' | 'vertical' = 'vertical'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<div class="skel-List_root {klass}" data-direction={direction}>
+<div class="skel-List_root {klass}" {style} data-direction={direction}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

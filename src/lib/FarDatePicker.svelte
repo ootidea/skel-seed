@@ -6,6 +6,7 @@
 
   export let date = new Date()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -33,7 +34,7 @@
   }
 </script>
 
-<div class="skel-FarDatePicker_root {klass}">
+<div class="skel-FarDatePicker_root {klass}" {style}>
   {#if step === 0}
     <h4 class="skel-FarDatePicker_title">年を選択</h4>
     <YearPicker onSelect={onSelectYear} />

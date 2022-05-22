@@ -2,12 +2,14 @@
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
   export let thickness = 'var(--skel-Divider_default-thickness)'
   export let color = 'var(--skel-Divider_default-color)'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
 <div
   class="skel-Divider_root {klass}"
+  {style}
   style:--skel-Divider_thickness={thickness}
   style:--skel-Divider_color={color}
   data-direction={direction}

@@ -4,8 +4,6 @@
   import CommonCss from '../../lib/CommonCss.svelte'
 
   export let componentName: string
-  let klass = ''
-  export { klass as class }
 
   function onClick() {
     goto(`./${componentName}-component`)
@@ -17,11 +15,7 @@
   }
 </script>
 
-<div
-  class="root {klass}"
-  class:active={getFileName($page.url.pathname) === `${componentName}-component`}
-  on:click={onClick}
->
+<div class="root" class:active={getFileName($page.url.pathname) === `${componentName}-component`} on:click={onClick}>
   {componentName}
 </div>
 

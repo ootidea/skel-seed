@@ -2,11 +2,12 @@
   import CommonCss from './CommonCss.svelte'
 
   export let text: string | undefined = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<div class="skel-Tooltip_root {klass}">
+<div class="skel-Tooltip_root {klass}" {style}>
   <div class="skel-Tooltip_content-wrapper">
     <slot />
   </div>

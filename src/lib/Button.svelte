@@ -10,6 +10,7 @@
   export let rounded = false
   export let disabled = false
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -31,6 +32,7 @@
   class:skel-Button_ghost={ghost}
   class:skel-Button_rounded={rounded}
   class:skel-Button_disabled={disabled}
+  {style}
   data-tint={tint}
   {disabled}
   on:click={clickEventHandler}

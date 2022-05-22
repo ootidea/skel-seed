@@ -73,6 +73,7 @@
   import CommonCss from './CommonCss.svelte'
   import Icon from './Icon.svelte'
 
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -88,7 +89,7 @@
   }
 </script>
 
-<div class="skel-Toast_root {klass}">
+<div class="skel-Toast_root {klass}" {style}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
     <div class="skel-Toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>

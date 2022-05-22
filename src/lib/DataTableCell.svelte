@@ -5,6 +5,7 @@
   import type { DiscriminatedUnion } from './utility'
 
   export let value: unknown = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -40,7 +41,7 @@
   }>
 </script>
 
-<div class="skel-DataTableCell_root {klass}" data-type={analysisResult.type}>
+<div class="skel-DataTableCell_root {klass}" {style} data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

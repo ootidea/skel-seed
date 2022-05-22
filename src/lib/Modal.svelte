@@ -3,6 +3,7 @@
 
   export let opened = false
   export let disableAutoClose = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -21,7 +22,7 @@
   <slot {open} {close} {toggle} />
 {/if}
 {#if opened}
-  <div class="skel-Modal_root {klass}" on:click|self={onClickBackdrop}>
+  <div class="skel-Modal_root {klass}" {style} on:click|self={onClickBackdrop}>
     <slot name="frame" {open} {close} {toggle}>
       <div class="skel-Modal_frame">
         {#if $$slots.modal}

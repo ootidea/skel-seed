@@ -8,6 +8,7 @@
   export let on: EnneaPosition = 'bottom'
   export let joint: EnneaPosition | undefined = undefined
   export let persistent = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -36,6 +37,7 @@
 
 <div
   class="skel-Popover_root {klass}"
+  {style}
   style:--skel-Popover_left={toXPercent(on)}
   style:--skel-Popover_top={toYPercent(on)}
   style:--skel-Popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(

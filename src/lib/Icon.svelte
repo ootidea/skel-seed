@@ -2,12 +2,14 @@
   export let src = ''
   export let size = 'var(--skel-Icon_default-size)'
   export let iconColor = 'var(--skel-Icon_icon-default-color)'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
 <div
   class="skel-Icon_root {klass}"
+  {style}
   style:--skel-Icon_url="url('{src}')"
   style:--skel-Icon_size={size}
   style:--skel-Icon_icon-color={iconColor}

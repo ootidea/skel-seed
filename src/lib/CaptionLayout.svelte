@@ -1,13 +1,14 @@
 <script lang="ts">
   export let captionPosition: 'above' | 'below' = 'below'
 
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
   let clientWidth = 0
 </script>
 
-<div class="skel-CaptionLayout_root {klass}" style:--skel-CaptionLayout_width="{clientWidth}px">
+<div class="skel-CaptionLayout_root {klass}" {style} style:--skel-CaptionLayout_width="{clientWidth}px">
   {#if captionPosition === 'below'}
     <div class="skel-CaptionLayout_unnamed-slot-wrapper" bind:clientWidth>
       <slot />

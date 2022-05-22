@@ -2,11 +2,12 @@
   import CommonCss from './CommonCss.svelte'
 
   export let selected = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<div class="skel-ToggleButton_root {klass}" class:skel-ToggleButton_selected={selected} on:click>
+<div class="skel-ToggleButton_root {klass}" class:skel-ToggleButton_selected={selected} {style} on:click>
   <slot />
 </div>
 

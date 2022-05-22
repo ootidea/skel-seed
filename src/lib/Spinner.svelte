@@ -6,6 +6,7 @@
   export let thickness = 25
   export let frequency = 1.4
   export let inverted = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -16,6 +17,7 @@
 
 <div
   class="skel-Spinner_root {klass}"
+  {style}
   style:--skel-Spinner_size={size}
   style:--skel-Spinner_svg-url={svgUrl}
   style:--skel-Spinner_period="{1 / frequency}s"

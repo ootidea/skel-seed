@@ -9,6 +9,7 @@
   export let columns: readonly Column[] = []
   export let evenRowBackgroundColor = 'var(--skel-DataTable_even-row-background-default-color)'
   export let oddRowBackgroundColor = 'var(--skel-DataTable_odd-row-background-default-color)'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -27,6 +28,7 @@
 
 <div
   class="skel-DataTable_root {klass}"
+  {style}
   style:--skel-DataTable_template-columns={Array(columns.length + 1)
     .fill('max-content')
     .join(' auto ')}

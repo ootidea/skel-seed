@@ -7,9 +7,12 @@
    * If January is selected, the argument is 1.
    */
   export let onSelect: Arrow<[number], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
+  let klass = ''
+  export { klass as class }
 </script>
 
-<div class="skel-MonthPicker_root">
+<div class="skel-MonthPicker_root {klass}" {style}>
   <slot {onSelect}>
     {#each range(1, 12) as month}
       <Button tint="achromatic" ghost onClick={() => onSelect?.(month)}>

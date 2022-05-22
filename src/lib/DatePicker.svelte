@@ -7,6 +7,7 @@
   export let selectedDate: Date | undefined = undefined
   export let selectedMonth: Date = new Date()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
@@ -16,7 +17,7 @@
   }
 </script>
 
-<Calendar class="skel-DatePicker_root {klass}" bind:selectedMonth>
+<Calendar class="skel-DatePicker_root {klass}" {style} bind:selectedMonth>
   <div
     slot="date-cell"
     class="skel-DatePicker_date-cell"

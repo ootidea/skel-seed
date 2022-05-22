@@ -4,13 +4,14 @@
   export let value = ''
   export let placeholder = ''
   export let disabled = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skel-AutoSizeTextArea_root {klass}" class:skel-AutoSizeTextArea_disabled={disabled}>
+<div class="skel-AutoSizeTextArea_root {klass}" class:skel-AutoSizeTextArea_disabled={disabled} {style}>
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
     {value ? value : placeholder}{ZERO_WIDTH_SPACE}
   </div>

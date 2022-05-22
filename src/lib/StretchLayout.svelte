@@ -1,12 +1,14 @@
 <script lang="ts">
   export let stretchAt: number | `${number}` = 0
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
 <div
   class="skel-StretchLayout_root {klass}"
+  {style}
   style:--skel-StretchLayout_template={'auto '.repeat(Number(stretchAt)) + 'minmax(0, 1fr)'}
   data-direction={direction}
   on:click

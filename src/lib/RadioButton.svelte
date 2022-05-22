@@ -5,11 +5,12 @@
   export let value: string | undefined = undefined
   export let name: string | undefined = undefined
   export let disabled = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 </script>
 
-<label class="skel-RadioButton_root {klass}" class:skel-RadioButton_disabled={disabled}>
+<label class="skel-RadioButton_root {klass}" class:skel-RadioButton_disabled={disabled} {style}>
   <input type="radio" class="skel-RadioButton_radio" bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}
