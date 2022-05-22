@@ -14,6 +14,7 @@
     <SidebarMenu componentName="AutoSizeTextArea" />
     <SidebarMenu componentName="DateInput" />
     <SidebarMenu componentName="FarDatePicker" />
+    <SidebarMenu componentName="MultiSelect" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
     <SidebarMenu componentName="Modal" />
