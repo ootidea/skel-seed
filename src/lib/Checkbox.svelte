@@ -11,7 +11,9 @@
 
 <label class="skel-Checkbox_root {klass}" class:skel-Checkbox_disabled={disabled} {style}>
   <input type="checkbox" class="skel-Checkbox_checkbox" {value} bind:checked {disabled} />
-  <slot />
+  <div class="skel-Checkbox_unnamed-slot-wrapper">
+    <slot />
+  </div>
 </label>
 
 <CommonCss />
@@ -19,9 +21,9 @@
 <style global lang="scss">
   .skel-Checkbox_root {
     display: inline-grid;
-    grid-auto-flow: column;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: 0.3em;
+    gap: 0.5em;
 
     cursor: pointer;
 
