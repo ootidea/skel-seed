@@ -15,8 +15,8 @@
   let klass = ''
   export { klass as class }
 
-  const fold = () => (unfolded = true)
-  const unfold = () => (unfolded = false)
+  const fold = () => (unfolded = false)
+  const unfold = () => (unfolded = true)
   const toggle = () => (unfolded = !unfolded)
 
   // Mirror variable for value change detection.
