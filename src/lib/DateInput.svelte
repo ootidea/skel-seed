@@ -19,7 +19,7 @@
 </script>
 
 <Modal let:toggle>
-  <StretchLayout class="skel-DateInput_root {klass}" {style} stretchAt={0} on:click={toggle}>
+  <StretchLayout class="skel-DateInput_root {klass}" {style} stretchAt={0} on:click={() => disabled || toggle()}>
     <div class="skel-DateInput_selected-date">{date?.toLocaleDateString() ?? placeholder}{ZERO_WIDTH_SPACE}</div>
     <Gravity>
       <slot name="icon">
