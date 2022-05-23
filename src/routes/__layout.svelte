@@ -13,6 +13,7 @@
     <SidebarMenu componentName="TextInput" />
     <SidebarMenu componentName="AutoSizeTextArea" />
     <SidebarMenu componentName="DateInput" />
+    <SidebarMenu componentName="FarDateInput" />
     <SidebarMenu componentName="FarDatePicker" />
     <SidebarMenu componentName="MultiSelect" />
     <SidebarMenu componentName="DataTable" />

@@ -4,13 +4,13 @@
   import type { Arrow } from './utility'
   import YearPicker from './YearPicker.svelte'
 
-  export let date = new Date()
+  export let selectedDate: Date | undefined = undefined
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
 
-  let internalDate = new Date(date)
+  let internalDate = new Date(selectedDate ?? new Date())
 
   let step: 0 | 1 | 2 = 0
 
@@ -28,8 +28,8 @@
     step++
   }
 
-  function onSelectDate(selectedDate: Date) {
-    date = selectedDate
+  function onSelectDate(date: Date) {
+    selectedDate = date
     onSelect?.(date)
   }
 </script>
