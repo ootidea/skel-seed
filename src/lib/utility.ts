@@ -146,7 +146,7 @@ export function toStyle(styleObject: StyleObject | undefined): string | undefine
     .join('; ')
 }
 
-export function generateClassString(klass: string | undefined, classes: Record<string, unknown> | undefined): string {
+export function joinClasses(klass: string | undefined, classes: Record<string, unknown> | undefined): string {
   const conditionalClasses = Object.entries(classes ?? {})
     .filter(([, value]) => Boolean(value))
     .map(([key]) => key)
