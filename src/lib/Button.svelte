@@ -9,6 +9,7 @@
   export let ghost = false
   export let rounded = false
   export let disabled = false
+  export let fullWidth = false
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let style: string | undefined = undefined
   let klass = ''
@@ -32,6 +33,7 @@
   class:skel-Button_ghost={ghost}
   class:skel-Button_rounded={rounded}
   class:skel-Button_disabled={disabled}
+  class:skel-Button_full-width={fullWidth}
   {style}
   data-tint={tint}
   {disabled}
@@ -65,6 +67,8 @@
     border-radius: 0.3em;
     border-width: 1px;
     border-style: solid;
+
+    font: inherit;
 
     user-select: none;
     transition: var(--skel-backward-transition);
@@ -126,5 +130,10 @@
 
   .skel-Button_invisible {
     visibility: hidden;
+  }
+
+  .skel-Button_full-width {
+    display: flex;
+    width: 100%;
   }
 </style>
