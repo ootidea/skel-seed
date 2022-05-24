@@ -5,6 +5,7 @@
   import Icon from './Icon.svelte'
   import Popover from './Popover.svelte'
   import StretchLayout from './StretchLayout.svelte'
+  import { joinClasses } from './utility'
 
   export let values: string[] = []
   export let selected: Record<string, boolean> = {}
@@ -13,6 +14,7 @@
   export let disabled = false
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   // fill in missing entries
   $: for (const value of values) {
@@ -29,7 +31,7 @@
 </script>
 
 <Popover style="width: 100%" on="bottom left" joint="top left" let:toggle>
-  <StretchLayout class="skel-MultiSelect_root {klass}" on:click={toggle}>
+  <StretchLayout class="skel-MultiSelect_root {joinClasses(klass, classes)}" on:click={toggle}>
     <div class="skel-MultiSelect_selected-values">
       {#each values.filter((value) => selected[value]) as value}
         <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>

@@ -2,7 +2,7 @@
   import { scale } from 'svelte/transition'
   import CommonCss from './CommonCss.svelte'
   import { type EnneaPosition, toOpposite, toXPercent, toYPercent } from './Position'
-  import { isInsideOf } from './utility'
+  import { isInsideOf, joinClasses } from './utility'
 
   export let opened = false
   export let on: EnneaPosition = 'bottom'
@@ -11,6 +11,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   const open = () => (opened = true)
   const close = () => (opened = false)
@@ -36,7 +37,7 @@
 </script>
 
 <div
-  class="skel-Popover_root {klass}"
+  class="skel-Popover_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-Popover_left={toXPercent(on)}
   style:--skel-Popover_top={toYPercent(on)}

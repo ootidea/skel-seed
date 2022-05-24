@@ -1,6 +1,7 @@
 <script lang="ts">
   import Gravity from './Gravity.svelte'
   import StretchLayout from './StretchLayout.svelte'
+  import { joinClasses } from './utility'
 
   export let type: string | undefined = undefined
   export let value = ''
@@ -18,6 +19,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   $: attrs = {
     name,
@@ -34,7 +36,7 @@
   } as const
 </script>
 
-<StretchLayout class="skel-TextInput_root {klass}" {style} stretchAt={1}>
+<StretchLayout class="skel-TextInput_root {joinClasses(klass, classes)}" {style} stretchAt={1}>
   <Gravity class="skel-TextInput_prefix">
     <slot name="prefix" />
   </Gravity>

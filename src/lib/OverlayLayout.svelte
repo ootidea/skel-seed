@@ -1,10 +1,13 @@
 <script lang="ts">
+  import { joinClasses } from './utility'
+
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-OverlayLayout_root {klass}" {style}>
+<div class="skel-OverlayLayout_root {joinClasses(klass, classes)}" {style}>
   <slot />
   <div class="skel-OverlayLayout_overlay">
     <slot name="overlay" />

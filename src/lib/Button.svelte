@@ -4,6 +4,7 @@
   import OverlayLayout from './OverlayLayout.svelte'
   import Spinner from './Spinner.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
 
   export let tint: 'primary' | 'achromatic' = 'primary'
   export let ghost = false
@@ -14,6 +15,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   $: isSpinnerInverted = !ghost
 
@@ -29,7 +31,7 @@
 </script>
 
 <button
-  class="skel-Button_root {klass}"
+  class="skel-Button_root {joinClasses(klass, classes)}"
   class:skel-Button_ghost={ghost}
   class:skel-Button_rounded={rounded}
   class:skel-Button_disabled={disabled}

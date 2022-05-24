@@ -1,5 +1,6 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { joinClasses } from './utility'
 
   export let value = ''
   export let placeholder = ''
@@ -7,11 +8,16 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<div class="skel-AutoSizeTextArea_root {klass}" class:skel-AutoSizeTextArea_disabled={disabled} {style}>
+<div
+  class="skel-AutoSizeTextArea_root {joinClasses(klass, classes)}"
+  class:skel-AutoSizeTextArea_disabled={disabled}
+  {style}
+>
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
     {value ? value : placeholder}{ZERO_WIDTH_SPACE}
   </div>

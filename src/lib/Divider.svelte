@@ -1,14 +1,17 @@
 <script lang="ts">
+  import { joinClasses } from './utility'
+
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
   export let thickness = 'var(--skel-Divider_default-thickness)'
   export let color = 'var(--skel-Divider_default-color)'
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
 <div
-  class="skel-Divider_root {klass}"
+  class="skel-Divider_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-Divider_thickness={thickness}
   style:--skel-Divider_color={color}

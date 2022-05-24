@@ -1,14 +1,16 @@
 <script lang="ts">
   import { type EnneaPosition, toHorizontalPosition, toVerticalPosition } from './Position'
+  import { joinClasses } from './utility'
 
   export let to: EnneaPosition = 'center'
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
 <div
-  class="skel-Gravity_root {klass}"
+  class="skel-Gravity_root {joinClasses(klass, classes)}"
   {style}
   data-horizontal-position={toHorizontalPosition(to)}
   data-vertical-position={toVerticalPosition(to)}

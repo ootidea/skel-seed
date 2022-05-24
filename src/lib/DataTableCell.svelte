@@ -3,11 +3,13 @@
   import Icon from './Icon.svelte'
   import Link from './Link.svelte'
   import type { DiscriminatedUnion } from './utility'
+  import { joinClasses } from './utility'
 
   export let value: unknown = undefined
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   $: analysisResult = analyze(value)
 
@@ -41,7 +43,7 @@
   }>
 </script>
 
-<div class="skel-DataTableCell_root {klass}" {style} data-type={analysisResult.type}>
+<div class="skel-DataTableCell_root {joinClasses(klass, classes)}" {style} data-type={analysisResult.type}>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

@@ -1,11 +1,13 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { joinClasses } from './utility'
 
   export let opened = false
   export let disableAutoClose = false
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   const open = () => (opened = true)
   const close = () => (opened = false)
@@ -22,7 +24,7 @@
   <slot {open} {close} {toggle} />
 {/if}
 {#if opened}
-  <div class="skel-Modal_root {klass}" {style} on:click|self={onClickBackdrop}>
+  <div class="skel-Modal_root {joinClasses(klass, classes)}" {style} on:click|self={onClickBackdrop}>
     <slot name="frame" {open} {close} {toggle}>
       <div class="skel-Modal_frame">
         {#if $$slots.modal}

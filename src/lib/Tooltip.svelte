@@ -1,13 +1,15 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { joinClasses } from './utility'
 
   export let text: string | undefined = undefined
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-Tooltip_root {klass}" {style}>
+<div class="skel-Tooltip_root {joinClasses(klass, classes)}" {style}>
   <div class="skel-Tooltip_content-wrapper">
     <slot />
   </div>

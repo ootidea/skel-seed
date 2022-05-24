@@ -6,6 +6,7 @@
   import Modal from './Modal.svelte'
   import StretchLayout from './StretchLayout.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
 
   export let date: Date | undefined = undefined
   export let placeholder = ''
@@ -14,12 +15,18 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <Modal let:toggle>
-  <StretchLayout class="skel-FarDateInput_root {klass}" {style} stretchAt={0} on:click={() => disabled || toggle()}>
+  <StretchLayout
+    class="skel-FarDateInput_root {joinClasses(klass, classes)}"
+    {style}
+    stretchAt={0}
+    on:click={() => disabled || toggle()}
+  >
     <div class="skel-FarDateInput_selected-date">{date?.toLocaleDateString() ?? placeholder}{ZERO_WIDTH_SPACE}</div>
     <Gravity>
       <slot name="icon">

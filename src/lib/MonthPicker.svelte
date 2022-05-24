@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from './Button.svelte'
-  import { type Arrow, range } from './utility'
+  import { type Arrow, joinClasses, range } from './utility'
 
   /**
    * Callback function called when the month is selected.
@@ -10,9 +10,10 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-MonthPicker_root {klass}" {style}>
+<div class="skel-MonthPicker_root {joinClasses(klass, classes)}" {style}>
   <slot {onSelect}>
     {#each range(1, 12) as month}
       <Button tint="achromatic" ghost onClick={() => onSelect?.(month)}>

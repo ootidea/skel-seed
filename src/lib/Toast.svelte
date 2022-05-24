@@ -72,10 +72,12 @@
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
   import Icon from './Icon.svelte'
+  import { joinClasses } from './utility'
 
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   onDestroy(() => {
     // Clear the toast data before transitioning to another page on the SPA
@@ -89,7 +91,7 @@
   }
 </script>
 
-<div class="skel-Toast_root {klass}" {style}>
+<div class="skel-Toast_root {joinClasses(klass, classes)}" {style}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
     <div class="skel-Toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>

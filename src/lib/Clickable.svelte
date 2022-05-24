@@ -1,6 +1,7 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
 
   type Result = $$Generic
   export let onClick: Arrow<[MouseEvent], Result> | undefined = undefined
@@ -8,6 +9,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   let result: Result | undefined
   let awaited: unknown
@@ -37,7 +39,12 @@
   }
 </script>
 
-<div class="skel-Clickable_root {klass}" class:skel-Clickable_disabled={disabled} {style} on:click={clickEventHandler}>
+<div
+  class="skel-Clickable_root {joinClasses(klass, classes)}"
+  class:skel-Clickable_disabled={disabled}
+  {style}
+  on:click={clickEventHandler}
+>
   <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>
 

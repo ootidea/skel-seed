@@ -2,6 +2,7 @@
   import DatePicker from './DatePicker.svelte'
   import MonthPicker from './MonthPicker.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
   import YearPicker from './YearPicker.svelte'
 
   export let selectedDate: Date | undefined = undefined
@@ -9,6 +10,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   let internalDate = new Date(selectedDate ?? new Date())
 
@@ -34,7 +36,7 @@
   }
 </script>
 
-<div class="skel-FarDatePicker_root {klass}" {style}>
+<div class="skel-FarDatePicker_root {joinClasses(klass, classes)}" {style}>
   {#if step === 0}
     <h4 class="skel-FarDatePicker_title">年を選択</h4>
     <YearPicker onSelect={onSelectYear} />

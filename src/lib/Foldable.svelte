@@ -6,6 +6,7 @@
   import Icon from './Icon.svelte'
   import StretchLayout from './StretchLayout.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
 
   export let unfolded = false
   export let headerBackgroundColor = 'var(--skel-Foldable_header-background-default-color)'
@@ -14,6 +15,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   const fold = () => (unfolded = false)
   const unfold = () => (unfolded = true)
@@ -64,7 +66,7 @@
 </script>
 
 <div
-  class="skel-Foldable_root {klass}"
+  class="skel-Foldable_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-Foldable_header-background-color={headerBackgroundColor}
   style:--skel-Foldable_border-color={borderColor}

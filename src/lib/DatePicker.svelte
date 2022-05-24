@@ -3,6 +3,7 @@
   import Calendar from './Calendar.svelte'
   import CommonCss from './CommonCss.svelte'
   import type { Arrow } from './utility'
+  import { joinClasses } from './utility'
 
   export let selectedDate: Date | undefined = undefined
   export let selectedMonth: Date = new Date()
@@ -10,6 +11,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   function onClickDate(date: Date) {
     selectedDate = date
@@ -17,7 +19,7 @@
   }
 </script>
 
-<Calendar class="skel-DatePicker_root {klass}" {style} bind:selectedMonth>
+<Calendar class="skel-DatePicker_root {joinClasses(klass, classes)}" {style} bind:selectedMonth>
   <div
     slot="date-cell"
     class="skel-DatePicker_date-cell"

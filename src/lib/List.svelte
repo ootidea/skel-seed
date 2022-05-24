@@ -1,5 +1,6 @@
 <script lang="ts">
   import Divider from './Divider.svelte'
+  import { joinClasses } from './utility'
 
   type Item = $$Generic
   export let items: readonly Item[]
@@ -7,9 +8,10 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-List_root {klass}" {style} data-direction={direction}>
+<div class="skel-List_root {joinClasses(klass, classes)}" {style} data-direction={direction}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

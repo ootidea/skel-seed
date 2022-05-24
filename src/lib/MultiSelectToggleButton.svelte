@@ -1,6 +1,7 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import ToggleButton from './ToggleButton.svelte'
+  import { joinClasses } from './utility'
 
   type Value = $$Generic<string>
   export let values: Value[] = []
@@ -8,6 +9,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   function clickEventHandler(value: Value) {
     const index = selected.indexOf(value)
@@ -21,7 +23,7 @@
   }
 </script>
 
-<div class="skel-MultiSelectToggleButton_root {klass}" {style}>
+<div class="skel-MultiSelectToggleButton_root {joinClasses(klass, classes)}" {style}>
   {#each values as value, index (value)}
     <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

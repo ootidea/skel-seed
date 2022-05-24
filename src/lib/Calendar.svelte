@@ -2,12 +2,13 @@
   import dayjs from 'dayjs'
   import CommonCss from './CommonCss.svelte'
   import IconButton from './IconButton.svelte'
-  import { until } from './utility'
+  import { joinClasses, until } from './utility'
 
   export let selectedMonth: Date = new Date()
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   // TODO: i18n
   const dayNames = ['日', '月', '火', '水', '木', '金', '土']
@@ -17,7 +18,7 @@
   $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(firstDateOfSelectedMonth.day(), 'day')
 </script>
 
-<div class="skel-Calendar_root {klass}" {style}>
+<div class="skel-Calendar_root {joinClasses(klass, classes)}" {style}>
   <div class="skel-Calendar_year-month-area">
     <IconButton
       src="src/assets/chevron-left.svg"

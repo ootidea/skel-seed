@@ -1,5 +1,6 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { joinClasses } from './utility'
 
   export let size = 'var(--skel-Spinner_default-size)'
   // TODO: Can convert this to CSS variable?
@@ -9,6 +10,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   $: svgUrl = `url('data:image/svg+xml;utf8,<svg width="200mm" height="200mm" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="${
     100 - thickness / 2
@@ -16,7 +18,7 @@
 </script>
 
 <div
-  class="skel-Spinner_root {klass}"
+  class="skel-Spinner_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-Spinner_size={size}
   style:--skel-Spinner_svg-url={svgUrl}

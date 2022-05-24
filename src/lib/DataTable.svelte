@@ -1,6 +1,7 @@
 <script lang="ts">
   import DataTableCell from './DataTableCell.svelte'
   import Divider from './Divider.svelte'
+  import { joinClasses } from './utility'
 
   type Row = $$Generic<Record<string, unknown>>
   type Column = string | { id: string; title?: string }
@@ -12,6 +13,7 @@
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column
@@ -27,7 +29,7 @@
 </script>
 
 <div
-  class="skel-DataTable_root {klass}"
+  class="skel-DataTable_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-DataTable_template-columns={Array(columns.length + 1)
     .fill('max-content')

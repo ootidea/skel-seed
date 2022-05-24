@@ -1,13 +1,20 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
+  import { joinClasses } from './utility'
 
   export let selected = false
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
+  export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-ToggleButton_root {klass}" class:skel-ToggleButton_selected={selected} {style} on:click>
+<div
+  class="skel-ToggleButton_root {joinClasses(klass, classes)}"
+  class:skel-ToggleButton_selected={selected}
+  {style}
+  on:click
+>
   <slot />
 </div>
 
