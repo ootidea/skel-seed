@@ -87,10 +87,8 @@
       <Divider color="var(--skel-Foldable_border-color)" />
     </slot>
   {/if}
-  <div class="skel-Foldable_content-area" bind:this={contentAreaElement}>
-    <div class="skel-Foldable_content" bind:clientHeight={contentHeight}>
-      <slot {fold} {unfold} {toggle} />
-    </div>
+  <div class="skel-Foldable_content-area" bind:this={contentAreaElement} bind:clientHeight={contentHeight}>
+    <slot {fold} {unfold} {toggle} />
   </div>
 </div>
 
