@@ -12,9 +12,9 @@
 
 <SectionTitle>Control by toggle function</SectionTitle>
 <Sample>
-  <Modal let:toggle>
+  <Modal showCloseButton let:toggle>
     <Button onClick={toggle}>Open</Button>
-    <div slot="modal" style="padding: 0.5em 1em">Modal content</div>
+    <div slot="modal" style="padding: 0em">Modal content</div>
   </Modal>
 </Sample>
 
