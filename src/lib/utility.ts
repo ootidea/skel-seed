@@ -158,6 +158,26 @@ export function joinClasses(klass: string | undefined, classes: Record<string, u
 }
 
 /**
+ * This function is used as a Svelte use directive, that callback the width of an element reactively.
+ * This was defined because svelte's bind:clientWidth may not reflect the actual value.
+ * @example
+ * <div use:observeWidth={(width) => (clientWidth = width)} />
+ */
+export function observeWidth(element: HTMLElement, callback: (width: number) => unknown) {
+  callback(element.getBoundingClientRect().width)
+  const resizeObserver = new ResizeObserver(() => {
+    callback(element.getBoundingClientRect().width)
+  })
+  resizeObserver.observe(element)
+
+  return {
+    destroy() {
+      resizeObserver.unobserve(element)
+    },
+  }
+}
+
+/**
  * A utility for abbreviating function types.
  * @example
  * Arrow<[number], boolean> is equivalent to (value: number) => boolean

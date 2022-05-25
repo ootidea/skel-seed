@@ -19,6 +19,7 @@
     --skel-forward-transition: all 0.2s ease-out;
     --skel-backward-transition: all 0.4s ease-out;
 
+    --skel-dropdown-z-index: 500;
     --skel-popover-z-index: 500;
     --skel-modal-z-index: 1000;
     --skel-tooltip-z-index: 1500;
