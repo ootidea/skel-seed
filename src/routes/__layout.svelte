@@ -15,6 +15,7 @@
     <SidebarMenu componentName="DateInput" />
     <SidebarMenu componentName="FarDateInput" />
     <SidebarMenu componentName="FarDatePicker" />
+    <SidebarMenu componentName="Select" />
     <SidebarMenu componentName="MultiSelect" />
     <SidebarMenu componentName="DataTable" />
     <SidebarMenu componentName="Popover" />
