@@ -88,10 +88,14 @@
 
   .skel-TextInput_prefix {
     border-right: var(--skel-input-border-color) 1px solid;
+    border-top-left-radius: var(--skel-input-border-radius);
+    border-bottom-left-radius: var(--skel-input-border-radius);
   }
 
   .skel-TextInput_postfix {
     border-left: var(--skel-input-border-color) 1px solid;
+    border-top-right-radius: var(--skel-input-border-radius);
+    border-bottom-right-radius: var(--skel-input-border-radius);
   }
 
   .skel-TextInput_prepend {
