@@ -82,10 +82,38 @@
 
       &[data-tint='primary'] {
         --skel-Button_tint-color: var(--skel-primary-color);
+
+        &:not(.skel-Button_disabled) {
+          cursor: pointer;
+
+          &:hover {
+            transition: var(--skel-forward-transition);
+            --skel-Button_tint-color: var(--skel-primary-inverted-background-hover-color);
+          }
+
+          &:active {
+            transition: var(--skel-forward-transition);
+            --skel-Button_tint-color: var(--skel-primary-inverted-background-active-color);
+          }
+        }
       }
 
       &[data-tint='achromatic'] {
         --skel-Button_tint-color: oklch(55% 0 0);
+
+        &:not(.skel-Button_disabled) {
+          cursor: pointer;
+
+          &:hover {
+            transition: var(--skel-forward-transition);
+            --skel-Button_tint-color: oklch(60% 0 0);
+          }
+
+          &:active {
+            transition: var(--skel-forward-transition);
+            --skel-Button_tint-color: oklch(65% 0 0);
+          }
+        }
       }
     }
 
@@ -96,31 +124,37 @@
 
       &[data-tint='primary'] {
         --skel-Button_tint-color: var(--skel-primary-color);
+
+        &:not(.skel-Button_disabled) {
+          cursor: pointer;
+
+          &:hover {
+            transition: var(--skel-forward-transition);
+            background-color: var(--skel-primary-background-hover-color);
+          }
+
+          &:active {
+            transition: var(--skel-forward-transition);
+            background-color: var(--skel-primary-background-active-color);
+          }
+        }
       }
 
       &[data-tint='achromatic'] {
         --skel-Button_tint-color: oklch(50% 0 0);
-      }
-    }
 
-    &:not(.skel-Button_disabled) {
-      cursor: pointer;
+        &:not(.skel-Button_disabled) {
+          cursor: pointer;
 
-      &:hover {
-        transition: var(--skel-forward-transition);
-        background-color: var(--skel-primary-inverted-background-hover-color);
+          &:hover {
+            transition: var(--skel-forward-transition);
+            background-color: oklch(97% 0 0);
+          }
 
-        &.skel-Button_ghost {
-          background-color: var(--skel-primary-background-hover-color);
-        }
-      }
-
-      &:active {
-        transition: var(--skel-forward-transition);
-        background-color: var(--skel-primary-inverted-background-active-color);
-
-        &.skel-Button_ghost {
-          background-color: var(--skel-primary-background-active-color);
+          &:active {
+            transition: var(--skel-forward-transition);
+            background-color: oklch(94% 0 0);
+          }
         }
       }
     }
