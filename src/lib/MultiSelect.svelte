@@ -44,7 +44,7 @@
     </div>
     <Icon src={chevron} />
   </StretchLayout>
-  <div slot="dropdown" class="skel-MultiSelect_popover">
+  <div slot="dropdown" class="skel-MultiSelect_dropdown">
     {#each values as value, i}
       {#if i > 0}
         <Divider />
