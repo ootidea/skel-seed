@@ -2,8 +2,8 @@
   import chevron from '/src/assets/chevron-down.svg'
   import Checkbox from './Checkbox.svelte'
   import Divider from './Divider.svelte'
+  import Dropdown from './Dropdown.svelte'
   import Icon from './Icon.svelte'
-  import Popover from './Popover.svelte'
   import StretchLayout from './StretchLayout.svelte'
   import { joinClasses } from './utility'
 
@@ -30,7 +30,7 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<Popover style="width: 100%" on="bottom left" joint="top left" let:toggle>
+<Dropdown let:toggle>
   <StretchLayout class="skel-MultiSelect_root {joinClasses(klass, classes)}" on:click={toggle}>
     <div class="skel-MultiSelect_selected-values">
       {#each values.filter((value) => selected[value]) as value}
@@ -44,7 +44,7 @@
     </div>
     <Icon src={chevron} />
   </StretchLayout>
-  <div slot="popover" class="skel-MultiSelect_popover">
+  <div slot="dropdown" class="skel-MultiSelect_popover">
     {#each values as value, i}
       {#if i > 0}
         <Divider />
@@ -54,7 +54,7 @@
       </Checkbox>
     {/each}
   </div>
-</Popover>
+</Dropdown>
 
 <style global lang="scss">
   .skel-MultiSelect_root {
