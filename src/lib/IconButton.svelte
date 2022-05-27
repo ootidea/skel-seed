@@ -38,6 +38,7 @@
   style:--skel-IconButton_size={size}
   style:--skel-IconButton_icon-size={iconSize}
   on:click={clickEventHandler}
+  {...$$restProps}
 >
   {#if isInProgress}
     <Gravity>
@@ -52,7 +53,7 @@
 
 <style global lang="scss">
   :root {
-    --skel-IconButton_default-size: 2em;
+    --skel-IconButton_default-size: 1.8em;
     --skel-IconButton_icon-default-size: 80%;
     --skel-IconButton_disabled-default-color: oklch(70% 0 0);
   }
