@@ -3,6 +3,7 @@
   import DataTableCell from '../lib/DataTableCell.svelte'
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
+  import SectionTitle from './_components/SectionTitle.svelte'
 
   const rows = [
     { name: 'hoge', age: 10, createdAt: new Date(), ed: true, image: 'src/assets/plus.svg' },
@@ -18,6 +19,29 @@
 
 <Sample>
   <DataTable {rows} columns={['行番号', 'name', { id: 'age', title: '年齢' }, 'ed', 'image', 'createdAt']}>
+    <svelte:fragment slot="cell" let:columnId let:value let:rowIndex>
+      {#if columnId === '行番号'}
+        <DataTableCell value={rowIndex} />
+      {:else}
+        <DataTableCell {value} />
+      {/if}
+    </svelte:fragment>
+  </DataTable>
+</Sample>
+
+<SectionTitle>Show sort buttons</SectionTitle>
+<Sample>
+  <DataTable
+    {rows}
+    columns={[
+      '行番号',
+      'name',
+      { id: 'age', title: '年齢', sortable: true },
+      { id: 'ed', sortable: true },
+      'image',
+      'createdAt',
+    ]}
+  >
     <svelte:fragment slot="cell" let:columnId let:value let:rowIndex>
       {#if columnId === '行番号'}
         <DataTableCell value={rowIndex} />
