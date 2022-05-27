@@ -8,6 +8,11 @@ export function assertNonUndefined<T>(value: T | undefined, message?: string): a
   }
 }
 
+/** call(() => {...}) is readable than (() => {...})() */
+export function call<T>(f: () => T): T {
+  return f()
+}
+
 /**
  * Create sequence starting with 0.
  * @example

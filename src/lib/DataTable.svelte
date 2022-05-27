@@ -1,19 +1,59 @@
 <script lang="ts">
   import DataTableCell from './DataTableCell.svelte'
   import Divider from './Divider.svelte'
-  import { joinClasses } from './utility'
+  import IconButton from './IconButton.svelte'
+  import StretchLayout from './StretchLayout.svelte'
+  import { call, joinClasses } from './utility'
+  import arrowDown from '/src/assets/arrow-down.svg'
 
   type Row = $$Generic<Record<string, unknown>>
-  type Column = string | { id: string; title?: string }
+  type Column = string | { id: string; title?: string; sortable?: boolean }
 
   export let rows: readonly Row[] = []
   export let columns: readonly Column[] = []
   export let evenRowBackgroundColor = 'var(--skel-DataTable_even-row-background-default-color)'
   export let oddRowBackgroundColor = 'var(--skel-DataTable_odd-row-background-default-color)'
+  export let sortingState: { columnId: string; reversed: boolean } | undefined = undefined
   export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
+
+  $: sortedRows = call(() => {
+    const result = rows.slice()
+    if (sortingState === undefined) return result
+
+    const sortingColumn = columns.find((column) => getColumnId(column) === sortingState.columnId)
+    if (sortingColumn === undefined) return result
+    const sortingColumnId = sortingState.columnId
+
+    result.sort((row1, row2) => {
+      const value1 = row1[sortingColumnId]
+      const value2 = row2[sortingColumnId]
+
+      if (typeof value1 === 'number' && typeof value2 === 'number') {
+        return value1 - value2
+      }
+      if (typeof value1 === 'bigint' && typeof value2 === 'bigint') {
+        return Number(value1 - value2)
+      }
+      if (typeof value1 === 'boolean' && typeof value2 === 'boolean') {
+        // trueが上、falseが下に並ぶ
+        return (value1 ? 0 : 1) - (value2 ? 0 : 1)
+      }
+      if (value1 instanceof Date && value2 instanceof Date) {
+        return value1.getTime() - value2.getTime()
+      }
+
+      return String(value1).localeCompare(String(value2))
+    })
+
+    if (sortingState.reversed) {
+      result.reverse()
+    }
+
+    return result
+  })
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column
@@ -25,6 +65,20 @@
     if (typeof column === 'string') return column
 
     return column.title ?? column.id
+  }
+
+  function getSortable(column: Column): boolean {
+    if (typeof column === 'string') return false
+
+    return column.sortable ?? false
+  }
+
+  function onClickSortButton(columnId: string) {
+    if (sortingState?.columnId === columnId) {
+      sortingState.reversed = !sortingState.reversed
+    } else {
+      sortingState = { columnId, reversed: false }
+    }
   }
 </script>
 
@@ -54,11 +108,31 @@
 
       {@const columnId = getColumnId(column)}
       {@const columnTitle = getColumnTitle(column)}
-      <div class="skel-DataTable_cell" data-column-id={columnId}>
-        <slot name="header-cell" {columnId} {columnTitle} {columnIndex}>
-          {columnTitle}
-        </slot>
-      </div>
+      <StretchLayout class="skel-DataTable_cell" data-column-id={columnId}>
+        <div class="skel-DataTable_column-title" data-column-id={columnId}>
+          <slot name="header-cell" {columnId} {columnTitle} {columnIndex}>
+            {columnTitle}
+          </slot>
+        </div>
+        {#if getSortable(column)}
+          {#if sortingState?.columnId === columnId}
+            <IconButton
+              class="skel-DataTable_sort-button"
+              src={arrowDown}
+              iconColor="var(--skel-DataTable_sort-icon-default-active-color)"
+              data-reversed={sortingState.reversed}
+              onClick={() => onClickSortButton(columnId)}
+            />
+          {:else}
+            <IconButton
+              class="skel-DataTable_sort-button"
+              src={arrowDown}
+              iconColor="var(--skel-DataTable_sort-icon-default-inactive-color)"
+              onClick={() => onClickSortButton(columnId)}
+            />
+          {/if}
+        {/if}
+      </StretchLayout>
     {/each}
 
     <div class="skel-DataTable_vertical-ruled-line">
@@ -68,7 +142,7 @@
     </div>
   </div>
 
-  {#each rows as row, index}
+  {#each sortedRows as row, index}
     {@const rowIndex = index + 1}
     <div class="skel-DataTable_horizontal-ruled-line">
       <slot name="horizontal-ruled-line" {rowIndex}>
@@ -117,6 +191,8 @@
     --skel-DataTable_header-background-default-color: oklch(90% 0.04 200);
     --skel-DataTable_even-row-background-default-color: transparent;
     --skel-DataTable_odd-row-background-default-color: transparent;
+    --skel-DataTable_sort-icon-default-active-color: oklch(40% 0 0);
+    --skel-DataTable_sort-icon-default-inactive-color: oklch(60% 0 0);
   }
 
   .skel-DataTable_root {
@@ -129,6 +205,15 @@
     display: contents;
   }
 
+  .skel-DataTable_sort-button {
+    transform-origin: center;
+    transition: all 140ms ease-out;
+
+    &[data-reversed='true'] {
+      transform: rotate(-180deg);
+    }
+  }
+
   .skel-DataTable_body-row {
     display: contents;
   }
@@ -138,7 +223,9 @@
 
     .skel-DataTable_header-row & {
       font-weight: bold;
+      color: oklch(30% 0 0);
       text-align: center;
+      align-items: center;
 
       background-color: var(--skel-DataTable_header-background-default-color);
     }
