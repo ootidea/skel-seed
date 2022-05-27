@@ -3,11 +3,12 @@
   import Divider from './Divider.svelte'
   import IconButton from './IconButton.svelte'
   import StretchLayout from './StretchLayout.svelte'
-  import { call, joinClasses } from './utility'
+  import { type Arrow, call, joinClasses } from './utility'
   import arrowDown from '/src/assets/arrow-down.svg'
 
   type Row = $$Generic<Record<string, unknown>>
-  type Column = string | { id: string; title?: string; sortable?: boolean }
+  type Column = string | { id: string; title?: string; sortable?: boolean | CompareFunction }
+  type CompareFunction = Arrow<[unknown, unknown, Row, Row], number>
 
   export let rows: readonly Row[] = []
   export let columns: readonly Column[] = []
@@ -30,22 +31,8 @@
     result.sort((row1, row2) => {
       const value1 = row1[sortingColumnId]
       const value2 = row2[sortingColumnId]
-
-      if (typeof value1 === 'number' && typeof value2 === 'number') {
-        return value1 - value2
-      }
-      if (typeof value1 === 'bigint' && typeof value2 === 'bigint') {
-        return Number(value1 - value2)
-      }
-      if (typeof value1 === 'boolean' && typeof value2 === 'boolean') {
-        // trueが上、falseが下に並ぶ
-        return (value1 ? 0 : 1) - (value2 ? 0 : 1)
-      }
-      if (value1 instanceof Date && value2 instanceof Date) {
-        return value1.getTime() - value2.getTime()
-      }
-
-      return String(value1).localeCompare(String(value2))
+      const compareFunction = getCompareFunction(sortingColumn)
+      return compareFunction(value1, value2, row1, row2)
     })
 
     if (sortingState.reversed) {
@@ -54,6 +41,25 @@
 
     return result
   })
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function compareInStandardWay(value1: unknown, value2: unknown, row1: Row, row2: Row): number {
+    if (typeof value1 === 'number' && typeof value2 === 'number') {
+      return value1 - value2
+    }
+    if (typeof value1 === 'bigint' && typeof value2 === 'bigint') {
+      return Number(value1 - value2)
+    }
+    if (typeof value1 === 'boolean' && typeof value2 === 'boolean') {
+      // trueが上、falseが下に並ぶ
+      return (value1 ? 0 : 1) - (value2 ? 0 : 1)
+    }
+    if (value1 instanceof Date && value2 instanceof Date) {
+      return value1.getTime() - value2.getTime()
+    }
+
+    return String(value1).localeCompare(String(value2))
+  }
 
   function getColumnId(column: Column): string {
     if (typeof column === 'string') return column
@@ -70,7 +76,15 @@
   function getSortable(column: Column): boolean {
     if (typeof column === 'string') return false
 
-    return column.sortable ?? false
+    return Boolean(column.sortable)
+  }
+
+  function getCompareFunction(column: Column): CompareFunction {
+    if (typeof column === 'string') return compareInStandardWay
+
+    if (typeof column.sortable === 'function') return column.sortable
+
+    return compareInStandardWay
   }
 
   function onClickSortButton(columnId: string) {
