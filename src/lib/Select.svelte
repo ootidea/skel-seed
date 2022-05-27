@@ -26,12 +26,11 @@
     <div>
       {#if selected !== undefined}
         <slot name="selected-value" {selected} title={titles[selected]} text={getText(selected)}>
-          {getText(selected)}
+          {getText(selected)}{ZERO_WIDTH_SPACE}
         </slot>
       {:else}
-        <div class="skel-Select_placeholder">{placeholder}</div>
+        <div class="skel-Select_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
       {/if}
-      {ZERO_WIDTH_SPACE}
     </div>
     <Icon src={chevron} />
   </div>
