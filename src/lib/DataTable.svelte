@@ -44,21 +44,27 @@
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function compareInStandardWay(value1: unknown, value2: unknown, row1: Row, row2: Row): number {
-    if (typeof value1 === 'number' && typeof value2 === 'number') {
-      return value1 - value2
-    }
-    if (typeof value1 === 'bigint' && typeof value2 === 'bigint') {
-      return Number(value1 - value2)
-    }
-    if (typeof value1 === 'boolean' && typeof value2 === 'boolean') {
-      // trueが上、falseが下に並ぶ
-      return (value1 ? 0 : 1) - (value2 ? 0 : 1)
-    }
-    if (value1 instanceof Date && value2 instanceof Date) {
-      return value1.getTime() - value2.getTime()
-    }
+    const type1 = typeof value1
+    const type2 = typeof value2
+    if (type1 === type2) {
+      if (type1 === 'number') {
+        return value1 - value2
+      }
+      if (type1 === 'bigint') {
+        return Number(value1 - value2)
+      }
+      if (type1 === 'boolean') {
+        // trueが上、falseが下に並ぶ
+        return (value1 ? 0 : 1) - (value2 ? 0 : 1)
+      }
+      if (value1 instanceof Date && value2 instanceof Date) {
+        return value1.getTime() - value2.getTime()
+      }
 
-    return String(value1).localeCompare(String(value2))
+      return String(value1).localeCompare(String(value2))
+    } else {
+      return type1.localeCompare(type2)
+    }
   }
 
   function getColumnId(column: Column): string {
