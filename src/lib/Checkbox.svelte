@@ -11,7 +11,12 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<label class="skel-Checkbox_root {joinClasses(klass, classes)}" class:skel-Checkbox_disabled={disabled} {style}>
+<label
+  class="skel-Checkbox_root {joinClasses(klass, classes)}"
+  class:skel-Checkbox_disabled={disabled}
+  {style}
+  {...$$restProps}
+>
   <input type="checkbox" class="skel-Checkbox_checkbox" {value} bind:checked {disabled} />
   <div class="skel-Checkbox_unnamed-slot-wrapper">
     <slot />

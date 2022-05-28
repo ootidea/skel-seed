@@ -40,6 +40,7 @@
   data-tint={tint}
   {disabled}
   on:click={clickEventHandler}
+  {...$$restProps}
 >
   {#if isInProgress}
     <OverlayLayout>

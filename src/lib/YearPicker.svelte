@@ -33,7 +33,7 @@
   }
 </script>
 
-<div class="skel-YearPicker_root {joinClasses(klass, classes)}">
+<div class="skel-YearPicker_root {joinClasses(klass, classes)}" {...$$restProps}>
   {#each range(toPeriodYear(minYear, periodSize), toPeriodYear(maxYear, periodSize), periodSize) as periodYear}
     {@const periodMinYear = Math.max(periodYear, toPeriodYear(minYear, 5))}
     {@const periodMaxYear = Math.min(periodYear + periodSize - 1, maxYear)}

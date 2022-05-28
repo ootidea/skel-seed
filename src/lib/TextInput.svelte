@@ -36,7 +36,7 @@
   } as const
 </script>
 
-<StretchLayout class="skel-TextInput_root {joinClasses(klass, classes)}" {style} stretchAt={1}>
+<StretchLayout class="skel-TextInput_root {joinClasses(klass, classes)}" {style} stretchAt={1} {...$$restProps}>
   <Gravity class="skel-TextInput_prefix">
     <slot name="prefix" />
   </Gravity>

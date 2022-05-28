@@ -19,7 +19,7 @@
   }
 </script>
 
-<Calendar class="skel-DatePicker_root {joinClasses(klass, classes)}" {style} bind:selectedMonth>
+<Calendar class="skel-DatePicker_root {joinClasses(klass, classes)}" {style} bind:selectedMonth {...$$restProps}>
   <div
     slot="date-cell"
     class="skel-DatePicker_date-cell"

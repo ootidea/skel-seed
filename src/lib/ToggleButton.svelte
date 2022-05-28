@@ -14,6 +14,7 @@
   class:skel-ToggleButton_selected={selected}
   {style}
   on:click
+  {...$$restProps}
 >
   <slot />
 </div>

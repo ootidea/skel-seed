@@ -71,6 +71,7 @@
   style:--skel-Foldable_header-background-color={headerBackgroundColor}
   style:--skel-Foldable_border-color={borderColor}
   data-unfolded={unfolded}
+  {...$$restProps}
 >
   <StretchLayout class="skel-Foldable_header" direction="horizontal" stretchAt={0} on:click={toggle}>
     <div class="skel-Foldable_title">

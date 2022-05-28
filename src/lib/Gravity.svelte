@@ -14,6 +14,7 @@
   {style}
   data-horizontal-position={toHorizontalPosition(to)}
   data-vertical-position={toVerticalPosition(to)}
+  {...$$restProps}
 >
   <slot />
 </div>

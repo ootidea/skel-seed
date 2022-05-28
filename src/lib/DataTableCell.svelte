@@ -43,7 +43,12 @@
   }>
 </script>
 
-<div class="skel-DataTableCell_root {joinClasses(klass, classes)}" {style} data-type={analysisResult.type}>
+<div
+  class="skel-DataTableCell_root {joinClasses(klass, classes)}"
+  {style}
+  data-type={analysisResult.type}
+  {...$$restProps}
+>
   {#if analysisResult.type === 'number'}
     <slot name="number" value={analysisResult.value}>
       {analysisResult.value.toLocaleString()}

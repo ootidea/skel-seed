@@ -26,6 +26,7 @@
     {style}
     stretchAt={0}
     on:click={() => disabled || toggle()}
+    {...$$restProps}
   >
     <div class="skel-FarDateInput_selected-date">{date?.toLocaleDateString() ?? placeholder}{ZERO_WIDTH_SPACE}</div>
     <Gravity>

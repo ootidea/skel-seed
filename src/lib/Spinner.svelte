@@ -24,6 +24,7 @@
   style:--skel-Spinner_svg-url={svgUrl}
   style:--skel-Spinner_period="{1 / frequency}s"
   style:--skel-Spinner_color={inverted ? 'var(--skel-inverted-text-color)' : 'var(--skel-primary-color)'}
+  {...$$restProps}
 />
 
 <CommonCss />

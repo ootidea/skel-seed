@@ -17,6 +17,7 @@
   class="skel-AutoSizeTextArea_root {joinClasses(klass, classes)}"
   class:skel-AutoSizeTextArea_disabled={disabled}
   {style}
+  {...$$restProps}
 >
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
     {value ? value : placeholder}{ZERO_WIDTH_SPACE}

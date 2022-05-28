@@ -11,7 +11,7 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-List_root {joinClasses(klass, classes)}" {style} data-direction={direction}>
+<div class="skel-List_root {joinClasses(klass, classes)}" {style} data-direction={direction} {...$$restProps}>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

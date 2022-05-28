@@ -14,6 +14,7 @@
   class="skel-CaptionLayout_root {joinClasses(klass, classes)}"
   {style}
   style:--skel-CaptionLayout_width="{clientWidth}px"
+  {...$$restProps}
 >
   {#if captionPosition === 'below'}
     <div class="skel-CaptionLayout_unnamed-slot-wrapper" bind:clientWidth>

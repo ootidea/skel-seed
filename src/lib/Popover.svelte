@@ -44,6 +44,7 @@
   style:--skel-Popover_transform="translate(-{toXPercent(joint ?? toOpposite(on))}, -{toYPercent(
     joint ?? toOpposite(on)
   )})"
+  {...$$restProps}
 >
   <div class="skel-Popover_content-area" bind:this={contentElement}>
     <slot {open} {close} {toggle} />

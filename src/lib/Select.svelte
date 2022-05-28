@@ -22,7 +22,7 @@
 </script>
 
 <Dropdown let:toggle>
-  <div class="skel-Select_root {joinClasses(klass, classes)}" on:click={toggle}>
+  <div class="skel-Select_root {joinClasses(klass, classes)}" on:click={toggle} {...$$restProps}>
     <div>
       {#if selected !== undefined}
         <slot name="selected-value" {selected} title={titles[selected]} text={getText(selected)}>

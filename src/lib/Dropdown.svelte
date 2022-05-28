@@ -39,6 +39,7 @@
   {style}
   style:--skel-Dropdown_content-width="{contentWidth}px"
   style:--skel-Dropdown_dropdown-width="{dropdownWidth}px"
+  {...$$restProps}
 >
   <div
     class="skel-Dropdown_content-area"

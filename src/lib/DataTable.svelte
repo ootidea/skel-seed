@@ -111,6 +111,7 @@
   style:--skel-data-table-column-count={columns.length}
   style:--skel-DataTable_even-row-background-color={evenRowBackgroundColor}
   style:--skel-DataTable_odd-row-background-color={oddRowBackgroundColor}
+  {...$$restProps}
 >
   <div class="skel-DataTable_horizontal-ruled-line">
     <slot name="horizontal-ruled-line" rowIndex={0}>

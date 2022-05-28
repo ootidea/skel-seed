@@ -44,6 +44,7 @@
   class:skel-Clickable_disabled={disabled}
   {style}
   on:click={clickEventHandler}
+  {...$$restProps}
 >
   <slot {disabled} {result} {error} {awaited} {isInProgress} />
 </div>

@@ -8,6 +8,6 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<a class="skel-Link_root {joinClasses(klass, classes)}" {style} {href}>
+<a class="skel-Link_root {joinClasses(klass, classes)}" {style} {href} {...$$restProps}>
   <slot>{href}</slot>
 </a>

@@ -9,7 +9,7 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-Tooltip_root {joinClasses(klass, classes)}" {style}>
+<div class="skel-Tooltip_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
   <div class="skel-Tooltip_content-wrapper">
     <slot />
   </div>

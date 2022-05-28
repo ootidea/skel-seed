@@ -12,7 +12,12 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<label class="skel-RadioButton_root {joinClasses(klass, classes)}" class:skel-RadioButton_disabled={disabled} {style}>
+<label
+  class="skel-RadioButton_root {joinClasses(klass, classes)}"
+  class:skel-RadioButton_disabled={disabled}
+  {style}
+  {...$$restProps}
+>
   <input type="radio" class="skel-RadioButton_radio" bind:group {value} {name} {disabled} />
   <slot>
     {#if value !== undefined}

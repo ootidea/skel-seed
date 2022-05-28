@@ -16,6 +16,7 @@
   style:--skel-Divider_thickness={thickness}
   style:--skel-Divider_color={color}
   data-direction={direction}
+  {...$$restProps}
 />
 
 <style global lang="scss">
