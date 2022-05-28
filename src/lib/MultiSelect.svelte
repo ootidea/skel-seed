@@ -35,7 +35,7 @@
   <StretchLayout
     class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`}
     classes={{ 'skel-MultiSelect_disabled': disabled }}
-    on:click={toggle}
+    on:click={() => disabled || toggle()}
     {...$$restProps}
   >
     <div class="skel-MultiSelect_preview-area">
@@ -89,6 +89,7 @@
 
     &.skel-MultiSelect_disabled {
       background-color: var(--skel-disabled-input-background-color);
+      cursor: default;
     }
   }
 
