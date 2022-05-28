@@ -14,6 +14,7 @@
   export let columns: readonly Column[] = []
   export let evenRowBackgroundColor = 'var(--skel-DataTable_even-row-background-default-color)'
   export let oddRowBackgroundColor = 'var(--skel-DataTable_odd-row-background-default-color)'
+  export let onClickRow: Arrow<[Row], unknown> | undefined = undefined
   export let sortingState: { columnId: string; reversed: boolean } | undefined = undefined
   export let style: string | undefined = undefined
   let klass = ''
@@ -175,6 +176,8 @@
       class="skel-DataTable_body-row"
       class:skel-DataTable_even-row={index % 2 === 0}
       class:skel-DataTable_odd-row={index % 2 === 1}
+      class:skel-DataTable_clickable-row={onClickRow !== undefined}
+      on:click={() => onClickRow?.(row)}
     >
       {#each columns as column, columnIndex}
         <div class="skel-DataTable_vertical-ruled-line">
@@ -210,8 +213,8 @@
 <style global lang="scss">
   :root {
     --skel-DataTable_header-background-default-color: oklch(90% 0.04 200);
-    --skel-DataTable_even-row-background-default-color: transparent;
-    --skel-DataTable_odd-row-background-default-color: transparent;
+    --skel-DataTable_even-row-background-default-color: var(--skel-background-color);
+    --skel-DataTable_odd-row-background-default-color: var(--skel-background-color);
     --skel-DataTable_sort-icon-default-active-color: oklch(40% 0 0);
     --skel-DataTable_sort-icon-default-inactive-color: oklch(60% 0 0);
   }
@@ -249,6 +252,23 @@
       align-items: center;
 
       background-color: var(--skel-DataTable_header-background-default-color);
+    }
+
+    .skel-DataTable_clickable-row & {
+      cursor: pointer;
+
+      // It is necessary to specify background color because using filter property instead of background-filter property.
+      background-color: var(--skel-background-color);
+    }
+
+    .skel-DataTable_clickable-row:hover & {
+      // TODO: Replace with backdrop-filter if Firefox support it.
+      filter: brightness(97%);
+    }
+
+    .skel-DataTable_clickable-row:active & {
+      // TODO: Replace with backdrop-filter if Firefox support it.
+      filter: brightness(94%);
     }
 
     .skel-DataTable_even-row & {
