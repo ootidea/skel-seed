@@ -213,8 +213,8 @@
 <style global lang="scss">
   :root {
     --skel-DataTable_header-background-default-color: oklch(90% 0.04 200);
-    --skel-DataTable_even-row-background-default-color: var(--skel-background-color);
-    --skel-DataTable_odd-row-background-default-color: var(--skel-background-color);
+    --skel-DataTable_even-row-background-default-color: transparent;
+    --skel-DataTable_odd-row-background-default-color: transparent;
     --skel-DataTable_sort-icon-default-active-color: oklch(40% 0 0);
     --skel-DataTable_sort-icon-default-inactive-color: oklch(60% 0 0);
   }
@@ -256,19 +256,6 @@
 
     .skel-DataTable_clickable-row & {
       cursor: pointer;
-
-      // It is necessary to specify background color because using filter property instead of background-filter property.
-      background-color: var(--skel-background-color);
-    }
-
-    .skel-DataTable_clickable-row:hover & {
-      // TODO: Replace with backdrop-filter if Firefox support it.
-      filter: brightness(97%);
-    }
-
-    .skel-DataTable_clickable-row:active & {
-      // TODO: Replace with backdrop-filter if Firefox support it.
-      filter: brightness(94%);
     }
 
     .skel-DataTable_even-row & {
@@ -277,6 +264,14 @@
 
     .skel-DataTable_odd-row & {
       background-color: var(--skel-DataTable_odd-row-background-color);
+    }
+
+    .skel-DataTable_clickable-row:hover & {
+      background-color: oklch(98% 0 0);
+    }
+
+    .skel-DataTable_clickable-row:active & {
+      background-color: oklch(96% 0 0);
     }
   }
 
