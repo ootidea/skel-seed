@@ -30,17 +30,28 @@
   const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
-<Dropdown let:toggle>
+<Dropdown style="max-width: 100%" let:toggle>
   <StretchLayout class="skel-MultiSelect_root {joinClasses(klass, classes)}" on:click={toggle} {...$$restProps}>
-    <div class="skel-MultiSelect_selected-values">
-      {#each values.filter((value) => selected[value]) as value}
-        <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>
-          <div class="skel-MultiSelect_selected-value">{getText(value)}</div>
-        </slot>
-      {:else}
-        <div class="skel-MultiSelect_placeholder">{placeholder}</div>
-      {/each}
-      {ZERO_WIDTH_SPACE}
+    <div class="skel-MultiSelect_preview-area">
+      <div class="skel-MultiSelect_selected-values">
+        {#each values.filter((value) => selected[value]) as value}
+          <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>
+            <div class="skel-MultiSelect_selected-value">{getText(value)}</div>
+          </slot>
+        {:else}
+          <div class="skel-MultiSelect_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+        {/each}
+      </div>
+      <div class="skel-MultiSelect_selected-values skel-MultiSelect_invisible">
+        {#each values as value}
+          <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>
+            <div class="skel-MultiSelect_selected-value">{getText(value)}</div>
+          </slot>
+        {/each}
+      </div>
+      <div class="skel-MultiSelect_selected-values skel-MultiSelect_invisible">
+        <div class="skel-MultiSelect_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+      </div>
     </div>
     <Icon src={chevron} />
   </StretchLayout>
@@ -81,6 +92,12 @@
     border-radius: 99999px;
     background-color: oklch(94% 0 0);
     padding: 0.05em 0.8em;
+  }
+
+  .skel-MultiSelect_invisible {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 
   .skel-MultiSelect_checkbox {

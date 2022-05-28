@@ -20,3 +20,25 @@
 <Sample>
   <MultiSelect values={['Female', 'Male', 'Other']} placeholder="placeholder" />
 </Sample>
+
+<SectionTitle>Auto wrap</SectionTitle>
+<Sample>
+  <MultiSelect
+    style="max-width: 25em"
+    values={[
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]}
+    selected={{ January: true, February: true, March: true, August: true, September: true }}
+  />
+</Sample>
