@@ -29,6 +29,17 @@
   </DataTable>
 </Sample>
 
+<SectionTitle>Data type specific rendering</SectionTitle>
+<Sample>
+  <DataTable
+    rows={[
+      { string: 'text', number: 583, boolean: true, date: new Date(), url: 'https://example.com' },
+      { string: 'title', number: 1234, boolean: false, date: new Date(), url: 'http://localhost:3000/' },
+    ]}
+    columns={['string', 'number', 'boolean', 'date', 'url']}
+  />
+</Sample>
+
 <SectionTitle>Show sort buttons</SectionTitle>
 <Sample>
   <DataTable
