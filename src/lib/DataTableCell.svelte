@@ -61,6 +61,8 @@
     <slot name="boolean" value={analysisResult.value}>
       {#if value}
         <Icon src={check} />
+      {:else}
+        <Icon style="visibility: hidden" src={check} />
       {/if}
     </slot>
   {:else if analysisResult.type === 'Date'}
