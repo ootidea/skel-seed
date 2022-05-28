@@ -24,6 +24,7 @@
 <Modal let:toggle>
   <StretchLayout
     class={`skel-FarDateInput_root ${joinClasses(klass, classes)}`}
+    classes={{ 'skel-FarDateInput_disabled': disabled }}
     {style}
     stretchAt={0}
     on:click={() => disabled || toggle()}
@@ -59,6 +60,10 @@
     border-radius: var(--skel-input-border-radius);
     border: var(--skel-input-border-color) 1px solid;
     cursor: pointer;
+
+    &.skel-FarDateInput_disabled {
+      background-color: var(--skel-disabled-input-background-color);
+    }
   }
 
   .skel-FarDateInput_icon {
