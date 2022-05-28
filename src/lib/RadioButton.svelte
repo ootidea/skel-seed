@@ -48,7 +48,7 @@
     &.skel-RadioButton_disabled {
       cursor: default;
 
-      color: var(--skel-disabled-text-color);
+      color: oklch(70% 0 0);
     }
   }
 

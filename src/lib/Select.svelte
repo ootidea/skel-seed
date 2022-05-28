@@ -1,5 +1,6 @@
 <script lang="ts">
   import chevron from '/src/assets/chevron-down.svg'
+  import CommonCss from './CommonCss.svelte'
   import Divider from './Divider.svelte'
   import Dropdown from './Dropdown.svelte'
   import Icon from './Icon.svelte'
@@ -57,6 +58,8 @@
   </div>
 </Dropdown>
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-Select_root {
     border-radius: 0.3em;
@@ -76,6 +79,11 @@
     visibility: hidden;
     height: 0;
     overflow: hidden;
+  }
+
+  .skel-Select_placeholder {
+    user-select: none;
+    color: var(--skel-placeholder-text-color);
   }
 
   .skel-Select_option {

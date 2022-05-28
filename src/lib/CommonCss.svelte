@@ -8,7 +8,7 @@
     --skel-primary-background-color: oklch(99% 0.01 255.4);
     --skel-primary-background-hover-color: oklch(97% 0.02 255.4);
     --skel-primary-background-active-color: oklch(95% 0.04 255.4);
-    --skel-disabled-text-color: oklch(70% 0 0);
+    --skel-placeholder-text-color: oklch(70% 0 0);
     --skel-clickable-hover-background-color: oklch(97% 0 0);
     --skel-clickable-active-background-color: oklch(95% 0 0);
     --skel-error-color: oklch(55% 0.2 30);

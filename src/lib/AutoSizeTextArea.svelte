@@ -67,10 +67,6 @@
     height: 100%;
 
     resize: none;
-
-    .skel-AutoSizeTextArea_disabled & {
-      color: var(--skel-disabled-text-color);
-    }
   }
 
   .skel-AutoSizeTextArea_text-area:focus {
