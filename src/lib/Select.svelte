@@ -82,7 +82,6 @@
   }
 
   .skel-Select_placeholder {
-    user-select: none;
     color: var(--skel-placeholder-text-color);
   }
 

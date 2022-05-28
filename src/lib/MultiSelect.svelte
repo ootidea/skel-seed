@@ -1,6 +1,7 @@
 <script lang="ts">
   import chevron from '/src/assets/chevron-down.svg'
   import Checkbox from './Checkbox.svelte'
+  import CommonCss from './CommonCss.svelte'
   import Divider from './Divider.svelte'
   import Dropdown from './Dropdown.svelte'
   import Icon from './Icon.svelte'
@@ -67,6 +68,8 @@
   </div>
 </Dropdown>
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-MultiSelect_root {
     border-radius: 0.3em;
@@ -92,6 +95,10 @@
     border-radius: 99999px;
     background-color: oklch(94% 0 0);
     padding: 0.05em 0.8em;
+  }
+
+  .skel-MultiSelect_placeholder {
+    color: var(--skel-placeholder-text-color);
   }
 
   .skel-MultiSelect_invisible {
