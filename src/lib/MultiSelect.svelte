@@ -32,7 +32,12 @@
 </script>
 
 <Dropdown style="max-width: 100%" let:toggle>
-  <StretchLayout class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`} on:click={toggle} {...$$restProps}>
+  <StretchLayout
+    class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`}
+    classes={{ 'skel-MultiSelect_disabled': disabled }}
+    on:click={toggle}
+    {...$$restProps}
+  >
     <div class="skel-MultiSelect_preview-area">
       <div class="skel-MultiSelect_selected-values">
         {#each values.filter((value) => selected[value]) as value}
@@ -82,7 +87,9 @@
     padding: 0.4em 0.7em;
     cursor: pointer;
 
-    /* TODO: disabled状態の色変化を実装する */
+    &.skel-MultiSelect_disabled {
+      background-color: var(--skel-disabled-input-background-color);
+    }
   }
 
   .skel-MultiSelect_selected-values {
@@ -93,7 +100,7 @@
 
   .skel-MultiSelect_selected-value {
     border-radius: 99999px;
-    background-color: oklch(94% 0 0);
+    background-color: oklch(92% 0 0);
     padding: 0.05em 0.8em;
   }
 

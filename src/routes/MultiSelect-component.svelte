@@ -42,3 +42,27 @@
     selected={{ January: true, February: true, March: true, August: true, September: true }}
   />
 </Sample>
+
+<SectionTitle>Disabled</SectionTitle>
+<Sample>
+  <MultiSelect values={['Female', 'Male', 'Other']} placeholder="placeholder" disabled />
+  <MultiSelect
+    style="max-width: 25em"
+    values={[
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]}
+    selected={{ January: true, February: true, March: true, August: true, September: true }}
+    disabled
+  />
+</Sample>
