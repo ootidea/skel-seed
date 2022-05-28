@@ -37,7 +37,7 @@
 </script>
 
 <div
-  class="skel-Popover_root {joinClasses(klass, classes)}"
+  class={`skel-Popover_root ${joinClasses(klass, classes)}`}
   {style}
   style:--skel-Popover_left={toXPercent(on)}
   style:--skel-Popover_top={toYPercent(on)}

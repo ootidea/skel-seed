@@ -13,7 +13,7 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-MonthPicker_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-MonthPicker_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   <slot {onSelect}>
     {#each range(1, 12) as month}
       <Button tint="achromatic" ghost onClick={() => onSelect?.(month)}>

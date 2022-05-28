@@ -91,7 +91,7 @@
   }
 </script>
 
-<div class="skel-Toast_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-Toast_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
     <div class="skel-Toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>

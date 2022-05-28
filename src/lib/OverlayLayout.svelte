@@ -7,7 +7,7 @@
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class="skel-OverlayLayout_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-OverlayLayout_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   <slot />
   <div class="skel-OverlayLayout_overlay">
     <slot name="overlay" />

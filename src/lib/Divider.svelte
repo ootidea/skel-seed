@@ -11,7 +11,7 @@
 </script>
 
 <div
-  class="skel-Divider_root {joinClasses(klass, classes)}"
+  class={`skel-Divider_root ${joinClasses(klass, classes)}`}
   {style}
   style:--skel-Divider_thickness={thickness}
   style:--skel-Divider_color={color}

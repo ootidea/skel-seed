@@ -66,7 +66,7 @@
 </script>
 
 <div
-  class="skel-Foldable_root {joinClasses(klass, classes)}"
+  class={`skel-Foldable_root ${joinClasses(klass, classes)}`}
   {style}
   style:--skel-Foldable_header-background-color={headerBackgroundColor}
   style:--skel-Foldable_border-color={borderColor}

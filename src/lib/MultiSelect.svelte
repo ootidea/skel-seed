@@ -31,7 +31,7 @@
 </script>
 
 <Dropdown style="max-width: 100%" let:toggle>
-  <StretchLayout class="skel-MultiSelect_root {joinClasses(klass, classes)}" on:click={toggle} {...$$restProps}>
+  <StretchLayout class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`} on:click={toggle} {...$$restProps}>
     <div class="skel-MultiSelect_preview-area">
       <div class="skel-MultiSelect_selected-values">
         {#each values.filter((value) => selected[value]) as value}

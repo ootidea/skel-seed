@@ -32,7 +32,7 @@
 </script>
 
 <div
-  class="skel-IconButton_root {joinClasses(klass, classes)}"
+  class={`skel-IconButton_root ${joinClasses(klass, classes)}`}
   class:skel-IconButton_disabled={disabled}
   {style}
   style:--skel-IconButton_size={size}

@@ -13,7 +13,7 @@
 </script>
 
 <label
-  class="skel-RadioButton_root {joinClasses(klass, classes)}"
+  class={`skel-RadioButton_root ${joinClasses(klass, classes)}`}
   class:skel-RadioButton_disabled={disabled}
   {style}
   {...$$restProps}

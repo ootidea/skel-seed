@@ -23,7 +23,7 @@
   }
 </script>
 
-<div class="skel-MultiSelectToggleButton_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-MultiSelectToggleButton_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   {#each values as value, index (value)}
     <ToggleButton selected={selected.includes(value)} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

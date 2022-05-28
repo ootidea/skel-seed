@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="skel-Gravity_root {joinClasses(klass, classes)}"
+  class={`skel-Gravity_root ${joinClasses(klass, classes)}`}
   {style}
   data-horizontal-position={toHorizontalPosition(to)}
   data-vertical-position={toVerticalPosition(to)}

@@ -18,7 +18,7 @@
   $: firstDateOfSelectedCalendar = firstDateOfSelectedMonth.subtract(firstDateOfSelectedMonth.day(), 'day')
 </script>
 
-<div class="skel-Calendar_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-Calendar_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   <div class="skel-Calendar_year-month-area">
     <IconButton
       src="src/assets/chevron-left.svg"

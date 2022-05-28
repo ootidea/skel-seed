@@ -31,7 +31,7 @@
 </script>
 
 <button
-  class="skel-Button_root {joinClasses(klass, classes)}"
+  class={`skel-Button_root ${joinClasses(klass, classes)}`}
   class:skel-Button_ghost={ghost}
   class:skel-Button_rounded={rounded}
   class:skel-Button_disabled={disabled}

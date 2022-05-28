@@ -12,7 +12,7 @@
 </script>
 
 <label
-  class="skel-Checkbox_root {joinClasses(klass, classes)}"
+  class={`skel-Checkbox_root ${joinClasses(klass, classes)}`}
   class:skel-Checkbox_disabled={disabled}
   {style}
   {...$$restProps}

@@ -22,7 +22,7 @@
 
 <Modal let:toggle>
   <StretchLayout
-    class="skel-FarDateInput_root {joinClasses(klass, classes)}"
+    class={`skel-FarDateInput_root ${joinClasses(klass, classes)}`}
     {style}
     stretchAt={0}
     on:click={() => disabled || toggle()}

@@ -36,7 +36,7 @@
   }
 </script>
 
-<div class="skel-FarDatePicker_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-FarDatePicker_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   {#if step === 0}
     <h4 class="skel-FarDatePicker_title">年を選択</h4>
     <YearPicker onSelect={onSelectYear} />

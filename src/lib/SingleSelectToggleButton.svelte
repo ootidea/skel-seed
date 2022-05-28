@@ -20,7 +20,7 @@
   }
 </script>
 
-<div class="skel-SingleSelectToggleButton_root {joinClasses(klass, classes)}" {style} {...$$restProps}>
+<div class={`skel-SingleSelectToggleButton_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
   {#each values as value, index (value)}
     <ToggleButton selected={value === selected} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

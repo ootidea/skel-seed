@@ -11,9 +11,9 @@
 </script>
 
 <div
-  class="skel-Icon_root {joinClasses(klass, classes)}"
+  class={`skel-Icon_root ${joinClasses(klass, classes)}`}
   {style}
-  style:--skel-Icon_url="url('{src}')"
+  style:--skel-Icon_url={`url('${src}')`}
   style:--skel-Icon_size={size}
   style:--skel-Icon_icon-color={iconColor}
   {...$$restProps}

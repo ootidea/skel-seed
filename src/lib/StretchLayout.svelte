@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="skel-StretchLayout_root {joinClasses(klass, classes)}"
+  class={`skel-StretchLayout_root ${joinClasses(klass, classes)}`}
   {style}
   style:--skel-StretchLayout_template={'auto '.repeat(Number(stretchAt)) + 'minmax(0, 1fr)'}
   data-direction={direction}

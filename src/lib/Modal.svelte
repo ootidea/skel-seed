@@ -24,7 +24,12 @@
   <slot {open} {close} {toggle} />
 {/if}
 {#if opened}
-  <div class="skel-Modal_root {joinClasses(klass, classes)}" {style} on:click|self={onClickBackdrop} {...$$restProps}>
+  <div
+    class={`skel-Modal_root ${joinClasses(klass, classes)}`}
+    {style}
+    on:click|self={onClickBackdrop}
+    {...$$restProps}
+  >
     <slot name="frame" {open} {close} {toggle}>
       <div class="skel-Modal_frame">
         {#if $$slots.modal}

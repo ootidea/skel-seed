@@ -22,7 +22,7 @@
 </script>
 
 <Dropdown let:toggle>
-  <div class="skel-Select_root {joinClasses(klass, classes)}" on:click={toggle} {...$$restProps}>
+  <div class={`skel-Select_root ${joinClasses(klass, classes)}`} on:click={toggle} {...$$restProps}>
     <div class="skel-Select_preview-area">
       <!-- Render invisible to prevent width fluctuations -->
       {#each values as value}

@@ -103,7 +103,7 @@
 </script>
 
 <div
-  class="skel-DataTable_root {joinClasses(klass, classes)}"
+  class={`skel-DataTable_root ${joinClasses(klass, classes)}`}
   {style}
   style:--skel-DataTable_template-columns={Array(columns.length + 1)
     .fill('max-content')

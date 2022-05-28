@@ -44,7 +44,7 @@
 </script>
 
 <div
-  class="skel-DataTableCell_root {joinClasses(klass, classes)}"
+  class={`skel-DataTableCell_root ${joinClasses(klass, classes)}`}
   {style}
   data-type={analysisResult.type}
   {...$$restProps}

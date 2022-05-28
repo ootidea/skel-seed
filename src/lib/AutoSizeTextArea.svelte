@@ -14,7 +14,7 @@
 </script>
 
 <div
-  class="skel-AutoSizeTextArea_root {joinClasses(klass, classes)}"
+  class={`skel-AutoSizeTextArea_root ${joinClasses(klass, classes)}`}
   class:skel-AutoSizeTextArea_disabled={disabled}
   {style}
   {...$$restProps}

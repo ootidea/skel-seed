@@ -35,10 +35,10 @@
 </script>
 
 <div
-  class="skel-Dropdown_root {joinClasses(klass, classes)}"
+  class={`skel-Dropdown_root ${joinClasses(klass, classes)}`}
   {style}
-  style:--skel-Dropdown_content-width="{contentWidth}px"
-  style:--skel-Dropdown_dropdown-width="{dropdownWidth}px"
+  style:--skel-Dropdown_content-width={`${contentWidth}px`}
+  style:--skel-Dropdown_dropdown-width={`${dropdownWidth}px`}
   {...$$restProps}
 >
   <div

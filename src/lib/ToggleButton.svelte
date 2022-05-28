@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class="skel-ToggleButton_root {joinClasses(klass, classes)}"
+  class={`skel-ToggleButton_root ${joinClasses(klass, classes)}`}
   class:skel-ToggleButton_selected={selected}
   {style}
   on:click

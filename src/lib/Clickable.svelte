@@ -40,7 +40,7 @@
 </script>
 
 <div
-  class="skel-Clickable_root {joinClasses(klass, classes)}"
+  class={`skel-Clickable_root ${joinClasses(klass, classes)}`}
   class:skel-Clickable_disabled={disabled}
   {style}
   on:click={clickEventHandler}
