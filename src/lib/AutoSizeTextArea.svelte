@@ -71,6 +71,10 @@
     &::placeholder {
       color: var(--skel-placeholder-text-color);
     }
+
+    &:disabled {
+      background-color: var(--skel-disabled-input-background-color);
+    }
   }
 
   .skel-AutoSizeTextArea_text-area:focus {
