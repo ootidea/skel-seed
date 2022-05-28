@@ -132,7 +132,7 @@
       <StretchLayout class="skel-DataTable_cell" data-column-id={columnId}>
         <div class="skel-DataTable_column-title" data-column-id={columnId}>
           <slot name="header-cell" {columnId} {columnTitle} {columnIndex}>
-            {columnTitle}
+            <span style="white-space: pre-wrap">{columnTitle}</span>
           </slot>
         </div>
         {#if getSortable(column)}

@@ -73,11 +73,11 @@
     </slot>
   {:else if analysisResult.type === 'string'}
     <slot name="string" value={analysisResult.value}>
-      {value}
+      <span style="white-space: pre-wrap">{value}</span>
     </slot>
   {:else}
     <slot name="unknown" value={analysisResult.value}>
-      {value ?? ''}
+      <span style="white-space: pre-wrap">{value ?? ''}</span>
     </slot>
   {/if}
 </div>
