@@ -77,11 +77,9 @@
 
 <style global lang="scss">
   .skel-MultiSelect_root {
+    align-items: center;
     border-radius: 0.3em;
     border: var(--skel-input-border-color) 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     background-color: var(--skel-background-color);
     padding: 0.4em 0.7em;
