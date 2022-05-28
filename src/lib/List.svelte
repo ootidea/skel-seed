@@ -30,6 +30,7 @@
   .skel-List_root {
     display: grid;
     align-items: start;
+    justify-items: start;
     width: max-content;
 
     &[data-direction='horizontal'] {
