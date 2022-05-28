@@ -47,7 +47,6 @@
 <Sample>
   <MultiSelect values={['Female', 'Male', 'Other']} placeholder="placeholder" disabled />
   <MultiSelect
-    style="max-width: 25em"
     values={[
       'January',
       'February',
