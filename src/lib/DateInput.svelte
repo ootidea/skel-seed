@@ -1,5 +1,6 @@
 <script lang="ts">
   import calendar from '/src/assets/calendar.svg'
+  import CommonCss from './CommonCss.svelte'
   import DatePicker from './DatePicker.svelte'
   import Gravity from './Gravity.svelte'
   import Icon from './Icon.svelte'
@@ -28,7 +29,13 @@
     on:click={() => disabled || toggle()}
     {...$$restProps}
   >
-    <div class="skel-DateInput_selected-date">{date?.toLocaleDateString() ?? placeholder}{ZERO_WIDTH_SPACE}</div>
+    <div class="skel-DateInput_preview-area">
+      {#if date !== undefined}
+        <div class="skel-DateInput_selected-date">{date.toLocaleDateString()}{ZERO_WIDTH_SPACE}</div>
+      {:else}
+        <div class="skel-DateInput_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+      {/if}
+    </div>
     <Gravity>
       <slot name="icon">
         <Icon class="skel-DateInput_icon" src={calendar} />
@@ -45,6 +52,8 @@
   />
 </Modal>
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-DateInput_root {
     border-radius: var(--skel-input-border-radius);
@@ -56,7 +65,11 @@
     margin-right: 0.3em;
   }
 
-  .skel-DateInput_selected-date {
+  .skel-DateInput_preview-area {
     padding: 0.4em 0.6em;
+  }
+
+  .skel-DateInput_placeholder {
+    color: var(--skel-placeholder-text-color);
   }
 </style>
