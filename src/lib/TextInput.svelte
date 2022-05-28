@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CommonCss from './CommonCss.svelte'
   import Gravity from './Gravity.svelte'
   import StretchLayout from './StretchLayout.svelte'
   import { joinClasses } from './utility'
@@ -36,7 +37,13 @@
   } as const
 </script>
 
-<StretchLayout class={`skel-TextInput_root ${joinClasses(klass, classes)}`} {style} stretchAt={1} {...$$restProps}>
+<StretchLayout
+  class={`skel-TextInput_root ${joinClasses(klass, classes)}`}
+  classes={{ 'skel-TextInput_disabled': disabled }}
+  {style}
+  stretchAt={1}
+  {...$$restProps}
+>
   <Gravity class="skel-TextInput_prefix">
     <slot name="prefix" />
   </Gravity>
@@ -68,11 +75,17 @@
   </Gravity>
 </StretchLayout>
 
+<CommonCss />
+
 <style global lang="scss">
   .skel-TextInput_root {
     border-radius: var(--skel-input-border-radius);
     border: var(--skel-input-border-color) 1px solid;
     background-color: var(--skel-background-color);
+
+    &.skel-TextInput_disabled {
+      background-color: var(--skel-disabled-input-background-color);
+    }
   }
 
   .skel-TextInput_prefix,
