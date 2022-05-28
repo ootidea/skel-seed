@@ -29,7 +29,5 @@
     grid-template-columns: repeat(3, auto);
     gap: 0.5em;
     width: max-content;
-
-    background-color: oklch(100% 0 0);
   }
 </style>

@@ -68,7 +68,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: oklch(100% 0 0);
+    background-color: var(--skel-background-color);
     padding: 0.4em 0.7em;
     cursor: pointer;
 

@@ -69,7 +69,6 @@
     gap: 0.5em;
     padding: 1em 0.5em;
 
-    background-color: oklch(100% 0 0);
     font-size: 14px;
   }
 </style>
