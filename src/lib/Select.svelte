@@ -23,7 +23,12 @@
 </script>
 
 <Dropdown let:toggle>
-  <div class={`skel-Select_root ${joinClasses(klass, classes)}`} on:click={toggle} {...$$restProps}>
+  <div
+    class={`skel-Select_root ${joinClasses(klass, classes)}`}
+    class:skel-Select_disabled={disabled}
+    on:click={toggle}
+    {...$$restProps}
+  >
     <div class="skel-Select_preview-area">
       <!-- Render invisible to prevent width fluctuations -->
       {#each values as value}
@@ -72,7 +77,9 @@
     padding: 0.4em 0.7em;
     cursor: pointer;
 
-    /* TODO: disabled状態の色変化を実装する */
+    &.skel-Select_disabled {
+      background-color: var(--skel-disabled-input-background-color);
+    }
   }
 
   .skel-Select_invisible {

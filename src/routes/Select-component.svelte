@@ -20,3 +20,9 @@
 <Sample>
   <Select values={['Female', 'Male', 'Other']} placeholder="placeholder" />
 </Sample>
+
+<SectionTitle>Disabled</SectionTitle>
+<Sample>
+  <Select values={['Female', 'Male', 'Other']} selected="Female" disabled />
+  <Select values={['Female', 'Male', 'Other']} placeholder="placeholder" disabled />
+</Sample>
