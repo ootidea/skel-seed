@@ -23,14 +23,18 @@
 
 <Dropdown let:toggle>
   <div class="skel-Select_root {joinClasses(klass, classes)}" on:click={toggle} {...$$restProps}>
-    <div>
-      {#if selected !== undefined}
-        <slot name="selected-value" {selected} title={titles[selected]} text={getText(selected)}>
-          {getText(selected)}{ZERO_WIDTH_SPACE}
-        </slot>
-      {:else}
-        <div class="skel-Select_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
-      {/if}
+    <div class="skel-Select_preview-area">
+      <!-- Render invisible to prevent width fluctuations -->
+      {#each values as value}
+        <div class="skel-Select_selected-value" class:skel-Select_invisible={selected !== value}>
+          <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>
+            {getText(value)}{ZERO_WIDTH_SPACE}
+          </slot>
+        </div>
+      {/each}
+      <div class="skel-Select_placeholder" class:skel-Select_invisible={selected !== undefined}>
+        {placeholder}{ZERO_WIDTH_SPACE}
+      </div>
     </div>
     <Icon src={chevron} />
   </div>
@@ -66,6 +70,12 @@
     cursor: pointer;
 
     /* TODO: disabled状態の色変化を実装する */
+  }
+
+  .skel-Select_invisible {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 
   .skel-Select_option {
