@@ -22,11 +22,13 @@
   <TextInput value="initial value" />
 </Sample>
 
-<SectionTitle>Disabled</SectionTitle>
+<SectionTitle>Types</SectionTitle>
 <Sample>
-  <TextInput placeholder="placeholder" disabled />
+  <TextInput type="tel" placeholder="tel" />
   <br />
-  <TextInput value="initial value" disabled />
+  <TextInput type="email" placeholder="email" />
+  <br />
+  <TextInput type="password" placeholder="password" />
 </Sample>
 
 <SectionTitle>Append and prepend</SectionTitle>
@@ -48,11 +50,9 @@
   </TextInput>
 </Sample>
 
-<SectionTitle>Types</SectionTitle>
+<SectionTitle>Disabled</SectionTitle>
 <Sample>
-  <TextInput type="tel" placeholder="tel" />
+  <TextInput placeholder="placeholder" disabled />
   <br />
-  <TextInput type="email" placeholder="email" />
-  <br />
-  <TextInput type="password" placeholder="password" />
+  <TextInput value="initial value" disabled />
 </Sample>
