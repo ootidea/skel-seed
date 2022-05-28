@@ -4,6 +4,7 @@
   import Divider from './Divider.svelte'
   import Dropdown from './Dropdown.svelte'
   import Icon from './Icon.svelte'
+  import StretchLayout from './StretchLayout.svelte'
   import { joinClasses } from './utility'
 
   export let values: string[] = []
@@ -23,9 +24,9 @@
 </script>
 
 <Dropdown let:toggle>
-  <div
+  <StretchLayout
     class={`skel-Select_root ${joinClasses(klass, classes)}`}
-    class:skel-Select_disabled={disabled}
+    classes={{ 'skel-Select_disabled': disabled }}
     on:click={() => disabled || toggle()}
     {...$$restProps}
   >
@@ -43,7 +44,7 @@
       </div>
     </div>
     <Icon src={chevron} />
-  </div>
+  </StretchLayout>
   <div slot="dropdown" class="skel-Select_dropdown">
     {#each values as value, i}
       {#if i > 0}
@@ -67,11 +68,9 @@
 
 <style global lang="scss">
   .skel-Select_root {
+    align-items: center;
     border-radius: 0.3em;
     border: var(--skel-input-border-color) 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     background-color: var(--skel-background-color);
     padding: 0.4em 0.7em;
