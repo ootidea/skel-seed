@@ -26,7 +26,7 @@
   <div
     class={`skel-Select_root ${joinClasses(klass, classes)}`}
     class:skel-Select_disabled={disabled}
-    on:click={toggle}
+    on:click={() => disabled || toggle()}
     {...$$restProps}
   >
     <div class="skel-Select_preview-area">
@@ -79,6 +79,7 @@
 
     &.skel-Select_disabled {
       background-color: var(--skel-disabled-input-background-color);
+      cursor: default;
     }
   }
 
