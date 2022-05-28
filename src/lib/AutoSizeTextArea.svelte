@@ -67,6 +67,10 @@
     height: 100%;
 
     resize: none;
+
+    &::placeholder {
+      color: var(--skel-placeholder-text-color);
+    }
   }
 
   .skel-AutoSizeTextArea_text-area:focus {

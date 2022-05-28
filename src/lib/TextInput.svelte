@@ -124,5 +124,9 @@
     font: inherit;
     line-height: inherit;
     letter-spacing: inherit;
+
+    &::placeholder {
+      color: var(--skel-placeholder-text-color);
+    }
   }
 </style>
