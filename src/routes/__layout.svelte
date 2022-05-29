@@ -9,6 +9,7 @@
     <SidebarMenu componentName="Button" />
     <SidebarMenu componentName="IconButton" />
     <SidebarMenu componentName="RadioButton" />
+    <SidebarMenu componentName="Checkbox" />
     <SidebarMenu componentName="ToggleButton" />
     <SidebarMenu componentName="TextInput" />
     <SidebarMenu componentName="AutoSizeTextArea" />
