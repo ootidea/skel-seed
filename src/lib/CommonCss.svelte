@@ -16,6 +16,7 @@
     --skel-success-color: oklch(55% 0.2 150);
     --skel-input-border-color: oklch(82% 0 0);
     --skel-input-border-radius: 0.3em;
+    --skel-one-input-height: 2.5em;
 
     --skel-forward-transition: all 0.2s ease-out;
     --skel-backward-transition: all 0.4s ease-out;

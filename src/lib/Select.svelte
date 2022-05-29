@@ -74,6 +74,10 @@
 
     background-color: var(--skel-background-color);
     padding: 0.4em 0.7em;
+
+    box-sizing: border-box;
+    height: var(--skel-one-input-height);
+
     cursor: pointer;
 
     &.skel-Select_disabled {

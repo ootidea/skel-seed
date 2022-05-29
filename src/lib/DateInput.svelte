@@ -57,8 +57,13 @@
 
 <style global lang="scss">
   .skel-DateInput_root {
+    align-items: center;
     border-radius: var(--skel-input-border-radius);
     border: var(--skel-input-border-color) 1px solid;
+
+    box-sizing: border-box;
+    height: var(--skel-one-input-height);
+
     cursor: pointer;
 
     &.skel-DateInput_disabled {
