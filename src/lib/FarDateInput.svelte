@@ -32,9 +32,14 @@
     <div class="skel-FarDateInput_preview-area">
       {#if date !== undefined}
         <div class="skel-FarDateInput_selected-date">{date.toLocaleDateString()}</div>
-      {:else}
-        <div class="skel-FarDateInput_placeholder">{placeholder}</div>
       {/if}
+      <div class="skel-FarDateInput_placeholder" class:skel-FarDataTable_invisible={date === undefined}>
+        {placeholder}
+      </div>
+      <div class="skel-FarDateInput_selected-date skel-FarDateInput_invisible">
+        <!-- Intended to be the maximum display width -->
+        {new Date(9999, 11, 29, 23, 59, 59, 999).toLocaleDateString()}
+      </div>
     </div>
     <Gravity>
       <slot name="icon">
@@ -68,6 +73,12 @@
     &.skel-FarDateInput_disabled {
       background-color: var(--skel-disabled-input-background-color);
     }
+  }
+
+  .skel-FarDateInput_invisible {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 
   .skel-FarDateInput_icon {
