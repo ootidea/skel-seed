@@ -25,16 +25,18 @@
     class={`skel-DateInput_root ${joinClasses(klass, classes)}`}
     classes={{ 'skel-DateInput_disabled': disabled }}
     style={joinStyles(style, styles)}
-    stretchAt={0}
     on:click={() => disabled || toggle()}
     {...$$restProps}
   >
     <div class="skel-DateInput_preview-area">
       {#if date !== undefined}
         <div class="skel-DateInput_selected-date">{date.toLocaleDateString()}</div>
-      {:else}
-        <div class="skel-DateInput_placeholder">{placeholder}</div>
       {/if}
+      <div class="skel-DateInput_placeholder" class:skel-DataTable_invisible={date === undefined}>{placeholder}</div>
+      <div class="skel-DateInput_selected-date skel-DateInput_invisible">
+        <!-- Intended to be the maximum display width -->
+        {new Date(9999, 11, 29, 23, 59, 59, 999).toLocaleDateString()}
+      </div>
     </div>
     <Gravity>
       <slot name="icon">
@@ -68,6 +70,12 @@
     &.skel-DateInput_disabled {
       background-color: var(--skel-disabled-input-background-color);
     }
+  }
+
+  .skel-DateInput_invisible {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 
   .skel-DateInput_icon {
