@@ -97,12 +97,34 @@
   }
 
   .skel-Select_option {
-    padding: 0.7em 1em;
-    cursor: pointer;
-  }
+    display: flex;
+    align-items: center;
 
-  .skel-Select_selected {
-    background-color: var(--skel-primary-color);
-    color: oklch(100% 0 0);
+    padding: 0 0.8em;
+    box-sizing: border-box;
+    height: var(--skel-one-input-height);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: oklch(97% 0 0);
+    }
+
+    &:active {
+      background-color: oklch(94% 0 0);
+    }
+
+    &.skel-Select_selected {
+      color: var(--skel-primary-color);
+      background-color: var(--skel-primary-background-color);
+
+      &:hover {
+        background-color: var(--skel-primary-background-hover-color);
+      }
+
+      &:active {
+        background-color: var(--skel-primary-background-active-color);
+      }
+    }
   }
 </style>
