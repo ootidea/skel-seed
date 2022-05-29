@@ -10,8 +10,6 @@
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
-
-  const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <div
@@ -21,7 +19,7 @@
   {...$$restProps}
 >
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">
-    {value ? value : placeholder}{ZERO_WIDTH_SPACE}
+    {value ? value : placeholder}
   </div>
   <textarea class="skel-AutoSizeTextArea_text-area" bind:value {placeholder} {disabled} />
 </div>

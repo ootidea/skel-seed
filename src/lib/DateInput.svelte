@@ -18,8 +18,6 @@
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
-
-  const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <Modal let:toggle>
@@ -33,9 +31,9 @@
   >
     <div class="skel-DateInput_preview-area">
       {#if date !== undefined}
-        <div class="skel-DateInput_selected-date">{date.toLocaleDateString()}{ZERO_WIDTH_SPACE}</div>
+        <div class="skel-DateInput_selected-date">{date.toLocaleDateString()}</div>
       {:else}
-        <div class="skel-DateInput_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+        <div class="skel-DateInput_placeholder">{placeholder}</div>
       {/if}
     </div>
     <Gravity>

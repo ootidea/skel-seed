@@ -21,8 +21,6 @@
   function getText(value: string): string {
     return titles[value] ? titles[value] : value
   }
-
-  const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <Dropdown let:toggle>
@@ -38,12 +36,12 @@
       {#each values as value}
         <div class="skel-Select_selected-value" class:skel-Select_invisible={selected !== value}>
           <slot name="selected-value" {value} title={titles[value]} text={getText(value)}>
-            {getText(value)}{ZERO_WIDTH_SPACE}
+            {getText(value)}
           </slot>
         </div>
       {/each}
       <div class="skel-Select_placeholder" class:skel-Select_invisible={selected !== undefined}>
-        {placeholder}{ZERO_WIDTH_SPACE}
+        {placeholder}
       </div>
     </div>
     <Icon src={chevron} />

@@ -29,8 +29,6 @@
   function getText(value: string): string {
     return titles[value] ? titles[value] : value
   }
-
-  const ZERO_WIDTH_SPACE = '\u200b'
 </script>
 
 <Dropdown style="max-width: 100%" let:toggle>
@@ -48,7 +46,7 @@
             <div class="skel-MultiSelect_selected-value">{getText(value)}</div>
           </slot>
         {:else}
-          <div class="skel-MultiSelect_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+          <div class="skel-MultiSelect_placeholder">{placeholder}</div>
         {/each}
       </div>
       <div class="skel-MultiSelect_selected-values skel-MultiSelect_invisible">
@@ -59,7 +57,7 @@
         {/each}
       </div>
       <div class="skel-MultiSelect_selected-values skel-MultiSelect_invisible">
-        <div class="skel-MultiSelect_placeholder">{placeholder}{ZERO_WIDTH_SPACE}</div>
+        <div class="skel-MultiSelect_placeholder">{placeholder}</div>
       </div>
     </div>
     <Icon src={chevron} />
