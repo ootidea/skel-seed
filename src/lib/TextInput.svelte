@@ -83,6 +83,9 @@
     border: var(--skel-input-border-color) 1px solid;
     background-color: var(--skel-background-color);
 
+    box-sizing: border-box;
+    width: 100%;
+
     &.skel-TextInput_disabled {
       background-color: var(--skel-disabled-input-background-color);
     }

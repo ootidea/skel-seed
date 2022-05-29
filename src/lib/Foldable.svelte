@@ -101,6 +101,8 @@
     --skel-Foldable_border-default-color: oklch(93% 0 0);
 
     border: var(--skel-Foldable_border-color) 1px solid;
+    box-sizing: border-box;
+    width: 100%;
 
     .skel-Foldable_root + & {
       // Helpful for making accordions

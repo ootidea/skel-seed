@@ -29,7 +29,9 @@
 
 <style global lang="scss">
   .skel-AutoSizeTextArea_root {
+    box-sizing: border-box;
     position: relative;
+    width: 100%;
   }
 
   .skel-AutoSizeTextArea_dummy,
