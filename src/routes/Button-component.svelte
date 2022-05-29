@@ -1,7 +1,6 @@
 <script lang="ts">
   import Button from '../lib/Button.svelte'
   import Icon from '../lib/Icon.svelte'
-  import List from '../lib/List.svelte'
   import PageTitle from './_components/PageTitle.svelte'
   import Sample from './_components/Sample.svelte'
   import SectionTitle from './_components/SectionTitle.svelte'
@@ -17,39 +16,35 @@
 
 <PageTitle>Button</PageTitle>
 
-<Sample>
-  <List direction="horizontal" {items} let:item>
+<Sample direction="horizontal">
+  {#each items as item}
     <Button>{item}</Button>
-    <div slot="divider" style="width: 0.3em;" />
-  </List>
+  {/each}
 </Sample>
 
 <SectionTitle>Achromatic</SectionTitle>
-<Sample>
-  <List direction="horizontal" {items} let:item>
+<Sample direction="horizontal">
+  {#each items as item}
     <Button tint="achromatic">{item}</Button>
-    <div slot="divider" style="width: 0.3em;" />
-  </List>
+  {/each}
 </Sample>
 
 <SectionTitle>Ghost</SectionTitle>
-<Sample>
-  <List direction="horizontal" {items} let:item>
+<Sample direction="horizontal">
+  {#each items as item}
     <Button ghost>{item}</Button>
-    <div slot="divider" style="width: 0.3em;" />
-  </List>
+  {/each}
 </Sample>
 
 <SectionTitle>Achromatic & Ghost</SectionTitle>
-<Sample>
-  <List direction="horizontal" {items} let:item>
+<Sample direction="horizontal">
+  {#each items as item}
     <Button tint="achromatic" ghost>{item}</Button>
-    <div slot="divider" style="width: 0.3em;" />
-  </List>
+  {/each}
 </Sample>
 
 <SectionTitle>onClick function that returns a Promise</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <Button onClick={awaitSomeSeconds}>First</Button>
   <Button ghost onClick={awaitSomeSeconds}>First</Button>
   <Button tint="achromatic" onClick={awaitSomeSeconds}>First</Button>
@@ -57,7 +52,7 @@
 </Sample>
 
 <SectionTitle>with icon</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <Button>
     Dropdown
     <Icon src="src/assets/chevron-down.svg" iconColor="currentColor" />

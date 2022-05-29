@@ -13,7 +13,7 @@
 </Sample>
 
 <SectionTitle>Size</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <Spinner size="0.7em" />
   <Spinner size="1.4em" />
   <Spinner size="2.1em" />
@@ -21,7 +21,7 @@
 </Sample>
 
 <SectionTitle>Frequency</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <Spinner frequency={0.7} />
   <Spinner frequency={1.4} />
   <Spinner frequency={2.1} />
@@ -29,7 +29,7 @@
 </Sample>
 
 <SectionTitle>Thickness</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <Spinner thickness={10} />
   <Spinner thickness={25} />
   <Spinner thickness={50} />

@@ -16,31 +16,31 @@
 <PageTitle>IconButton</PageTitle>
 
 <SectionTitle>Default</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <IconButton src={chevronLeft} />
   <IconButton src={chevronRight} />
 </Sample>
 
 <SectionTitle>Icon color</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <IconButton src={chevronLeft} iconColor="#F05A4D" />
   <IconButton src={chevronRight} iconColor="hsl(180, 60%, 40%)" />
 </Sample>
 
 <SectionTitle>Button size</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <IconButton src={chevronLeft} size="40px" />
   <IconButton src={chevronRight} size="1.5em" />
 </Sample>
 
 <SectionTitle>Icon size (without button size)</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <IconButton src={chevronLeft} iconSize="50%" />
   <IconButton src={chevronRight} iconSize="100%" />
 </Sample>
 
 <SectionTitle>onClick function that returns a Promise</SectionTitle>
-<Sample>
+<Sample direction="horizontal">
   <IconButton src={chevronLeft} onClick={awaitSomeSeconds} />
   <IconButton src={chevronRight} onClick={awaitSomeSeconds} />
 </Sample>

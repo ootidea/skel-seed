@@ -15,13 +15,11 @@
 <SectionTitle>Placeholder and initial value</SectionTitle>
 <Sample>
   <DateInput placeholder="placeholder" />
-  <br />
   <DateInput date={new Date()} />
 </Sample>
 
 <SectionTitle>Disabled</SectionTitle>
 <Sample>
   <DateInput placeholder="placeholder" disabled />
-  <br />
   <DateInput date={new Date()} disabled />
 </Sample>

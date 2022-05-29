@@ -18,16 +18,13 @@
 <SectionTitle>Placeholder and initial value</SectionTitle>
 <Sample>
   <TextInput placeholder="placeholder" />
-  <br />
   <TextInput value="initial value" />
 </Sample>
 
 <SectionTitle>Types</SectionTitle>
 <Sample>
   <TextInput type="tel" placeholder="tel" />
-  <br />
   <TextInput type="email" placeholder="email" />
-  <br />
   <TextInput type="password" placeholder="password" />
 </Sample>
 
@@ -36,7 +33,6 @@
   <TextInput value="valid text">
     <Icon slot="append" src={check} />
   </TextInput>
-  <br />
   <TextInput placeholder="security number">
     <Icon slot="prepend" src={alertOutline} />
   </TextInput>
@@ -53,6 +49,5 @@
 <SectionTitle>Disabled</SectionTitle>
 <Sample>
   <TextInput placeholder="placeholder" disabled />
-  <br />
   <TextInput value="initial value" disabled />
 </Sample>

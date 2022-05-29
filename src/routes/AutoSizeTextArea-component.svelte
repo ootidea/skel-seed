@@ -15,13 +15,11 @@
 <SectionTitle>Placeholder and initial value</SectionTitle>
 <Sample>
   <AutoSizeTextArea placeholder="placeholder" />
-  <br />
   <AutoSizeTextArea value="initial value" />
 </Sample>
 
 <SectionTitle>Disabled</SectionTitle>
 <Sample>
   <AutoSizeTextArea placeholder="placeholder" disabled />
-  <br />
   <AutoSizeTextArea value="initial value" disabled />
 </Sample>

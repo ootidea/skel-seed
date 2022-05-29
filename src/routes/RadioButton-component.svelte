@@ -7,12 +7,12 @@
 </script>
 
 <PageTitle>RadioButton</PageTitle>
-<Sample>
+<Sample direction="horizontal">
   <RadioButton bind:group value="TypeScript" />
   <RadioButton bind:group value="Kotlin" />
 </Sample>
 
-<Sample>
+<Sample direction="horizontal">
   <RadioButton name="2nd" value="Swift" />
   <RadioButton name="2nd">Prolog</RadioButton>
 </Sample>
