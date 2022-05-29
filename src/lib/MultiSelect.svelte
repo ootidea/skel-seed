@@ -13,6 +13,7 @@
   export let titles: Record<string, string> = {}
   export let placeholder = ''
   export let disabled = false
+  export let style: string | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -35,6 +36,7 @@
   <StretchLayout
     class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`}
     classes={{ 'skel-MultiSelect_disabled': disabled }}
+    {style}
     on:click={() => disabled || toggle()}
     {...$$restProps}
   >
