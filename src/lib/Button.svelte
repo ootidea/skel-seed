@@ -4,7 +4,7 @@
   import OverlayLayout from './OverlayLayout.svelte'
   import Spinner from './Spinner.svelte'
   import type { Arrow } from './utility'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let tint: 'primary' | 'achromatic' = 'primary'
   export let ghost = false
@@ -13,6 +13,7 @@
   export let fullWidth = false
   export let onClick: Arrow<[MouseEvent], unknown> | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -36,7 +37,7 @@
   class:skel-Button_rounded={rounded}
   class:skel-Button_disabled={disabled}
   class:skel-Button_full-width={fullWidth}
-  {style}
+  style={joinStyles(style, styles)}
   data-tint={tint}
   {disabled}
   on:click={clickEventHandler}

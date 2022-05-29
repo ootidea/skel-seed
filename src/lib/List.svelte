@@ -1,17 +1,23 @@
 <script lang="ts">
   import Divider from './Divider.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   type Item = $$Generic
   export let items: readonly Item[]
   export let direction: 'horizontal' | 'vertical' = 'vertical'
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
 </script>
 
-<div class={`skel-List_root ${joinClasses(klass, classes)}`} {style} data-direction={direction} {...$$restProps}>
+<div
+  class={`skel-List_root ${joinClasses(klass, classes)}`}
+  style={joinStyles(style, styles)}
+  data-direction={direction}
+  {...$$restProps}
+>
   {#each items as item, index}
     {#if index > 0}
       <slot name="divider">

@@ -1,12 +1,13 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let group: string | undefined = undefined
   export let value: string | undefined = undefined
   export let name: string | undefined = undefined
   export let disabled = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -15,7 +16,7 @@
 <label
   class={`skel-RadioButton_root ${joinClasses(klass, classes)}`}
   class:skel-RadioButton_disabled={disabled}
-  {style}
+  style={joinStyles(style, styles)}
   {...$$restProps}
 >
   <input type="radio" class="skel-RadioButton_radio" bind:group {value} {name} {disabled} />

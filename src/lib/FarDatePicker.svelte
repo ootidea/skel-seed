@@ -2,12 +2,13 @@
   import DatePicker from './DatePicker.svelte'
   import MonthPicker from './MonthPicker.svelte'
   import type { Arrow } from './utility'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
   import YearPicker from './YearPicker.svelte'
 
   export let selectedDate: Date | undefined = undefined
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -36,7 +37,11 @@
   }
 </script>
 
-<div class={`skel-FarDatePicker_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
+<div
+  class={`skel-FarDatePicker_root ${joinClasses(klass, classes)}`}
+  style={joinStyles(style, styles)}
+  {...$$restProps}
+>
   {#if step === 0}
     <h4 class="skel-FarDatePicker_title">年を選択</h4>
     <YearPicker onSelect={onSelectYear} />

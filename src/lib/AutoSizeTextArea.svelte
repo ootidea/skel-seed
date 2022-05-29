@@ -1,11 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let value = ''
   export let placeholder = ''
   export let disabled = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -16,7 +17,7 @@
 <div
   class={`skel-AutoSizeTextArea_root ${joinClasses(klass, classes)}`}
   class:skel-AutoSizeTextArea_disabled={disabled}
-  {style}
+  style={joinStyles(style, styles)}
   {...$$restProps}
 >
   <div class="skel-AutoSizeTextArea_dummy" aria-hidden="true">

@@ -1,10 +1,11 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { isInsideOf, joinClasses, observeWidth } from './utility'
+  import { isInsideOf, joinClasses, joinStyles, observeWidth, type StyleObject } from './utility'
 
   export let opened = false
   export let persistent = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -36,7 +37,7 @@
 
 <div
   class={`skel-Dropdown_root ${joinClasses(klass, classes)}`}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-Dropdown_content-width={`${contentWidth}px`}
   style:--skel-Dropdown_dropdown-width={`${dropdownWidth}px`}
   {...$$restProps}

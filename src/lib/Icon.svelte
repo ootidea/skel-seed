@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let src = ''
   export let size = 'var(--skel-Icon_default-size)'
   export let iconColor = 'var(--skel-Icon_icon-default-color)'
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -12,7 +13,7 @@
 
 <div
   class={`skel-Icon_root ${joinClasses(klass, classes)}`}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-Icon_url={`url('${src}')`}
   style:--skel-Icon_size={size}
   style:--skel-Icon_icon-color={iconColor}

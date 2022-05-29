@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let stretchAt: number | `${number}` = 0
   export let direction: 'horizontal' | 'vertical' = 'horizontal'
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -11,7 +12,7 @@
 
 <div
   class={`skel-StretchLayout_root ${joinClasses(klass, classes)}`}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-StretchLayout_template={'auto '.repeat(Number(stretchAt)) + 'minmax(0, 1fr)'}
   data-direction={direction}
   on:click

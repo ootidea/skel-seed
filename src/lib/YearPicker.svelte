@@ -1,8 +1,8 @@
 <script lang="ts">
   import Button from './Button.svelte'
   import Foldable from './Foldable.svelte'
-  import { type Arrow, range } from './utility'
-  import { joinClasses } from './utility'
+  import { type Arrow, range, type StyleObject } from './utility'
+  import { joinClasses, joinStyles } from './utility'
 
   /** The largest of the year options */
   export let maxYear = new Date().getFullYear()
@@ -22,6 +22,8 @@
   /** The period containing this year is the initial display state of the accordion */
   export let mostPromisingYear = maxYear - 20
   export let onSelect: Arrow<[number], unknown> | undefined = undefined
+  export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -33,7 +35,7 @@
   }
 </script>
 
-<div class={`skel-YearPicker_root ${joinClasses(klass, classes)}`} {...$$restProps}>
+<div class={`skel-YearPicker_root ${joinClasses(klass, classes)}`} style={joinStyles(style, styles)} {...$$restProps}>
   {#each range(toPeriodYear(minYear, periodSize), toPeriodYear(maxYear, periodSize), periodSize) as periodYear}
     {@const periodMinYear = Math.max(periodYear, toPeriodYear(minYear, 5))}
     {@const periodMaxYear = Math.min(periodYear + periodSize - 1, maxYear)}

@@ -4,7 +4,7 @@
   import Icon from './Icon.svelte'
   import Spinner from './Spinner.svelte'
   import type { Arrow } from './utility'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let src = ''
   export let size = 'var(--skel-IconButton_default-size)'
@@ -14,6 +14,7 @@
   export let disabled = false
   export let disabledColor = 'var(--skel-IconButton_disabled-default-color)'
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -34,7 +35,7 @@
 <div
   class={`skel-IconButton_root ${joinClasses(klass, classes)}`}
   class:skel-IconButton_disabled={disabled}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-IconButton_size={size}
   style:--skel-IconButton_icon-size={iconSize}
   on:click={clickEventHandler}

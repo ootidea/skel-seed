@@ -1,10 +1,11 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let opened = false
   export let disableAutoClose = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -26,7 +27,7 @@
 {#if opened}
   <div
     class={`skel-Modal_root ${joinClasses(klass, classes)}`}
-    {style}
+    style={joinStyles(style, styles)}
     on:click|self={onClickBackdrop}
     {...$$restProps}
   >

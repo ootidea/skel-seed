@@ -1,11 +1,12 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let checked = false
   export let value: string | undefined = undefined
   export let disabled = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -14,7 +15,7 @@
 <label
   class={`skel-Checkbox_root ${joinClasses(klass, classes)}`}
   class:skel-Checkbox_disabled={disabled}
-  {style}
+  style={joinStyles(style, styles)}
   {...$$restProps}
 >
   <input type="checkbox" class="skel-Checkbox_checkbox" {value} bind:checked {disabled} />

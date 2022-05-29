@@ -151,6 +151,19 @@ export function toStyle(styleObject: StyleObject | undefined): string | undefine
     .join('; ')
 }
 
+export function joinStyles(style: string | undefined, styles: StyleObject | undefined): string | undefined {
+  if (style === undefined && styles === undefined) return undefined
+
+  if (style === undefined) return toStyle(styles)
+
+  if (styles === undefined) return style
+
+  if (style.trim().endsWith(';')) {
+    return `${style} ${toStyle(styles)}`
+  }
+  return `${style}; ${toStyle(styles)}`
+}
+
 export function joinClasses(klass: string | undefined, classes: Record<string, unknown> | undefined): string {
   const conditionalClasses = Object.entries(classes ?? {})
     .filter(([, value]) => Boolean(value))

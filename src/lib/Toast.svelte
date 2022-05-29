@@ -72,9 +72,10 @@
   import { onDestroy } from 'svelte'
   import CommonCss from './CommonCss.svelte'
   import Icon from './Icon.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -91,7 +92,7 @@
   }
 </script>
 
-<div class={`skel-Toast_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
+<div class={`skel-Toast_root ${joinClasses(klass, classes)}`} style={joinStyles(style, styles)} {...$$restProps}>
   {#each $toastModelsStore as toastModel (toastModel.id)}
     <div class="skel-Toast_toast-wrapper" animate:flip>
       <slot model={toastModel}>

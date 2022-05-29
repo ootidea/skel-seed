@@ -2,7 +2,7 @@
   import CommonCss from './CommonCss.svelte'
   import Gravity from './Gravity.svelte'
   import StretchLayout from './StretchLayout.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let type: string | undefined = undefined
   export let value = ''
@@ -18,6 +18,7 @@
   export let autocomplete: string | undefined = undefined
   export let list: string | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -40,7 +41,7 @@
 <StretchLayout
   class={`skel-TextInput_root ${joinClasses(klass, classes)}`}
   classes={{ 'skel-TextInput_disabled': disabled }}
-  {style}
+  style={joinStyles(style, styles)}
   stretchAt={1}
   {...$$restProps}
 >

@@ -6,7 +6,7 @@
   import Dropdown from './Dropdown.svelte'
   import Icon from './Icon.svelte'
   import StretchLayout from './StretchLayout.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let values: string[] = []
   export let selected: Record<string, boolean> = {}
@@ -14,6 +14,7 @@
   export let placeholder = ''
   export let disabled = false
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -36,7 +37,7 @@
   <StretchLayout
     class={`skel-MultiSelect_root ${joinClasses(klass, classes)}`}
     classes={{ 'skel-MultiSelect_disabled': disabled }}
-    {style}
+    style={joinStyles(style, styles)}
     on:click={() => disabled || toggle()}
     {...$$restProps}
   >

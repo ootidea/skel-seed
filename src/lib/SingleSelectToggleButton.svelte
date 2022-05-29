@@ -1,12 +1,13 @@
 <script lang="ts">
   import CommonCss from './CommonCss.svelte'
   import ToggleButton from './ToggleButton.svelte'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   type Value = $$Generic<string>
   export let values: Value[] = []
   export let selected: Value | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -20,7 +21,11 @@
   }
 </script>
 
-<div class={`skel-SingleSelectToggleButton_root ${joinClasses(klass, classes)}`} {style} {...$$restProps}>
+<div
+  class={`skel-SingleSelectToggleButton_root ${joinClasses(klass, classes)}`}
+  style={joinStyles(style, styles)}
+  {...$$restProps}
+>
   {#each values as value, index (value)}
     <ToggleButton selected={value === selected} on:click={() => clickEventHandler(value)}>
       <slot {value} {index}>

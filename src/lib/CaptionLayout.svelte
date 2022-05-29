@@ -1,8 +1,9 @@
 <script lang="ts">
   export let captionPosition: 'above' | 'below' = 'below'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -12,7 +13,7 @@
 
 <div
   class={`skel-CaptionLayout_root ${joinClasses(klass, classes)}`}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-CaptionLayout_width={`${clientWidth}px`}
   {...$$restProps}
 >

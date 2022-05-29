@@ -3,12 +3,13 @@
   import Calendar from './Calendar.svelte'
   import CommonCss from './CommonCss.svelte'
   import type { Arrow } from './utility'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let selectedDate: Date | undefined = undefined
   export let selectedMonth: Date = new Date()
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -19,7 +20,12 @@
   }
 </script>
 
-<Calendar class={`skel-DatePicker_root ${joinClasses(klass, classes)}`} {style} bind:selectedMonth {...$$restProps}>
+<Calendar
+  class={`skel-DatePicker_root ${joinClasses(klass, classes)}`}
+  style={joinStyles(style, styles)}
+  bind:selectedMonth
+  {...$$restProps}
+>
   <div
     slot="date-cell"
     class="skel-DatePicker_date-cell"

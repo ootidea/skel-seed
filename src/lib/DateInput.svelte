@@ -7,13 +7,14 @@
   import Modal from './Modal.svelte'
   import StretchLayout from './StretchLayout.svelte'
   import type { Arrow } from './utility'
-  import { joinClasses } from './utility'
+  import { joinClasses, joinStyles, type StyleObject } from './utility'
 
   export let date: Date | undefined = undefined
   export let placeholder = ''
   export let disabled: true | undefined = undefined
   export let onSelect: Arrow<[Date], unknown> | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -25,7 +26,7 @@
   <StretchLayout
     class={`skel-DateInput_root ${joinClasses(klass, classes)}`}
     classes={{ 'skel-DateInput_disabled': disabled }}
-    {style}
+    style={joinStyles(style, styles)}
     stretchAt={0}
     on:click={() => disabled || toggle()}
     {...$$restProps}

@@ -3,7 +3,7 @@
   import Divider from './Divider.svelte'
   import IconButton from './IconButton.svelte'
   import StretchLayout from './StretchLayout.svelte'
-  import { type Arrow, call, joinClasses } from './utility'
+  import { type Arrow, call, joinClasses, joinStyles, type StyleObject } from './utility'
   import arrowDown from '/src/assets/arrow-down.svg'
 
   type Row = $$Generic<Record<string, unknown>>
@@ -17,6 +17,7 @@
   export let onClickRow: Arrow<[Row], unknown> | undefined = undefined
   export let sortingState: { columnId: string; reversed: boolean } | undefined = undefined
   export let style: string | undefined = undefined
+  export let styles: StyleObject | undefined = undefined
   let klass = ''
   export { klass as class }
   export let classes: Record<string, unknown> | undefined = undefined
@@ -105,7 +106,7 @@
 
 <div
   class={`skel-DataTable_root ${joinClasses(klass, classes)}`}
-  {style}
+  style={joinStyles(style, styles)}
   style:--skel-DataTable_template-columns={Array(columns.length + 1)
     .fill('max-content')
     .join(' auto ')}
