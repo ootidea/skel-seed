@@ -118,6 +118,16 @@
   }
 
   .skel-MultiSelect_checkbox {
-    padding: 0.7em 1em;
+    align-items: center;
+    padding: 0 1em;
+    height: 2.5em;
+
+    &:hover {
+      background-color: oklch(97% 0 0);
+    }
+
+    &:active {
+      background-color: oklch(94% 0 0);
+    }
   }
 </style>

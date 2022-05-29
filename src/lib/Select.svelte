@@ -102,7 +102,7 @@
 
     padding: 0 0.8em;
     box-sizing: border-box;
-    height: var(--skel-one-input-height);
+    height: 2.5em;
 
     cursor: pointer;
 
