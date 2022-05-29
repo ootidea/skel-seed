@@ -82,7 +82,9 @@ function toKebabCase(pascalCase: string) {
 
 type AutoComplete<Literal extends Base, Base = string> = Literal | (Base & Record<never, never>)
 
+type Visibility = AutoComplete<'visible' | 'hidden' | 'collapse'>
 type Position = AutoComplete<'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'>
+type ZIndex = AutoComplete<'auto' | `${number}`>
 type Display = AutoComplete<'block' | 'inline' | 'inline-block' | 'flex' | 'inline-flex' | 'grid' | 'inline-grid'>
 type AlignItems = AutoComplete<'start' | 'end' | 'center'>
 type JustifyContent = AutoComplete<'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'>
@@ -92,13 +94,56 @@ type Height = AutoComplete<'max-content' | 'min-content'>
 type FontWeight = AutoComplete<
   'normal' | 'bold' | 'lighter' | 'bolder' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
 >
+type PointerEvents = AutoComplete<'auto' | 'none'>
+type Cursor = AutoComplete<
+  | 'auto'
+  | 'default'
+  | 'pointer'
+  | 'move'
+  | 'text'
+  | 'crosshair'
+  | 'cell'
+  | 'help'
+  | 'grab'
+  | 'grabbing'
+  | 'zoom-in'
+  | 'zoom-out'
+  | 'not-allowed'
+  | 'wait'
+  | 'progress'
+  | 'none'
+  | 'alias'
+  | 'context-menu'
+  | 'vertical-text'
+  | 'n-resize'
+  | 'e-resize'
+  | 's-resize'
+  | 'w-resize'
+  | 'nw-resize'
+  | 'ne-resize'
+  | 'se-resize'
+  | 'sw-resize'
+  | 'ew-resize'
+  | 'ns-resize'
+  | 'nesw-resize'
+  | 'nwse-resize'
+  | 'col-resize'
+  | 'row-resize'
+  | 'all-scroll'
+  | 'copy'
+  | 'no-drop'
+>
 
 export type StyleObject = Partial<{
+  visibility: Visibility
   position: Position
   top: string
   bottom: string
   left: string
   right: string
+  transform: string
+  transformOrigin: string
+  zIndex: ZIndex
   display: Display
   gridTemplateColumns: string
   gridTemplateRows: string
@@ -141,6 +186,9 @@ export type StyleObject = Partial<{
   fontSize: string
   fontWeight: FontWeight
   lineHeight: string
+  cursor: Cursor
+  pointerEvents: PointerEvents
+  transition: string
 }>
 
 export function toStyle(styleObject: StyleObject | undefined): string | undefined {
