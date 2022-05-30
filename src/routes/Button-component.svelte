@@ -5,7 +5,7 @@
   import Sample from './_components/Sample.svelte'
   import SectionTitle from './_components/SectionTitle.svelte'
 
-  const items = ['Button', 'finish', 'cancel', '完了', 'キャンセル']
+  const items = ['Button', 'accept', 'cancel', 'OK']
 
   async function awaitSomeSeconds() {
     return new Promise((resolve) => {
