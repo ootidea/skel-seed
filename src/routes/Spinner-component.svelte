@@ -16,8 +16,8 @@
 <Sample direction="horizontal">
   <Spinner size="0.7em" />
   <Spinner size="1.4em" />
-  <Spinner size="2.1em" />
-  <Spinner size="2.8em" />
+  <Spinner size="2.1rem" />
+  <Spinner size="50px" />
 </Sample>
 
 <SectionTitle>Frequency</SectionTitle>
