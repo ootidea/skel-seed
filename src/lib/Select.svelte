@@ -23,10 +23,10 @@
   }
 </script>
 
-<Dropdown let:toggle>
+<Dropdown let:toggle let:opened>
   <StretchLayout
     class={`skel-Select_root ${joinClasses(klass, classes)}`}
-    classes={{ 'skel-Select_disabled': disabled }}
+    classes={{ 'skel-Select_disabled': disabled, 'skel-Select_opened': opened }}
     style={joinStyles(style, styles)}
     on:click={() => disabled || toggle()}
     {...$$restProps}
@@ -44,7 +44,7 @@
         {placeholder}
       </div>
     </div>
-    <Icon src={chevron} />
+    <Icon class="skel-Select_icon" src={chevron} />
   </StretchLayout>
   <div slot="dropdown" class="skel-Select_dropdown">
     {#each values as value, i}
@@ -95,6 +95,16 @@
 
   .skel-Select_placeholder {
     color: var(--skel-placeholder-text-color);
+  }
+
+  .skel-Select_icon {
+    transform-origin: center;
+    transition: all 140ms ease-out;
+    transform: rotate(0deg);
+
+    .skel-Select_opened & {
+      transform: rotate(-180deg);
+    }
   }
 
   .skel-Select_option {

@@ -47,7 +47,7 @@
     bind:this={contentElement}
     use:observeWidth={(width) => (contentWidth = width)}
   >
-    <slot {open} {close} {toggle} />
+    <slot {open} {close} {toggle} {opened} />
   </div>
   <div
     class="skel-Dropdown_dropdown-area"
