@@ -5,8 +5,6 @@
   import Sample from './_components/Sample.svelte'
   import SectionTitle from './_components/SectionTitle.svelte'
 
-  const items = ['Button', 'accept', 'cancel', 'OK']
-
   async function awaitSomeSeconds() {
     return new Promise((resolve) => {
       setTimeout(resolve, 2000)
@@ -17,38 +15,42 @@
 <PageTitle>Button</PageTitle>
 
 <Sample direction="horizontal">
-  {#each items as item}
-    <Button>{item}</Button>
-  {/each}
+  <Button>Button</Button>
+  <Button ghost>accept</Button>
+  <Button rounded>cancel</Button>
+  <Button ghost rounded>OK</Button>
 </Sample>
 
 <SectionTitle>Achromatic</SectionTitle>
 <Sample direction="horizontal">
-  {#each items as item}
-    <Button tint="achromatic">{item}</Button>
-  {/each}
+  <Button tint="achromatic">Button</Button>
+  <Button tint="achromatic" ghost>accept</Button>
+  <Button tint="achromatic" rounded>cancel</Button>
+  <Button tint="achromatic" ghost rounded>OK</Button>
 </Sample>
 
 <SectionTitle>Ghost</SectionTitle>
 <Sample direction="horizontal">
-  {#each items as item}
-    <Button ghost>{item}</Button>
-  {/each}
+  <Button ghost>Button</Button>
+  <Button ghost tint="achromatic">accept</Button>
+  <Button ghost rounded>cancel</Button>
+  <Button ghost tint="achromatic" rounded>OK</Button>
 </Sample>
 
-<SectionTitle>Achromatic & Ghost</SectionTitle>
+<SectionTitle>Rounded</SectionTitle>
 <Sample direction="horizontal">
-  {#each items as item}
-    <Button tint="achromatic" ghost>{item}</Button>
-  {/each}
+  <Button rounded>Button</Button>
+  <Button rounded tint="achromatic">accept</Button>
+  <Button rounded ghost>cancel</Button>
+  <Button rounded tint="achromatic" ghost>OK</Button>
 </Sample>
 
 <SectionTitle>onClick function that returns a Promise</SectionTitle>
 <Sample direction="horizontal">
-  <Button onClick={awaitSomeSeconds}>First</Button>
-  <Button ghost onClick={awaitSomeSeconds}>First</Button>
-  <Button tint="achromatic" onClick={awaitSomeSeconds}>First</Button>
-  <Button tint="achromatic" ghost onClick={awaitSomeSeconds}>First</Button>
+  <Button onClick={awaitSomeSeconds}>Submit</Button>
+  <Button ghost onClick={awaitSomeSeconds}>Send</Button>
+  <Button tint="achromatic" onClick={awaitSomeSeconds}>Save</Button>
+  <Button tint="achromatic" ghost onClick={awaitSomeSeconds}>Purchase</Button>
 </Sample>
 
 <SectionTitle>with icon</SectionTitle>
