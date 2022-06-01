@@ -29,5 +29,6 @@
   .skel-Text_loading {
     color: transparent;
     text-decoration: line-through oklch(88% 0 0) 0.9em;
+    user-select: none;
   }
 </style>
