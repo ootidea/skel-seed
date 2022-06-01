@@ -1,6 +1,6 @@
 <script lang="ts">
   type T = $$Generic
-  export let promise: Promise<T> | undefined
+  export let promise: Promise<T> | T | undefined
 </script>
 
 {#await promise}
