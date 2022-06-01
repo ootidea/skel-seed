@@ -13,11 +13,15 @@
 
 <Await promise={value} let:result>
   {#if result === undefined}
-    <span class="skel-Text_root skel-Text_loading {joinClasses(klass, classes)}" style={joinStyles(style, styles)}
-      >{loading ?? ''}</span
+    <span
+      class="skel-Text_root skel-Text_loading {joinClasses(klass, classes)}"
+      style={joinStyles(style, styles)}
+      {...$$restProps}>{loading ?? ''}</span
     >
   {:else}
-    <span class="skel-Text_root {joinClasses(klass, classes)}" style={joinStyles(style, styles)}>{result}</span>
+    <span class="skel-Text_root {joinClasses(klass, classes)}" style={joinStyles(style, styles)} {...$$restProps}
+      >{result}</span
+    >
   {/if}
 </Await>
 
