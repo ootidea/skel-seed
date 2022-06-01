@@ -19,6 +19,7 @@
     <SidebarMenu componentName="Select" />
     <SidebarMenu componentName="MultiSelect" />
     <SidebarMenu componentName="DataTable" />
+    <SidebarMenu componentName="Dropdown" />
     <SidebarMenu componentName="Popover" />
     <SidebarMenu componentName="Modal" />
     <SidebarMenu componentName="Foldable" />
