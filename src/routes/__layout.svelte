@@ -24,6 +24,7 @@
     <SidebarMenu componentName="Foldable" />
     <SidebarMenu componentName="Spinner" />
     <SidebarMenu componentName="Toast" />
+    <SidebarMenu componentName="Text" />
   </aside>
   <Divider direction="vertical" />
   <main>
