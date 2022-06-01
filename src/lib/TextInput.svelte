@@ -91,6 +91,10 @@
     &.skel-TextInput_disabled {
       background-color: var(--skel-disabled-input-background-color);
     }
+
+    &:focus-within {
+      border-color: var(--skel-primary-color);
+    }
   }
 
   .skel-TextInput_prefix,

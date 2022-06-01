@@ -67,6 +67,7 @@
     width: 100%;
     height: 100%;
 
+    outline: none;
     resize: none;
 
     &::placeholder {
@@ -76,9 +77,9 @@
     &:disabled {
       background-color: var(--skel-disabled-input-background-color);
     }
-  }
 
-  .skel-AutoSizeTextArea_text-area:focus {
-    outline: 1px solid var(--skel-primary-color);
+    &:focus {
+      border-color: var(--skel-primary-color);
+    }
   }
 </style>
