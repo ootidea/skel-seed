@@ -32,7 +32,7 @@
   }
 </script>
 
-<div
+<button
   class={`skel-IconButton_root ${joinClasses(klass, classes)}`}
   class:skel-IconButton_disabled={disabled}
   style={joinStyles(style, styles)}
@@ -48,7 +48,7 @@
   {:else}
     <Icon {src} size={iconSize} iconColor={disabled ? disabledColor : iconColor} />
   {/if}
-</div>
+</button>
 
 <CommonCss />
 
@@ -60,6 +60,11 @@
   }
 
   .skel-IconButton_root {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font: inherit;
+
     display: inline-flex;
     vertical-align: top;
     align-items: center;
@@ -67,6 +72,7 @@
 
     width: var(--skel-IconButton_size);
     height: var(--skel-IconButton_size);
+    box-sizing: border-box;
     border-radius: 50%;
     overflow: hidden;
 
