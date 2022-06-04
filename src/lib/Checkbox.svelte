@@ -27,6 +27,12 @@
 <CommonCss />
 
 <style global lang="scss">
+  @use 'utility.scss';
+
+  :root {
+    --skel-Checkbox_checkbox-size: 1em;
+  }
+
   .skel-Checkbox_root {
     display: inline-grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -43,10 +49,36 @@
   }
 
   .skel-Checkbox_checkbox {
+    appearance: none;
+
+    background-color: white;
+    width: utility.toEvenPx(var(--skel-Checkbox_checkbox-size));
+    height: utility.toEvenPx(var(--skel-Checkbox_checkbox-size));
+
+    border: oklch(70% 0 0) 1px solid;
+    border-radius: 0.2em;
+
     margin: 0;
     accent-color: var(--skel-primary-color);
 
     cursor: pointer;
+
+    &:checked {
+      background-color: var(--skel-primary-color);
+
+      &::before {
+        content: '';
+        display: inline-block;
+
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        background-color: oklch(100% 0 0);
+        mask: url('/src/assets/check-bold.svg') no-repeat center;
+        mask-size: contain;
+      }
+    }
 
     .skel-Checkbox_disabled & {
       cursor: default;
